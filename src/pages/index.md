@@ -1,9 +1,9 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: David Wayne Baxter
 image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+heading: David Wayne Baxter
+subheading: Engineering Manager / Software Development
 mainpitch:
   title: Why Kaldi
   description: >
