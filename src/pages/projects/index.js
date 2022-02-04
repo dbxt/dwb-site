@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import Layout from "../../components/Layout";
-import ArticleSummaryList from "../../components/ArticleSummaryList";
+import ProjectSummaryList from "../../components/ProjectSummaryList";
 
-export default class BlogIndexPage extends React.Component {
+export default class ProjectIndexPage extends React.Component {
   render() {
     return (
       <Layout>
@@ -22,13 +22,13 @@ export default class BlogIndexPage extends React.Component {
               padding: "1rem",
             }}
           >
-            Latest Stories
+            Projects
           </h1>
         </div>
         <section className="section">
           <div className="container">
             <div className="content">
-              <ArticleSummaryList />
+              <ProjectSummaryList />
             </div>
           </div>
         </section>

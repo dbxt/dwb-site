@@ -1,18 +1,37 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import github from "../img/github-icon.svg";
 import logo from "../img/logo.png";
 
 const NavbarStyled = styled.nav`
+  border: red solid 1px;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   padding-left: 10%;
   padding-right: 10%;
+  > div {
+    border: blue solid 1px;
+    justify-content: center;
+  }
 `;
 
 const NavBarLogo = styled(Link)`
   min-height: 60px;
+`;
+const NavBarMenuItems = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 60px;
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: green solid 1px;
+    padding: 15px;
+  }
 `;
 const NavBarLink = styled(Link)`
   min-width: 100px;
@@ -20,20 +39,6 @@ const NavBarLink = styled(Link)`
   font-family: sans-serif;
   font-weight: bold;
   color: #333333;
-`;
-const NavBarAnchor = styled.a`
-  min-width: 100px;
-  text-align: center;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: #333333;
-`;
-const NavBarMenuItems = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  min-height: 60px;
 `;
 
 const Navbar = class extends React.Component {
@@ -91,22 +96,19 @@ const Navbar = class extends React.Component {
           className={`navbar-menu ${this.state.navBarActiveClass}`}
         >
           <NavBarMenuItems>
-            <NavBarLink to="/about">About</NavBarLink>
-            <NavBarLink to="/projects">Projects</NavBarLink>
-            <NavBarLink to="/articles">Articles</NavBarLink>
-            <NavBarLink to="/contact">Contact</NavBarLink>
+            <div>
+              <NavBarLink to="/about">About</NavBarLink>
+            </div>
+            <div>
+              <NavBarLink to="/projects">Projects</NavBarLink>
+            </div>
+            <div>
+              <NavBarLink to="/articles">Articles</NavBarLink>
+            </div>
+            <div>
+              <NavBarLink to="/contact">Contact</NavBarLink>
+            </div>
           </NavBarMenuItems>
-          <div className="navbar-end has-text-centered">
-            <NavBarAnchor
-              href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="icon">
-                <img src={github} alt="Github" />
-              </span>
-            </NavBarAnchor>
-          </div>
         </div>
       </NavbarStyled>
     );
