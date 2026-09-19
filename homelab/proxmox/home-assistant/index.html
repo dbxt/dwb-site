@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Assistant OS | David Wayne Baxter</title>
+  <meta name="description" content="Home Assistant OS is the appliance-style operating system for Home Assistant, an open-source home automation platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/home-assistant/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Home Assistant OS | David Wayne Baxter" />
+  <meta property="og:description" content="Home Assistant OS is the appliance-style operating system for Home Assistant, an open-source home automation platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/home-assistant/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Home Assistant OS | David Wayne Baxter" />
+  <meta name="twitter:description" content="Home Assistant OS is the appliance-style operating system for Home Assistant, an open-source home automation platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=IBM+Plex+Mono:wght@400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/experience/">Experience</a>
+        <a href="/ai/">AI Work</a>
+        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn&nbsp;↗</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li><a href="/homelab/proxmox/">Proxmox</a></li><li aria-current="page">Home Assistant OS</li></ol></nav>
+        <h1>Home Assistant OS</h1>
+        <p class="lede">Home Assistant OS is the appliance-style operating system for Home Assistant, an open-source home automation platform. In my homelab it runs as a virtual machine on Proxmox.</p>
+        <div class="note">
+          <p><b>About this page.</b> The virtual machine settings were read from the running system. Addresses, MAC addresses, and USB device identifiers are left out on purpose.</p>
+        </div>
+        <nav class="jump" aria-label="On this page">
+          <ul>
+            <li><a href="#vm-setup">VM setup</a></li>
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#proxy">Behind the reverse proxy</a></li>
+            <li><a href="#usb">USB passthrough</a></li>
+            <li><a href="#load">Typical load</a></li>
+          </ul>
+        </nav>
+      </div>
+
+<div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Type</dt><dd>Virtual machine on Proxmox VE</dd></div>
+          <div><dt>Software</dt><dd>Home Assistant OS, installed from the 13.1 generic x86-64 image</dd></div>
+          <div><dt>VM ID</dt><dd>102</dd></div>
+          <div><dt>Virtual CPUs</dt><dd>2, on one socket</dd></div>
+          <div><dt>Memory</dt><dd>4 GiB</dd></div>
+          <div><dt>Disk</dt><dd>32 GiB on <code>local-lvm</code>, plus a 4 MiB EFI disk</dd></div>
+          <div><dt>Firmware</dt><dd>UEFI (OVMF) on the q35 machine type, with Secure Boot keys not enrolled</dd></div>
+          <div><dt>Network</dt><dd>One VirtIO interface on <code>vmbr0</code>, with the Proxmox firewall enabled</dd></div>
+          <div><dt>USB</dt><dd>One host USB device passed through</dd></div>
+          <div><dt>Start at boot</dt><dd>Yes</dd></div>
+        </dl>
+      </div>
+      <!-- TODO(homelab): add the Home Assistant version and the integrations or add-ons you want to mention. -->
+
+      <section class="row first" id="vm-setup" aria-labelledby="vmsetup-h">
+        <div class="label">VM setup</div>
+        <div class="body">
+          <h2 id="vmsetup-h">Creating the virtual machine in Proxmox.</h2>
+          <p>Home Assistant OS is an appliance-style system that needs UEFI firmware, so the VM is built a little differently from a normal Linux guest.</p>
+          <ol class="steps">
+            <li><b>Upload the installer.</b> Download the Home Assistant OS generic x86-64 image from the Home Assistant website and upload it under <code class="path">local &gt; ISO Images</code>.</li>
+            <li><b>Start the wizard.</b> Click <i>Create VM</i>, give it ID <code>102</code> and the name <code>ha</code>, and tick <i>Start at boot</i>. Select the image and set the guest type to <i>Linux</i>.</li>
+            <li><b>System.</b> Set the machine type to <code>q35</code> and the BIOS to <code>OVMF (UEFI)</code>. Add an EFI disk on <code>local-lvm</code> and <b>leave <i>Pre-Enroll keys</i> unticked</b>, because Home Assistant OS does not boot with Secure Boot keys enrolled. Set the SCSI controller to <i>VirtIO SCSI single</i>.</li>
+            <li><b>Disk.</b> A 32 GiB disk on <code>local-lvm</code> with <i>Discard</i> and <i>IO thread</i> ticked.</li>
+            <li><b>CPU and memory.</b> One socket with 2 cores of type <code>x86-64-v2-AES</code>, and <code>4096</code> MiB of memory.</li>
+            <li><b>Network.</b> One VirtIO network card on <code>vmbr0</code> with <i>Firewall</i> ticked.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="install" aria-labelledby="install-h">
+        <div class="label">Installation</div>
+        <div class="body">
+          <h2 id="install-h">Installing Home Assistant OS.</h2>
+          <ol class="steps">
+            <li><b>Boot the installer.</b> Start the VM and open its console. It boots from the image and offers to install Home Assistant OS to the disk. Follow the prompts and choose the 32 GiB virtual disk.</li>
+            <li><b>Detach the image.</b> When the install finishes, open <code class="path">Hardware &gt; CD/DVD Drive</code>, remove the media, and restart the VM so that it boots from its disk.</li>
+            <li><b>Give it a fixed address.</b> Create a static mapping on the firewall for the VM (OPNsense Guide 1) so that its address never changes.</li>
+            <li><b>Onboard.</b> After a few minutes, open the VM’s address on port <code>8123</code> in a browser, create the owner account, and set your home’s name and location.</li>
+          </ol>
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li>The Proxmox firewall is enabled on this VM’s network card but has no rules yet, and the default input policy is to accept, so it is ready for rules without restricting anything today.</li>
+            <li>Home Assistant OS manages its own updates from inside Home Assistant, so the VM needs no package upgrades from the host.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="proxy" aria-labelledby="proxy-h">
+        <div class="label">Behind the reverse proxy</div>
+        <div class="body">
+          <h2 id="proxy-h">Serving Home Assistant through Caddy.</h2>
+          <p>To reach Home Assistant through a trusted HTTPS hostname, add a Caddy domain and handler that point at the VM’s reserved address and port <code>8123</code> (OPNsense Guide 4). Home Assistant then rejects the proxied requests with a <i>400 Bad Request</i> until it is told to trust the proxy.</p>
+          <ol class="steps">
+            <li>Install an editor add-on such as <i>File editor</i>, or use the Studio Code Server add-on, and open <code>configuration.yaml</code>.</li>
+            <li>Add an <code>http</code> section that trusts the firewall’s LAN address (an example address is shown):
+<pre><code>http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.10.1</code></pre></li>
+            <li>Check the configuration under <code class="path">Developer tools &gt; YAML</code> and restart Home Assistant.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="usb" aria-labelledby="usb-h">
+        <div class="label">USB passthrough</div>
+        <div class="body">
+          <h2 id="usb-h">Giving Home Assistant a physical USB device.</h2>
+          <p>One USB device on the mini PC is passed through to this VM so that Home Assistant can talk to the hardware directly.</p>
+          <ol class="steps">
+            <li>Open the VM’s <code class="path">Hardware &gt; Add &gt; USB Device</code>.</li>
+            <li>Choose <i>Use USB Port</i> and pick the socket the device is plugged into. This setup uses the port form, so the device survives being unplugged and plugged back in, provided it returns to the same socket.</li>
+            <li>Restart the VM, then confirm in Home Assistant under <code class="path">Settings &gt; System &gt; Hardware</code> that the device appears.</li>
+          </ol>
+          <!-- TODO(homelab): say what the device is and which integration uses it (for example a Zigbee or Z-Wave radio), without publishing the device's identifiers. -->
+        </div>
+      </section>
+
+      <section class="row" id="load" aria-labelledby="load-h">
+        <div class="label">Typical load</div>
+        <div class="body wide">
+          <h2 id="load-h">How hard it works.</h2>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Measure</th><th class="num">Average</th><th class="num">Highest reading</th></tr></thead><tbody><tr><th scope="row">Processor</th><td class="num">2.0% of 2 vCPUs</td><td class="num">2.7%</td></tr><tr><th scope="row">Memory</th><td class="num">3.23 GiB of 4 GiB (81%)</td><td class="num">3.74 GiB</td></tr><tr><th scope="row">Network</th><td class="num">about 12 KiB/s in and 3 KiB/s out</td><td class="num"></td></tr></tbody></table></div>
+          <p class="mono">Proxmox reports these figures from the host’s point of view because the QEMU guest agent is not installed, so memory includes the guest’s cache and should be read as an upper bound. Each reading is an average over roughly three hours, so short spikes do not show. They were taken over the eight days to 19 September 2026.</p>
+          <ul class="plain">
+            <li><b>Processor.</b> Very light. The two virtual CPUs are ample for what it does.</li>
+            <li><b>Memory.</b> Most of the 4 GiB is in use, though some of that is cache. It has room for now, but adding integrations and add-ons will raise it.</li>
+            <li><b>Guest agent.</b> Installing the QEMU guest agent in the guest and turning on <i>QEMU Guest Agent</i> under the VM’s <code class="path">Options</code> gives Proxmox accurate memory figures, clean shutdowns, and consistent snapshots. Home Assistant OS includes the agent, so turning on the Proxmox option is typically all that is needed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="others">
+        <div class="label">Related pages</div>
+        <div class="body">
+          <h2 id="others">The rest of the lab.</h2>
+          <ol class="log">
+            <li><span class="k"><a href="/homelab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

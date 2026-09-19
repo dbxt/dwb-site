@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Manager Demo | AI Work | David Wayne Baxter</title>
+  <meta name="description" content="An interactive, simulated demo of agentic bug management: agents scan a dozen fictional repositories, rank what they find, log tickets, and a team burns the list down in one sprint." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/ai/bug-manager/demo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bug Manager Demo | AI Work | David Wayne Baxter" />
+  <meta property="og:description" content="An interactive, simulated demo of agentic bug management: agents scan a dozen fictional repositories, rank what they find, log tickets, and a team burns the list down in one sprint." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/ai/bug-manager/demo/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bug Manager Demo | AI Work | David Wayne Baxter" />
+  <meta name="twitter:description" content="An interactive, simulated demo of agentic bug management: agents scan a dozen fictional repositories, rank what they find, log tickets, and a team burns the list down in one sprint." />
+  <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=IBM+Plex+Mono:wght@400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="stylesheet" href="/assets/bug-demo.css" />
+  <script src="/assets/theme.js"></script>
+  <script src="/assets/bug-demo.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/experience/">Experience</a>
+        <a href="/ai/" aria-current="true">AI Work</a>
+        <a href="/homelab/">Homelab</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn&nbsp;↗</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/ai/">AI Work</a></li><li><a href="/ai/bug-manager/">Bug Manager</a></li><li aria-current="page">Demo</li></ol></nav>
+        <h1>Bug manager: interactive demo.</h1>
+        <p class="lede">Run a simulated scan of twelve fictional repositories, watch the agent open pull requests for the fixes, then explore the ranked findings and burn the list down in a sprint.</p>
+        <div class="note">
+          <p><b>Simulated data.</b> Every repository, finding, and ticket here is generated in your browser. No code is scanned, nothing is sent anywhere, and no language model is called. The real system ran Claude agents over real repositories, and its findings are confidential, so this demo replays the workflow with made-up ones.</p>
+        </div>
+      </div>
+
+      <ol class="flow six" aria-label="Pipeline stages">
+        <li id="stage-1"><b>Scan</b><span>Agents read every repository</span></li>
+        <li id="stage-2"><b>Classify</b><span>Each finding gets a category</span></li>
+        <li id="stage-3"><b>Rank</b><span>Highest risk first</span></li>
+        <li id="stage-4"><b>Log to Jira</b><span>One ticket per finding</span></li>
+        <li id="stage-5"><b>Fix and open a PR</b><span>The agent proposes a fix</span></li>
+        <li id="stage-6"><b>Review and burn down</b><span>Engineers review the PRs</span></li>
+      </ol>
+
+      <section class="row first" aria-labelledby="scan-h">
+        <div class="label">1 · Scan</div>
+        <div class="body wide">
+          <h2 id="scan-h">Scan the repositories.</h2>
+          <div class="controls">
+            <button type="button" class="button" id="scan">Run the scan</button>
+            <button type="button" class="ghost" id="reset">Reset</button>
+          </div>
+          <ul class="repos" id="repos" aria-label="Repositories"></ul>
+          <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+          <ul class="scanlog" id="log" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="find-h">
+        <div class="label">2 · Findings</div>
+        <div class="body wide">
+          <h2 id="find-h">A ranked list, not a pile.</h2>
+          <p id="findings-empty" class="empty">Run the scan to generate the findings.</p>
+          <div id="findings-area" hidden>
+            <div class="kpis" id="kpis"></div>
+            <div class="sevbar" id="sevbar" role="img" aria-label="Findings by severity"></div>
+            <ul class="legend" id="legend"></ul>
+            <div class="filters">
+              <div class="chips" id="sev-chips" role="group" aria-label="Filter by severity"></div>
+              <label>Category <select id="f-cat"><option value="">All</option></select></label>
+              <label>Repository <select id="f-repo"><option value="">All</option></select></label>
+              <label>Status <select id="f-status"><option value="">All</option><option value="pr">PR open</option><option value="human">Needs engineer</option><option value="fixed">Fixed</option></select></label>
+              <label>Search <input type="search" id="f-q" placeholder="Title or ticket" /></label>
+            </div>
+            <p class="count" id="count" aria-live="polite"></p>
+            <div id="table-wrap"></div>
+            <p><button type="button" class="ghost" id="more" hidden>Show more</button></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="burn-h">
+        <div class="label">3 · Burn down</div>
+        <div class="body wide">
+          <h2 id="burn-h">Spend one sprint reviewing from the top of the list.</h2>
+          <p id="burn-empty" class="empty">Run the scan first, then come back to burn the list down.</p>
+          <div id="burn-area" hidden>
+            <div class="sprint">
+              <label for="cap">Findings the team can close this sprint: <b id="cap-val">45</b>
+                <input type="range" id="cap" min="10" max="60" value="45" />
+              </label>
+              <div class="controls">
+                <button type="button" class="button" id="run-sprint">Run the sprint</button>
+                <button type="button" class="ghost" id="reset-sprint">Reset sprint</button>
+              </div>
+            </div>
+            <svg class="chart" id="chart" viewBox="0 0 640 250" role="img" aria-label="Line chart of total risk remaining over a ten-day sprint, fixing findings in ranked order compared with fixing them in no particular order"></svg>
+            <p class="mono" style="margin:0 0 0.6rem"><span style="color:var(--accent)">━</span> Fixed in ranked order &nbsp; <span>╍</span> Fixed in no particular order</p>
+            <p class="result-line" id="sprint-result" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="about-h">
+        <div class="label">About the demo</div>
+        <div class="body">
+          <h2 id="about-h" class="tight">What is real, and what is illustrative.</h2>
+          <p>The workflow is real: scan every repository, classify what is found, rank it, log a ticket for each finding, have the agent attempt a fix and open a pull request, and give a team a time-boxed sprint to review and burn the list down. In the real list, each ticket linked straight to its pull request so an engineer could review it in a click. Everything on this page is simulated, including the code, the findings, the pull requests, and the ticket text.</p>
+          <p>In the demo, the agent does not open a pull request for every finding: when its confidence is low, or the fix needs a design decision, the finding is flagged for an engineer instead. That rule is illustrative.</p>
+          <p>The ranking here is illustrative. Each finding’s risk score is its severity weight, multiplied by how exposed clients are to that repository, multiplied by the agent’s confidence. Open a finding to see its score worked out.</p>
+          <p>The mix of findings mirrors what the real scans surfaced most: data-consistency problems and code paths that can fail on a missing value, with fewer security findings and code smells.</p>
+          <div class="actions">
+            <a class="textlink" href="/ai/bug-manager/">Read the case study&nbsp;→</a>
+            <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docker Host | David Wayne Baxter</title>
+  <meta name="description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/docker-host/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Docker Host | David Wayne Baxter" />
+  <meta property="og:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/docker-host/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Docker Host | David Wayne Baxter" />
+  <meta name="twitter:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=IBM+Plex+Mono:wght@400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/experience/">Experience</a>
+        <a href="/ai/">AI Work</a>
+        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn&nbsp;↗</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li><a href="/homelab/proxmox/">Proxmox</a></li><li aria-current="page">Docker Host</li></ol></nav>
+        <h1>Docker Host</h1>
+        <p class="lede">The Docker host is a virtual machine on Proxmox that runs my containerized services.</p>
+        <div class="note">
+          <p><b>About this page.</b> The virtual machine settings were read from the running system. Addresses, MAC addresses, and USB device identifiers are left out on purpose.</p>
+        </div>
+        <nav class="jump" aria-label="On this page">
+          <ul>
+            <li><a href="#what-runs">What runs here</a></li>
+            <li><a href="#vm-setup">VM setup</a></li>
+            <li><a href="#docker">Installing Docker</a></li>
+            <li><a href="#portainer">Portainer</a></li>
+            <li><a href="#example">First container</a></li>
+            <li><a href="#usb">USB passthrough</a></li>
+            <li><a href="#load">Typical load</a></li>
+          </ul>
+        </nav>
+      </div>
+
+<div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Type</dt><dd>Virtual machine on Proxmox VE</dd></div>
+          <div><dt>Software</dt><dd>Docker 29.7 on Manjaro Linux, managed with Portainer CE 2.45</dd></div>
+          <div><dt>Containers</dt><dd>19 running, in three Compose stacks plus Portainer</dd></div>
+          <div><dt>VM ID</dt><dd>101</dd></div>
+          <div><dt>Virtual CPUs</dt><dd>4, on one socket</dd></div>
+          <div><dt>Memory</dt><dd>8 GiB</dd></div>
+          <div><dt>Disk</dt><dd>64 GiB on <code>local-lvm</code>, write-back cache</dd></div>
+          <div><dt>Network</dt><dd>One VirtIO interface on <code>vmbr0</code></dd></div>
+          <div><dt>USB</dt><dd>One host USB device passed through</dd></div>
+          <div><dt>Start at boot</dt><dd>Yes</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" id="what-runs" aria-labelledby="what-h">
+        <div class="label">What runs here</div>
+        <div class="body wide">
+          <h2 id="what-h">Nineteen containers, grouped by purpose.</h2>
+          <p>Everything on this host is deployed and managed through Portainer. Services are grouped into numbered Docker Compose stacks by function, so related containers start, update, and stop together, and the numbering leaves room for new groups. Docker uses the overlay2 storage driver, and 17 volumes hold the persistent data.</p>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Stack</th><th class="">What it contains</th><th class="num">Running</th></tr></thead><tbody><tr><th scope="row"><code>2000-infrastructure</code></th><td class="">A dashboard (Homepage), uptime monitoring (Uptime Kuma), and internet speed tracking (Speedtest Tracker)</td><td class="num">3</td></tr><tr><th scope="row"><code>3000-organizer</code></th><td class="">Bookmarks with full-text search (Karakeep, Meilisearch, and a headless browser for page capture), tasks (Vikunja), calendar and contacts (Radicale), a PostgreSQL database, and a few other personal services</td><td class="num">8</td></tr><tr><th scope="row"><code>4000-entertainment</code></th><td class="">Defined for media services, with nothing running at the moment</td><td class="num">0</td></tr><tr><th scope="row">Helper containers</th><td class="">Small containers that feed live widgets to the dashboard: host metrics (Glances), image update checks (What’s Up Docker), and status feeds from other systems in the lab. They run outside a stack.</td><td class="num">7</td></tr><tr><th scope="row"><code>opt</code></th><td class="">Portainer itself</td><td class="num">1</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td class=""></td><td class="num">19</td></tr></tfoot></table></div>
+          <!-- TODO(homelab): add anything you want to say about how the stack files are backed up, where the volumes live, or which of these services are reachable from the internet, described without hostnames or addresses. -->
+        </div>
+      </section>
+
+      <section class="row" id="vm-setup" aria-labelledby="vmsetup-h">
+        <div class="label">VM setup</div>
+        <div class="body">
+          <h2 id="vmsetup-h">Creating the virtual machine in Proxmox.</h2>
+          <ol class="steps">
+            <li><b>Upload the installer.</b> Download the Manjaro XFCE minimal ISO and upload it under <code class="path">local &gt; ISO Images</code>.</li>
+            <li><b>Start the wizard.</b> Click <i>Create VM</i>, give it ID <code>101</code> and the name <code>docker</code>, and tick <i>Start at boot</i>. Select the ISO and set the guest type to <i>Linux</i>.</li>
+            <li><b>System and disk.</b> Set the SCSI controller to <i>VirtIO SCSI single</i>, then create a 64 GiB disk on <code>local-lvm</code> with <i>IO thread</i> ticked and the <i>Write back</i> cache mode.</li>
+            <li><b>CPU and memory.</b> One socket with 4 cores of type <code>x86-64-v2-AES</code>, and <code>8192</code> MiB of memory.</li>
+            <li><b>Network.</b> One VirtIO network card on <code>vmbr0</code>, the LAN bridge.</li>
+            <li><b>Install the system.</b> Start the VM, boot the live environment, and run the installer, letting it use the whole 64 GiB disk. When it finishes, detach the ISO under <code class="path">Hardware &gt; CD/DVD Drive</code> and reboot.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="docker" aria-labelledby="docker-h">
+        <div class="label">Installing Docker</div>
+        <div class="body">
+          <h2 id="docker-h">From a fresh install to a working engine.</h2>
+          <ol class="steps">
+            <li><b>Update the system</b> and install Docker with its Compose plugin:
+<pre><code>$ sudo pacman -Syu
+$ sudo pacman -S docker docker-compose</code></pre></li>
+            <li><b>Start it now and at every boot:</b>
+<pre><code>$ sudo systemctl enable --now docker</code></pre></li>
+            <li><b>Let your user run Docker</b> without <code>sudo</code>, then sign out and back in so the change takes effect:
+<pre><code>$ sudo usermod -aG docker $USER</code></pre></li>
+            <li><b>Check that it works:</b>
+<pre><code>$ docker run --rm hello-world</code></pre></li>
+            <li><b>Reserve the VM’s address.</b> Give the Docker host a static mapping on the firewall (OPNsense Guide 1) so that the reverse proxy always finds it.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="portainer" aria-labelledby="port-h">
+        <div class="label">Portainer</div>
+        <div class="body">
+          <h2 id="port-h">Managing containers with Portainer.</h2>
+          <p>Portainer gives the Docker host a web interface for containers, volumes, networks, and Compose stacks. It runs as a container itself, from its own Compose file in <code>/opt</code>, and it reaches Docker through the engine’s socket.</p>
+          <ol class="steps">
+            <li><b>Deploy Portainer.</b> Save this as <code>compose.yaml</code> in a folder such as <code>/opt/portainer</code> and start it with <code>docker compose up -d</code>:
+<pre><code>services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:</code></pre></li>
+            <li><b>Create the administrator.</b> Browse to <code>https://&lt;host-address&gt;:9443</code> within a few minutes of the first start and set the admin password. Portainer locks the setup page if it is left too long.</li>
+            <li><b>Add a stack.</b> Open <code class="path">Stacks &gt; Add stack</code>, name it (for example <code>2000-infrastructure</code>), paste a Compose file into the web editor, and click <i>Deploy the stack</i>.</li>
+            <li><b>Update a stack.</b> Open the stack, edit the file if needed, and update it with the option to re-pull images, which recreates the containers on the newest image.</li>
+            <li><b>Create an access token.</b> Under <code class="path">My account &gt; Access tokens</code>, add a token for scripts or read-only inspection. It is sent in an <code>X-API-Key</code> header, and it carries the same rights as your account.</li>
+          </ol>
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li><b>Treat Portainer like root.</b> Access to the Docker socket is effectively administrator access to the whole host. Keep Portainer behind the reverse proxy with an access list, or reach it over the VPN, and use a strong password.</li>
+            <li><b>Staying current.</b> Most images follow their <code>latest</code> tag, and What’s Up Docker watches for newer versions, so updates are a deliberate redeploy from Portainer rather than something that happens by surprise.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="example" aria-labelledby="example-h">
+        <div class="label">First container</div>
+        <div class="body">
+          <h2 id="example-h">A small service to prove the path end to end.</h2>
+          <p>A tiny web service that reports which container answered is a good first test. Save this as <code>compose.yaml</code> in a new folder:</p>
+<pre><code>services:
+  whoami:
+    image: traefik/whoami
+    ports:
+      - "8080:80"
+    restart: unless-stopped</code></pre>
+          <p>Start it, then request it from another device on the network (using your Docker host’s reserved address in place of the example one):</p>
+<pre><code>$ docker compose up -d
+$ curl http://192.168.10.20:8080</code></pre>
+          <p>The same address and port are what you enter as the upstream in the Caddy handler (OPNsense Guide 4), which puts the service behind a trusted HTTPS hostname. <code>restart: unless-stopped</code> brings the container back after a reboot.</p>
+          <!-- TODO(homelab): describe how you organise your real stacks (folders, Compose files, environment files, backups of volumes) without listing internal service names or addresses. -->
+        </div>
+      </section>
+
+      <section class="row" id="usb" aria-labelledby="usb-h">
+        <div class="label">USB passthrough</div>
+        <div class="body">
+          <h2 id="usb-h">Giving the VM a physical USB device.</h2>
+          <p>One USB device on the mini PC is passed through to this VM, so software in a container can talk to the hardware directly.</p>
+          <ol class="steps">
+            <li>Open the VM’s <code class="path">Hardware &gt; Add &gt; USB Device</code>.</li>
+            <li>Choose <i>Use USB Port</i> and pick the port the device is plugged into. This setup uses the port form, so the device keeps working after it is unplugged and plugged back in, as long as it stays in the same socket. <i>Use USB Vendor/Device ID</i> follows the device to any socket instead.</li>
+            <li>Restart the VM, then confirm the guest sees it with <code>lsusb</code>.</li>
+            <li>To give a container access, pass the device node through in Compose with a <code>devices:</code> entry.</li>
+          </ol>
+          <!-- TODO(homelab): say what the device is and which container uses it (for example a radio or storage adapter), without publishing the device's identifiers. -->
+        </div>
+      </section>
+
+      <section class="row" id="load" aria-labelledby="load-h">
+        <div class="label">Typical load</div>
+        <div class="body wide">
+          <h2 id="load-h">Far less memory in use than it looks.</h2>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Measure</th><th class="">Reading</th><th class="">Note</th></tr></thead><tbody><tr><th scope="row">Processor</th><td class="">3.3% of 4 vCPUs on average</td><td class="">Highest reading 7.0%</td></tr><tr><th scope="row">Memory, as Proxmox sees it</th><td class="">7.23 GiB of 8 GiB (90%)</td><td class="">Highest reading 7.48 GiB</td></tr><tr><th scope="row">Memory, used by containers</th><td class="">1.62 GiB (about 20%)</td><td class="">Measured once, on 19 September 2026</td></tr><tr><th scope="row">Network</th><td class="">about 35 KiB/s in and 3 KiB/s out</td><td class="">Average</td></tr></tbody></table></div>
+          <p class="mono">Proxmox readings are averages over the eight days to 19 September 2026, taken roughly every three hours, so short spikes do not show. The container figure is the sum of each running container’s working set, read from Portainer at one moment.</p>
+          <p>The two memory figures differ by more than 5 GiB. The guest has no QEMU guest agent, so Proxmox counts everything the guest has touched, including Linux’s file cache, as used. The cache is reclaimed whenever it is needed, so it is not real pressure. Where the container memory goes:</p>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Group</th><th class="num">Containers</th><th class="num">Working set</th></tr></thead><tbody><tr><th scope="row"><code>3000-organizer</code></th><td class="num">8</td><td class="num">0.76 GiB</td></tr><tr><th scope="row"><code>2000-infrastructure</code></th><td class="num">3</td><td class="num">0.48 GiB</td></tr><tr><th scope="row">Helper containers</th><td class="num">7</td><td class="num">0.29 GiB</td></tr><tr><th scope="row">Portainer</th><td class="num">1</td><td class="num">0.09 GiB</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td class="num">19</td><td class="num">1.62 GiB</td></tr></tfoot></table></div>
+          <ul class="plain">
+            <li><b>Room to shrink.</b> With the containers using about 1.6 GiB, the 8 GiB allocation is generous. Reducing it, to around 4 GiB as a first step, would free memory for the Proxmox host and leave room for another guest. Watch it for a week afterward, since some containers spike when they index or update.</li>
+            <li><b>Processor.</b> Load is very light, so four virtual CPUs is more than the workload needs.</li>
+            <li><b>Guest agent.</b> Installing the QEMU guest agent (the <code>qemu-guest-agent</code> package on Manjaro) and turning on <i>QEMU Guest Agent</i> under the VM’s <code class="path">Options</code> gives Proxmox accurate memory figures, clean shutdowns, and consistent snapshots.</li>
+            <li><b>Tidy up.</b> The installer ISO is still attached and listed in the boot order, and two stopped helper containers left over from earlier changes can be removed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="others">
+        <div class="label">Related pages</div>
+        <div class="body">
+          <h2 id="others">The rest of the lab.</h2>
+          <ol class="log">
+            <li><span class="k"><a href="/homelab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>

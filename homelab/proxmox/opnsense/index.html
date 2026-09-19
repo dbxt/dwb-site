@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OPNsense | David Wayne Baxter</title>
+  <meta name="description" content="OPNsense is an open-source firewall and routing platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/opnsense/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OPNsense | David Wayne Baxter" />
+  <meta property="og:description" content="OPNsense is an open-source firewall and routing platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/opnsense/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OPNsense | David Wayne Baxter" />
+  <meta name="twitter:description" content="OPNsense is an open-source firewall and routing platform. In my homelab it runs as a virtual machine on Proxmox. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=IBM+Plex+Mono:wght@400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/experience/">Experience</a>
+        <a href="/ai/">AI Work</a>
+        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn&nbsp;↗</a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li><a href="/homelab/proxmox/">Proxmox</a></li><li aria-current="page">OPNsense</li></ol></nav>
+        <h1>OPNsense</h1>
+        <p class="lede">OPNsense is an open-source firewall and routing platform. In my homelab it runs as a virtual machine on Proxmox.</p>
+        <div class="note">
+          <p><b>About the examples.</b> The addresses, hostnames, and keys in these guides are examples. Replace them with values for your own network. Menu paths match OPNsense 26.7.</p>
+        </div>
+        <nav class="jump" aria-label="On this page">
+          <ul>
+            <li><a href="#vm-setup">VM setup</a></li>
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#interfaces">Interfaces</a></li>
+            <li><a href="#load">Typical load</a></li>
+            <li><a href="#static-ip">1. Static IP mapping</a></li>
+            <li><a href="#wireguard">2. WireGuard VPN</a></li>
+            <li><a href="#unbound">3. Unbound ad blocking</a></li>
+            <li><a href="#caddy">4. Caddy reverse proxy</a></li>
+          </ul>
+        </nav>
+      </div>
+
+<div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Type</dt><dd>Virtual machine on Proxmox VE</dd></div>
+          <div><dt>Software</dt><dd>OPNsense 26.7</dd></div>
+          <div><dt>VM ID</dt><dd>100</dd></div>
+          <div><dt>Virtual CPUs</dt><dd>4, on one socket</dd></div>
+          <div><dt>Memory</dt><dd>2 GiB, fixed (ballooning off)</dd></div>
+          <div><dt>Disk</dt><dd>32 GiB on <code>local-lvm</code></dd></div>
+          <div><dt>Network</dt><dd>Two VirtIO interfaces: LAN on <code>vmbr0</code>, WAN on <code>vmbr1</code></dd></div>
+          <div><dt>Start at boot</dt><dd>Yes</dd></div>
+          <div><dt>Guides</dt><dd>Static IP mapping, WireGuard VPN, Unbound ad blocking, Caddy reverse proxy</dd></div>
+        </dl>
+      </div>
+      <!-- TODO(homelab): add your OPNsense first-boot choices you want to record (file system, wizard answers), described without addresses. -->
+
+      <section class="row first" id="vm-setup" aria-labelledby="vmsetup-h">
+        <div class="label">VM setup</div>
+        <div class="body">
+          <h2 id="vmsetup-h">Creating the virtual machine in Proxmox.</h2>
+          <ol class="steps">
+            <li><b>Get the installer.</b> Download the OPNsense amd64 DVD image from opnsense.org, unpack it, and upload the ISO under <code class="path">local &gt; ISO Images</code> in Proxmox.</li>
+            <li><b>Start the wizard.</b> Click <i>Create VM</i>. Give it ID <code>100</code> and the name <code>opnsense</code>, and tick <i>Start at boot</i> so the firewall returns on its own after a power cut.</li>
+            <li><b>Choose the ISO.</b> On the OS tab select the uploaded image and set the guest type to <i>Other</i>.</li>
+            <li><b>System.</b> Keep the default firmware and machine type, and set the SCSI controller to <i>VirtIO SCSI single</i>.</li>
+            <li><b>Disk.</b> Create a 32 GiB disk on <code>local-lvm</code> on the SCSI bus, and tick <i>Discard</i> and <i>IO thread</i>. This VM uses the <i>Write back</i> cache mode, which is faster but can lose the most recent writes if power fails suddenly.</li>
+            <li><b>CPU.</b> One socket with 4 cores and the type <code>x86-64-v2-AES</code>.</li>
+            <li><b>Memory.</b> <code>2048</code> MiB, with <i>Ballooning</i> turned off so the firewall’s memory never shrinks.</li>
+            <li><b>Network.</b> Give the first card the VirtIO model on <code>vmbr0</code> and set multiqueue to <code>8</code>. After the wizard finishes, add a second network device under <code class="path">Hardware &gt; Add &gt; Network Device</code>, again VirtIO with multiqueue <code>8</code>, on <code>vmbr1</code>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="install" aria-labelledby="install-h">
+        <div class="label">Installation</div>
+        <div class="body">
+          <h2 id="install-h">Installing OPNsense onto the disk.</h2>
+          <ol class="steps">
+            <li><b>Boot the installer.</b> Start the VM and open its console. At the login prompt sign in as <code>installer</code> with the password <code>opnsense</code>.</li>
+            <li><b>Run the guided install.</b> Choose a keymap, pick the guided installation, and select the 32 GiB virtual disk as the target.</li>
+            <li><b>Set the root password.</b> Choose a strong one when asked, then let the installer finish and reboot.</li>
+            <li><b>Remove the ISO.</b> In Proxmox open <code class="path">Hardware &gt; CD/DVD Drive</code> and choose <i>Do not use any media</i>, so the VM boots from its disk.</li>
+            <li><b>Assign the interfaces.</b> From the console menu choose <i>Assign interfaces</i>. The first virtual card, <code>vtnet0</code>, becomes <b>LAN</b> and the second, <code>vtnet1</code>, becomes <b>WAN</b>.</li>
+            <li><b>Set the LAN address.</b> Use the console menu’s option for setting an interface IP address, then open the web interface from a device on the LAN and work through the setup wizard.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" id="interfaces" aria-labelledby="ifaces-h">
+        <div class="label">Interfaces</div>
+        <div class="body wide">
+          <h2 id="ifaces-h">How the virtual cards map to the network.</h2>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Interface</th><th class="">Device</th><th class="">Proxmox bridge</th><th class="">Role</th></tr></thead><tbody><tr><th scope="row">LAN</th><td class=""><code>vtnet0</code></td><td class=""><code>vmbr0</code></td><td class="">The home network</td></tr><tr><th scope="row">WAN</th><td class=""><code>vtnet1</code></td><td class=""><code>vmbr1</code></td><td class="">The uplink to the internet</td></tr><tr><th scope="row">WireGuard</th><td class=""><code>wg0</code></td><td class="">none (virtual)</td><td class="">VPN clients, from Guide 2</td></tr></tbody></table></div>
+          <p>Because the network cards are virtual, hardware offloading is turned off. Under <code class="path">Interfaces &gt; Settings</code>, hardware checksum offload, TCP segmentation offload, and large receive offload are all disabled, which avoids dropped or corrupted traffic on VirtIO interfaces. The assignments themselves live under <code class="path">Interfaces &gt; Assignments</code>.</p>
+        </div>
+      </section>
+
+      <section class="row" id="load" aria-labelledby="load-h">
+        <div class="label">Typical load</div>
+        <div class="body wide">
+          <h2 id="load-h">How hard it works.</h2>
+          <div class="scroll"><table class="grid"><thead><tr><th class="">Measure</th><th class="num">Average</th><th class="num">Highest reading</th></tr></thead><tbody><tr><th scope="row">Processor</th><td class="num">3.5% of 4 vCPUs</td><td class="num">5.5%</td></tr><tr><th scope="row">Memory</th><td class="num">1.30 GiB of 2 GiB (65%)</td><td class="num">1.31 GiB</td></tr><tr><th scope="row">Network</th><td class="num">about 0.6 MiB/s in and 0.6 MiB/s out</td><td class="num"></td></tr></tbody></table></div>
+          <p class="mono">Proxmox reports these figures from the host’s point of view because the QEMU guest agent is not installed, so memory includes the guest’s cache and should be read as an upper bound. Each reading is an average over roughly three hours, so short spikes do not show. They were taken over the eight days to 19 September 2026.</p>
+          <ul class="plain">
+            <li><b>Processor.</b> The load is very low, so the four virtual CPUs are more than the firewall needs. Two would probably do, and that would leave more scheduling room on a four-core host shared by three guests.</li>
+            <li><b>Memory.</b> About a third of the 2 GiB is free, which is comfortable for the current set of services.</li>
+            <li><b>Guest agent.</b> Installing the QEMU guest agent in the guest and turning on <i>QEMU Guest Agent</i> under the VM’s <code class="path">Options</code> gives Proxmox accurate memory figures, clean shutdowns, and consistent snapshots. It is not enabled on this VM yet.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="static-ip" aria-labelledby="static-h">
+        <div class="label">Guide 1<br />Static IP mapping</div>
+        <div class="body">
+          <h2 id="static-h">Give a device the same address every time.</h2>
+          <p>A static mapping tells the DHCP server to always hand one device the same IP address, matched by its MAC address. The device keeps using DHCP, so nothing changes on the client, but its address stops moving. That suits servers, printers, and cameras, and it keeps every reserved address in one place. On this install the DHCP server is the ISC DHCPv4 plugin, which the menu labels <i>[legacy]</i>, so the steps use its screens.</p>
+          <ol class="steps">
+            <li><b>Find the device’s MAC address.</b> Open <code class="path">Services &gt; ISC DHCPv4 [legacy] &gt; Leases</code>. Each current lease lists an address, a MAC address, and a hostname, so a device that is already online is easy to spot. You can also read the MAC address from the device’s own network settings.</li>
+            <li><b>Choose an address outside the dynamic pool.</b> Open <code class="path">Services &gt; ISC DHCPv4 [legacy] &gt; [LAN]</code> and note the range near the top of the page. Pick an unused address in the same subnet that falls outside that range. If the pool runs from .100 to .199, for example, keep .20 to .99 for static mappings.</li>
+            <li><b>Add the mapping.</b> Scroll to the static mappings table at the bottom of the same page and click the add (+) button.</li>
+            <li><b>Enter the device details.</b> Fill in the MAC address, the IP address, a hostname, and a description, as in the example below, and save.</li>
+            <li><b>Apply the change.</b> Use the <i>Apply changes</i> button on the page so the DHCP service reloads with the new mapping.</li>
+            <li><b>Renew the client’s lease.</b> Reconnect the device to the network, or renew its lease from the operating system. It then receives the reserved address.</li>
+          </ol>
+
+          <h3 class="sub">Example values</h3>
+          <table class="checks"><tbody><tr><th scope="row">MAC address</th><td><code>02:00:00:aa:bb:cc</code></td></tr><tr><th scope="row">IP address</th><td><code>192.168.10.20</code></td></tr><tr><th scope="row">Hostname</th><td><code>nas</code></td></tr><tr><th scope="row">Description</th><td>Home NAS</td></tr></tbody></table>
+
+          <h3 class="sub">Verify</h3>
+          <p>The device should now appear on the Leases page with the reserved address. From the client and from another device on the LAN:</p>
+<pre><code>$ ip -4 addr show            # on the client: expect 192.168.10.20
+$ ping -c 2 192.168.10.20    # from another LAN device</code></pre>
+
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li>To reach the device by name, enable <i>Register DHCP static mappings</i> in <code class="path">Services &gt; Unbound DNS &gt; General</code>. Unbound then answers for the hostname you entered.</li>
+            <li>Reserve addresses for anything that other services point at, such as the upstream servers behind the Caddy reverse proxy in Guide 4.</li>
+            <li>Mappings belong to one interface. A device that moves to a different network or VLAN needs a mapping there too.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="wireguard" aria-labelledby="wg-h">
+        <div class="label">Guide 2<br />WireGuard VPN</div>
+        <div class="body">
+          <h2 id="wg-h">Reach the home network from anywhere.</h2>
+          <p>WireGuard is a fast, modern VPN that is built into OPNsense. The setup has one instance, which acts as the server, and one peer for each device that connects. The example below lets a phone reach the home network from outside.</p>
+          <ol class="steps">
+            <li><b>Create the instance.</b> Open <code class="path">VPN &gt; WireGuard &gt; Instances</code> and add one. Give it a name, generate a key pair with the gear icon, set the listen port to <code>51820</code>, and give it a tunnel address in its own subnet, such as <code>10.10.10.1/24</code>. Save it.</li>
+            <li><b>Make sure WireGuard is enabled.</b> Turn on WireGuard itself on the same page and click <i>Apply</i>. The instance does not start until you do.</li>
+            <li><b>Create a peer with the peer generator.</b> Open <code class="path">VPN &gt; WireGuard &gt; Peer generator</code>. Choose the instance, enter the public endpoint that clients will connect to, name the peer, give it a tunnel address, choose which networks should travel through the tunnel, and set a DNS server. The page builds a complete client configuration and a QR code. Store the peer on the server when you are done.</li>
+            <li><b>Open the port on the WAN.</b> In <code class="path">Firewall &gt; Rules &gt; WAN</code>, add a pass rule for protocol UDP, with the WAN address as the destination and destination port <code>51820</code>. If OPNsense sits behind another router, forward UDP 51820 to it there as well.</li>
+            <li><b>Allow traffic from the tunnel.</b> In <code class="path">Firewall &gt; Rules &gt; WireGuard (Group)</code>, add a pass rule whose source is the VPN subnet (<code>10.10.10.0/24</code>) and whose destination is the LAN network. Rules on this group cover every WireGuard instance.</li>
+            <li><b>Import the configuration on the device.</b> In the WireGuard app on the phone, scan the QR code or import the configuration, then turn the tunnel on.</li>
+          </ol>
+
+          <h3 class="sub">Example values</h3>
+          <table class="checks"><tbody><tr><th scope="row">Instance name</th><td><code>wg-home</code></td></tr><tr><th scope="row">Listen port</th><td><code>51820</code></td></tr><tr><th scope="row">Instance tunnel address</th><td><code>10.10.10.1/24</code></td></tr><tr><th scope="row">Peer name</th><td><code>phone</code></td></tr><tr><th scope="row">Peer tunnel address</th><td><code>10.10.10.2/32</code></td></tr><tr><th scope="row">Endpoint</th><td><code>vpn.example.com:51820</code></td></tr></tbody></table>
+          <p>The generated client configuration looks like this, with placeholders in place of real keys:</p>
+<pre><code>[Interface]
+PrivateKey = &lt;client-private-key&gt;
+Address = 10.10.10.2/32
+DNS = 192.168.10.1
+
+[Peer]
+PublicKey = &lt;server-public-key&gt;
+Endpoint = vpn.example.com:51820
+AllowedIPs = 192.168.10.0/24, 10.10.10.0/24
+PersistentKeepalive = 25</code></pre>
+
+          <h3 class="sub">Verify</h3>
+          <p>Open <code class="path">VPN &gt; WireGuard &gt; Status</code> and check that the peer shows a recent latest handshake. Then turn Wi-Fi off on the phone, connect over cellular, and open an internal address. On the firewall’s shell, <code>wg show</code> lists the same peers and handshakes.</p>
+
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li>The QR code contains the client’s private key. Treat it like a password: do not publish it, and do not send it over an unencrypted channel.</li>
+            <li><b>Split or full tunnel.</b> Listing only the LAN and VPN subnets in <code>AllowedIPs</code> sends home traffic through the tunnel and nothing else. Using <code>0.0.0.0/0</code> sends everything through home, and then the VPN subnet also needs an outbound NAT rule in <code class="path">Firewall &gt; NAT &gt; Source NAT</code> if automatic rules do not already cover it.</li>
+            <li>Setting the client’s DNS to the firewall’s LAN address gives VPN devices the ad blocking from Guide 3. Unbound must also accept queries from the VPN subnet, which you allow in <code class="path">Services &gt; Unbound DNS &gt; Access Lists</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="unbound" aria-labelledby="unbound-h">
+        <div class="label">Guide 3<br />Unbound DNS ad blocking</div>
+        <div class="body">
+          <h2 id="unbound-h">Block ads and trackers for the whole network.</h2>
+          <p>Unbound is the DNS resolver built into OPNsense. Its blocklist feature refuses to resolve domains used for ads, trackers, and malware, so every device that uses the firewall for DNS is filtered without installing anything on it. In this lab I use the HaGeZi Multi NORMAL list, a balanced choice.</p>
+          <ol class="steps">
+            <li><b>Check that Unbound is your resolver.</b> Open <code class="path">Services &gt; Unbound DNS &gt; General</code>. Confirm that it is enabled and listening on the interfaces your clients use, and that DHCP hands out the firewall’s address as the DNS server, which is the default.</li>
+            <li><b>Add a blocklist.</b> Open <code class="path">Services &gt; Unbound DNS &gt; Blocklists</code> and add an entry.</li>
+            <li><b>Pick a list.</b> Under <i>Type</i>, choose a collection. The menu offers the Steven Black, AdGuard, EasyList, and EasyPrivacy lists, and the HaGeZi tiers <i>LIGHT</i>, <i>NORMAL</i>, <i>PRO</i>, <i>PRO++</i>, and <i>ULTIMATE</i>. Start with <i>NORMAL - Relaxed/Balanced Blocking</i>: the stricter tiers block more but also break more sites. Give the entry a description.</li>
+            <li><b>Allow what breaks.</b> If a list blocks a domain you need, add it to the entry’s allowlist rather than switching the whole list off.</li>
+            <li><b>Save and apply.</b> Unbound restarts and downloads the list.</li>
+            <li><b>Close the common bypasses.</b> Some devices ignore your DNS server and use their own. In <code class="path">Firewall &gt; NAT &gt; Destination NAT</code>, add a rule on the LAN that redirects TCP and UDP port 53 from every destination except the firewall to the firewall itself. Also block outbound port 853 (DNS over TLS). Choosing the <i>DoH/VPN/TOR/Proxy Bypass</i> list as a second entry helps against DNS over HTTPS.</li>
+          </ol>
+
+          <h3 class="sub">Example values</h3>
+          <table class="checks"><tbody><tr><th scope="row">Enabled</th><td>Checked</td></tr><tr><th scope="row">Type</th><td><i>NORMAL - Relaxed/Balanced Blocking</i></td></tr><tr><th scope="row">Description</th><td><code>HaGeZi Multi NORMAL</code></td></tr><tr><th scope="row">Allowlist</th><td><code>example-cdn.net</code> (only if it breaks something)</td></tr><tr><th scope="row">Return NXDOMAIN</th><td>Unchecked, so blocked names answer <code>0.0.0.0</code></td></tr></tbody></table>
+
+          <h3 class="sub">Verify</h3>
+          <p>Ask the firewall for a well-known advertising domain and for an ordinary one. A blocked name answers <code>0.0.0.0</code>, and an allowed name resolves normally.</p>
+<pre><code>$ dig +short doubleclick.net @192.168.10.1   # blocked: 0.0.0.0
+$ dig +short example.com @192.168.10.1        # allowed: a normal address</code></pre>
+          <p><code class="path">Services &gt; Unbound DNS &gt; Statistics</code> shows query counts, and it is the quickest way to see whether clients are using the resolver at all.</p>
+
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li>If a site or app stops working after a change, test the domain with <code>dig</code> first. If it answers <code>0.0.0.0</code>, add it to the allowlist.</li>
+            <li>The blocklist runs inside Unbound, so it also applies to VPN clients that use the firewall for DNS (Guide 2).</li>
+            <li>Blocklists reduce ads and tracking. They are not a security boundary, and a determined app can bypass DNS altogether.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="caddy" aria-labelledby="caddy-h">
+        <div class="label">Guide 4<br />Caddy reverse proxy</div>
+        <div class="body">
+          <h2 id="caddy-h">One front door for web services.</h2>
+          <p>A reverse proxy is a single entry point for web services. Clients connect over HTTPS using a hostname, and the proxy forwards each request to the right service on the internal network. Caddy, installed on OPNsense as the <code>os-caddy</code> plugin, also obtains and renews Let’s Encrypt certificates automatically.</p>
+          <ol class="steps">
+            <li><b>Install the plugin.</b> Open <code class="path">System &gt; Firmware &gt; Plugins</code>, install <code>os-caddy</code>, and reload the web interface.</li>
+            <li><b>Free ports 80 and 443.</b> The OPNsense web interface listens on 443 by default, and Caddy needs that port. Open <code class="path">System &gt; Settings &gt; Administration</code>, set the interface’s TCP port to something else, such as <code>8443</code>, and reconnect on the new port. Do this from a device on the LAN, and confirm you can still sign in before you continue.</li>
+            <li><b>Allow web traffic.</b> In <code class="path">Firewall &gt; Rules &gt; WAN</code>, add pass rules for TCP ports 80 and 443 to this firewall. Port 80 is needed for the certificate challenge unless you use the DNS challenge in step 5.</li>
+            <li><b>Enable Caddy.</b> Open <code class="path">Services &gt; Caddy &gt; General Settings</code>, tick <i>Enable</i>, enter an email address for certificate notices, and leave <i>Auto HTTPS</i> on its default. Save and apply.</li>
+            <li><b>Add a domain.</b> Open <code class="path">Services &gt; Caddy &gt; Reverse Proxy</code> and add an entry on the <i>Domains</i> tab for <code>app.example.com</code>. For names used only inside your network, use the DNS challenge, which needs a DNS provider configured in General Settings, so that no inbound port is required.</li>
+            <li><b>Add a handler.</b> On the <i>Handlers</i> tab, choose the domain, then enter the upstream address and port of the service. Enable TLS only if the upstream itself speaks HTTPS, and skip certificate verification only if it uses a self-signed certificate. Save and apply.</li>
+            <li><b>Point DNS at Caddy.</b> Publicly, create an A record for <code>app.example.com</code> that points to your public IP address. Inside the network, add an override in <code class="path">Services &gt; Unbound DNS &gt; Overrides</code> that maps the same name to the firewall’s LAN address, so that local clients reach Caddy directly (often called split DNS).</li>
+          </ol>
+
+          <h3 class="sub">Example values</h3>
+          <table class="checks"><tbody><tr><th scope="row">Domain</th><td><code>app.example.com</code></td></tr><tr><th scope="row">Upstream address</th><td><code>192.168.10.20</code> (the reserved address from Guide 1)</td></tr><tr><th scope="row">Upstream port</th><td><code>8080</code></td></tr><tr><th scope="row">Upstream TLS</th><td>Off, because the service speaks plain HTTP</td></tr><tr><th scope="row">ACME email</th><td><code>you@example.com</code></td></tr></tbody></table>
+
+          <h3 class="sub">Verify</h3>
+<pre><code>$ curl -I https://app.example.com
+# expect a normal HTTP response and a valid certificate</code></pre>
+          <p>If the request fails, <code class="path">Services &gt; Caddy &gt; Log File</code> shows certificate and proxy errors, and it is usually the fastest way to find the cause.</p>
+
+          <h3 class="sub">Notes</h3>
+          <ul class="plain">
+            <li>Expose only what you need. The Reverse Proxy page also supports access lists to limit which clients may connect and basic authentication for an extra layer. Administration tools are better reached over WireGuard (Guide 2) than through a public hostname.</li>
+            <li>Give every upstream server a static mapping (Guide 1). A handler that points at an address that later changes stops working without any warning.</li>
+            <li>The reverse proxy handles HTTP and HTTPS. Other kinds of traffic need a different approach.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="together" aria-labelledby="together-h">
+        <div class="label">Putting it together</div>
+        <div class="body">
+          <h2 id="together-h">How the four fit.</h2>
+          <ul class="plain">
+            <li>Static mappings give the servers behind Caddy addresses that never change.</li>
+            <li>Unbound overrides give Caddy hostnames a direct route on the LAN, and its blocklist filters every device, including VPN clients.</li>
+            <li>WireGuard is the safe way in for anything you would rather not put behind a public hostname.</li>
+          </ul>
+        </div>
+      </section>
+      <!-- TODO(homelab): add screenshots of the key screens for each guide (crop or blur anything that shows real addresses, hostnames, or keys). -->
+
+      <section class="row" aria-labelledby="others">
+        <div class="label">Related pages</div>
+        <div class="body">
+          <h2 id="others">The rest of the lab.</h2>
+          <ol class="log">
+            <li><span class="k"><a href="/homelab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
+            <li><span class="k"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">LinkedIn</a></span>
+    </div>
+  </footer>
+</body>
+</html>
