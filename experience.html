@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience | David Wayne Baxter | Engineering Leadership</title>
+  <meta name="description" content="Selected experience for David Wayne Baxter, including Senior Engineering Manager leadership at Fanatics Betting & Gaming and prior architecture and software leadership roles." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/experience/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Experience | David Wayne Baxter" />
+  <meta property="og:description" content="Engineering leadership, architecture, and selected software delivery experience." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/experience/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Experience | David Wayne Baxter" />
+  <meta name="twitter:description" content="Engineering leadership, architecture, and selected software delivery experience." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
+  <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
+  <meta name="theme-color" content="#315f8c" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Experience",
+            "item": "https://davidwaynebaxter.com/experience/"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Experience",
+        "url": "https://davidwaynebaxter.com/experience/"
+      }
+    ]
+  }
+  </script>
+  <style>
+
+    :root {
+      --bg: #eef2f6;
+      --bg-soft: #f8fafc;
+      --panel: rgba(255, 255, 255, 0.95);
+      --panel-solid: #ffffff;
+      --text: #111827;
+      --muted: #566273;
+      --muted-2: #707b8c;
+      --line: rgba(15, 23, 42, 0.11);
+      --accent: #315f8c;
+      --accent-soft: rgba(49, 95, 140, 0.10);
+      --navy: #0f172a;
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 10px 28px rgba(15, 23, 42, 0.05);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(49,95,140,0.09), transparent 28%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: rgba(251, 251, 252, 0.84);
+      border-bottom: 1px solid rgba(18, 23, 35, 0.07);
+      box-shadow: 0 8px 24px rgba(24,24,27,0.04);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 72px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,247,251,0.98));
+      border: 1px solid rgba(24,24,27,0.12);
+      box-shadow: 0 10px 22px rgba(24,24,27,0.07);
+      color: var(--navy);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark img {
+      width: 58px;
+      max-height: 24px;
+      object-fit: contain;
+    }
+
+    .nav-links { display: flex; gap: 22px; align-items: center; color: var(--muted); font-size: 13px; font-weight: 650; flex-wrap: wrap; }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links a.active {
+      color: var(--text);
+      position: relative;
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(49,95,140,0.9);
+    }
+
+    section[id] { scroll-margin-top: 108px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(24,24,27,0.12);
+      background: rgba(255,255,255,0.88);
+      font-size: 14px;
+      font-weight: 720;
+      box-shadow: 0 8px 20px rgba(24,24,27,0.05);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(17,24,39,0.08);
+      border-color: rgba(49,95,140,0.22);
+      background: rgba(255,255,255,0.98);
+    }
+    .btn.primary { background: linear-gradient(135deg, #1e3a5f, #0f172a); color: #fff; border-color: #1e3a5f; box-shadow: 0 18px 36px rgba(49,95,140,0.22); }
+    .btn.primary:hover { background: linear-gradient(135deg, #24476f, #0b1220); border-color: #0f172a; }
+
+    .page { padding: 56px 0 48px; }
+
+    .hero {
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88) 58%, rgba(248,250,255,0.93)),
+        url('assets/executive-abstract-bg.png') center right / cover no-repeat;
+      overflow: hidden;
+      margin-bottom: 28px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "DWB";
+      position: absolute;
+      right: 26px;
+      bottom: 10px;
+      font-size: clamp(78px, 12vw, 132px);
+      line-height: 0.8;
+      font-weight: 860;
+      letter-spacing: -0.08em;
+      color: rgba(15,23,42,0.042);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .eyebrow, .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+    }
+
+    .eyebrow::before, .kicker::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: rgba(49,95,140,0.55);
+    }
+
+    h1, h2, h3 { margin: 0; letter-spacing: -0.045em; color: var(--text); }
+    h1 { margin-top: 22px; font-size: clamp(48px, 7vw, 78px); line-height: 0.92; font-weight: 860; max-width: 11ch; }
+    h2 { margin-top: 14px; font-size: clamp(34px, 4vw, 46px); line-height: 0.98; font-weight: 850; }
+    h3 { font-size: 24px; line-height: 1.02; font-weight: 820; }
+
+    .hero p, .summary-card p, .summary-card li, .compact-entry p, .spotlight p, .spotlight li { color: var(--muted); }
+    .hero p { max-width: 60ch; margin-top: 18px; font-size: 16px; line-height: 1.75; }
+
+    .button-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+      gap: 20px;
+      align-items: end;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(24,24,27,0.08);
+    }
+
+    .section-head p { color: var(--muted); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .stack { display: grid; gap: 22px; }
+
+    .spotlight,
+    .summary-card,
+    .compact-entry,
+    .cta-panel {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,249,252,0.96));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .spotlight {
+      padding: 36px;
+      border-top: 4px solid var(--accent);
+    }
+
+    .spotlight-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .role-title {
+      font-size: 33px;
+      font-weight: 860;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+    }
+
+    .role-company { color: #1f2937; font-weight: 720; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .spotlight-intro {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.68;
+      color: #334155;
+      max-width: 58ch;
+    }
+
+    .spotlight ul,
+    .summary-card ul { margin: 18px 0 0; padding-left: 18px; }
+    .spotlight li,
+    .summary-card li { margin: 10px 0; }
+
+    .summary-card { padding: 26px; }
+
+    .summary-card.logo-panel { background: rgba(255,255,255,0.82); }
+    .summary-card.logo-panel .logo-row { margin-top: 18px; }
+    .summary-card h3 { margin-bottom: 12px; }
+
+    .spotlight li::marker,
+    .summary-card li::marker { color: rgba(49,95,140,0.72); }
+
+    .metric { padding-top: 14px; border-top: 1px solid rgba(24,24,27,0.08); }
+    .metric small, .mini-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted-2);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .metric strong { display: block; font-size: 18px; line-height: 1.4; letter-spacing: -0.03em; }
+
+    .compact-entry {
+      padding: 22px 24px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .compact-entry p { margin: 0; }
+
+    .logo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .logo-chip {
+      width: calc(33.333% - 8px);
+      min-width: 96px;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(24,24,27,0.08);
+      background: #fff;
+    }
+
+    .logo-chip.logo-fanatics { background: #0A2345; border-color: rgba(24,24,27,0.10); }
+    .logo-chip.logo-rosetta { background: #F0C500; border-color: rgba(24,24,27,0.10); }
+    .logo-chip.logo-carvana { background: #1E88E5; border-color: rgba(24,24,27,0.10); }
+    .logo-chip img { max-height: 100px; width: auto; object-fit: contain; }
+
+    .cta-panel {
+      margin-top: 34px;
+      padding: 28px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .cta-panel p { margin: 10px 0 0; color: var(--muted); }
+
+    footer {
+      padding: 8px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid rgba(24,24,27,0.08);
+    }
+
+    @media (max-width: 980px) {
+      .layout,
+      .section-head { grid-template-columns: 1fr; }
+      .logo-chip { width: calc(50% - 6px); }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(calc(100% - 24px), var(--max)); }
+      .nav { min-height: 64px; }
+      .brand span:last-child { display: none; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-mark img {
+      width: 58px;
+      max-height: 24px;
+      object-fit: contain;
+    }
+
+    .nav-links { gap: 12px; font-size: 12px; }
+      .nav-links a[href*="linkedin"] { display: none; }
+      .nav-links a.active::after { bottom: -8px; }
+      .page { padding: 30px 0 34px; }
+      .hero, .spotlight, .summary-card, .compact-entry, .cta-panel { padding: 22px; }
+      .hero { margin-bottom: 22px; }
+      h1 { font-size: clamp(35px, 10.8vw, 45px); max-width: 10.5ch; }
+      h2 { font-size: clamp(30px, 10vw, 38px); }
+      .hero p, .spotlight-intro { font-size: 15px; line-height: 1.66; }
+      .section-head { margin-bottom: 18px; padding-bottom: 14px; }
+      .stack { gap: 14px; }
+      .spotlight ul, .summary-card ul { margin-top: 14px; }
+      .button-row { width: 100%; }
+      .btn { width: 100%; }
+      .logo-row { gap: 10px; }
+      .logo-chip { width: 100%; min-height: 132px; background: #fff; }
+      .logo-chip img { max-height: 88px; }
+      .cta-panel { align-items: start; flex-direction: column; }
+      footer { padding-bottom: 28px; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="Go to homepage">
+        <span class="brand-mark logo-mark"><img src="/assets/dwb-monogram-transparent.png?v=20260907" alt="DWB monogram" /></span>
+        <span>David Wayne Baxter</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="./">Experience</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter" target="_blank" rel="noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell">
+      <section class="hero">
+        <div class="eyebrow">Experience</div>
+        <div class="mini-label" style="margin-top:22px; color:#425466;">Engineering leadership at scale</div>
+        <h1>Leadership across platform strategy, delivery, and organizational scale.</h1>
+        <p>
+          The through-line is operating-model design, multi-team accountability, reliability improvements, and the ability to connect senior leadership priorities to engineering execution.
+        </p>
+        <div class="button-row">
+          <a class="btn primary" href="contact.html">Contact</a>
+          <a class="btn" href="index.html">Back to home</a>
+        </div>
+      </section>
+
+      <div class="section-head">
+        <div>
+          <span class="kicker">Current role</span>
+          <h2>The current role carries the strongest signal.</h2>
+        </div>
+        <p>
+          The emphasis is deliberate: current scope first, then a compressed record of the architecture and leadership work that supports it.
+        </p>
+      </div>
+
+      <div class="layout">
+        <div class="stack">
+          <article class="spotlight">
+            <div class="spotlight-head">
+              <div>
+                <div class="role-title">Senior Engineering Manager</div>
+                <div class="role-company">Fanatics Betting &amp; Gaming</div>
+              </div>
+              <span class="tag">2022–Present</span>
+            </div>
+            <p class="spotlight-intro">
+              Leads multiple engineering teams responsible for core content delivery, CMS, and shared platform services supporting critical Sportsbook and Retail experiences across web and mobile applications.
+            </p>
+            <ul>
+              <li><strong>Shared-services transformation:</strong> Reframed a centralized delivery dependency into a scalable partnership model with clearer governance, safer contribution paths, and better release coordination.</li>
+              <li><strong>Operational maturity:</strong> Raised the reliability of highly trafficked sportsbook systems through major observability improvements, 200+ production monitors, SLOs, load testing strategy, and stronger incident response practices.</li>
+              <li><strong>Execution systems:</strong> Built delivery mechanisms that improved release confidence through CI/CD enhancements, deployment governance, automated validation, rollback automation, and release communication tooling.</li>
+              <li><strong>Organizational leadership:</strong> Managed and mentored engineers from SE I through Senior Staff while partnering with executive leadership on engineering investment, scaling, capacity planning, and platform strategy.</li>
+            </ul>
+          </article>
+
+          <div class="section-head" style="margin-top:10px;">
+            <div>
+              <span class="kicker">Selected prior roles</span>
+              <h2 style="max-width:12ch;">Earlier roles, compressed to the essentials.</h2>
+            </div>
+            <p>
+              The supporting roles reinforce the same themes: modernization, delivery discipline, and technical leadership with practical range.
+            </p>
+          </div>
+
+          <article class="compact-entry">
+            <span class="mini-label">Architecture and modernization</span>
+            <h3>Senior Engineering Manager — Rosetta Stone</h3>
+            <p>Helped lead the move away from Flash to a modern React/Redux stack across migration, architecture, packaging, build systems, test planning, and deployment.</p>
+          </article>
+
+          <article class="compact-entry">
+            <span class="mini-label">Director-level leadership</span>
+            <h3>Director of Software Development — Stayhealthy</h3>
+            <p>Led staffing, training, process development, architecture direction, technical debt reduction, and build/release discipline across multiple products and teams.</p>
+          </article>
+
+          <article class="compact-entry">
+            <span class="mini-label">Consulting and advisory work</span>
+            <h3>DWB Consulting · UCSD · Victiv · GlobeChat</h3>
+            <p>Delivered consulting, architecture, and full-stack engineering work across modernization, CI/CD, security, platform improvement, performance, and technical advisory engagements.</p>
+          </article>
+        </div>
+
+        <aside class="stack">
+          <section class="summary-card">
+            <h3>Leadership focus</h3>
+            <div class="metric">
+              <small>Platform strategy</small>
+              <strong>Shared services, governance, architecture, and operating-model design</strong>
+            </div>
+            <div class="metric">
+              <small>Operational discipline</small>
+              <strong>Reliability, observability, release governance, and stronger ownership</strong>
+            </div>
+            <div class="metric">
+              <small>Organizational range</small>
+              <strong>Cross-functional execution, talent development, and executive partnership</strong>
+            </div>
+          </section>
+
+          <section class="summary-card logo-panel">
+            <h3>Representative organizations</h3>
+            <p>Organizations represented across leadership, architecture, and consulting work.</p>
+            <div class="logo-row">
+              <div class="logo-chip logo-fanatics"><img src="assets/fbg-logo-final-1-1024x1024.png" alt="Fanatics Betting and Gaming logo" /></div>
+              <div class="logo-chip logo-rosetta"><img src="assets/unnamed-1.png" alt="Rosetta Stone logo" /></div>
+              <div class="logo-chip logo-carvana"><img src="assets/carvana.png" alt="Carvana logo" /></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <section class="cta-panel">
+        <div>
+          <span class="kicker">Contact</span>
+          <h2>Professional outreach, kept direct.</h2>
+          <p>For opportunities, introductions, or executive-level professional conversation, LinkedIn is the current public contact path.</p>
+        </div>
+        <div class="button-row" style="margin-top:0;">
+          <a class="btn primary" href="contact.html">Open contact page</a>
+          <a class="btn" href="https://www.linkedin.com/in/davidwbaxter" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div>David Wayne Baxter</div>
+      <div>Selected experience and leadership scope</div>
+    </div>
+  </footer>
+</body>
+</html>
