@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Homelab | David Wayne Baxter</title>
-  <meta name="description" content="An overview of David Wayne Baxter’s homelab: a mini PC running Proxmox VE with three virtual machines, OPNsense, a Docker host, and Home Assistant OS." />
+  <meta name="description" content="An overview of David Wayne Baxter’s homelab, two mini PCs. One runs Proxmox VE with three virtual machines (OPNsense, a Docker host, and Home Assistant OS), and one hosts AI agents reachable over Telegram." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://davidwaynebaxter.com/homelab/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Homelab | David Wayne Baxter" />
-  <meta property="og:description" content="An overview of David Wayne Baxter’s homelab: a mini PC running Proxmox VE with three virtual machines, OPNsense, a Docker host, and Home Assistant OS." />
+  <meta property="og:description" content="An overview of David Wayne Baxter’s homelab, two mini PCs. One runs Proxmox VE with three virtual machines (OPNsense, a Docker host, and Home Assistant OS), and one hosts AI agents reachable over Telegram." />
   <meta property="og:url" content="https://davidwaynebaxter.com/homelab/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Homelab | David Wayne Baxter" />
-  <meta name="twitter:description" content="An overview of David Wayne Baxter’s homelab: a mini PC running Proxmox VE with three virtual machines, OPNsense, a Docker host, and Home Assistant OS." />
+  <meta name="twitter:description" content="An overview of David Wayne Baxter’s homelab, two mini PCs. One runs Proxmox VE with three virtual machines (OPNsense, a Docker host, and Home Assistant OS), and one hosts AI agents reachable over Telegram." />
   <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
   <meta name="theme-color" content="#ffffff" />
@@ -51,7 +51,7 @@
       <div class="page-head">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Homelab</li></ol></nav>
         <h1>Homelab</h1>
-        <p class="lede">My homelab runs on a single mini PC with Proxmox VE installed. Proxmox hosts three virtual machines, and each one has its own page with installation and configuration notes.</p>
+        <p class="lede">My homelab runs on two mini PCs. The first runs Proxmox VE and hosts three virtual machines, and each one has its own page with installation and configuration notes. The second hosts my AI agents.</p>
         <div class="note">
           <p><b>In progress.</b> This section is being built out one page at a time, starting with the basics.</p>
         </div>
@@ -60,7 +60,7 @@
       <section class="row first" aria-labelledby="layout">
         <div class="label">How it fits together</div>
         <div class="body wide">
-          <h2 id="layout">One mini PC, three virtual machines.</h2>
+          <h2 id="layout">Proxmox: one mini PC, three virtual machines.</h2>
           <div class="stack" role="group" aria-label="Homelab layers, from hardware to virtual machines">
             <p class="tier">Mini PC</p>
             <div class="stack-inner">
@@ -68,6 +68,15 @@
               <div class="vms"><a class="vm" href="/homelab/proxmox/opnsense/"><b>OPNsense</b><span>Virtual machine</span></a><a class="vm" href="/homelab/proxmox/docker-host/"><b>Docker Host</b><span>Virtual machine</span></a><a class="vm" href="/homelab/proxmox/home-assistant/"><b>Home Assistant OS</b><span>Virtual machine</span></a></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="agents">
+        <div class="label">Second mini PC</div>
+        <div class="body">
+          <h2 id="agents">A dedicated machine for agents.</h2>
+          <p>A second mini PC hosts my AI agents, Hermes and OpenClaw, separate from the Proxmox host. Both are connected to Telegram, so I can message them and receive their updates from my phone.</p>
+          <!-- TODO(homelab): describe what Hermes and OpenClaw each do, plus the hardware and operating system of this second machine. -->
         </div>
       </section>
 
