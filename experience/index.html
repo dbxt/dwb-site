@@ -60,6 +60,7 @@
           <h2>Senior Engineering Manager</h2>
           <p class="org">Fanatics Betting and Gaming</p>
           <p>I led the engineers behind the content delivery service, the layer between the sportsbook’s data services and its clients that carries most client data traffic, and behind the content management system that feeds it. I built the teams, monitoring, and quality systems around both.</p>
+          <p class="mono">Technology: Java, Kotlin, PostgreSQL, AWS, Datadog, Terraform, FireHydrant, Jira and Atlassian tools.</p>
           <ul>
             <li><b>Content delivery service.</b> Led an eight-engineer team that replaced the GraphQL service carrying most client data traffic, which had regular outages and latency of 30 to 60 seconds, with a REST-based service that runs at 30 to 60 milliseconds, roughly a thousand times faster. The new service has run without a production incident for more than six months, and it handled Super Bowl traffic, one of the year’s highest-traffic days, without issues.</li>
             <li><b>Incremental migration.</b> Moved the service over one endpoint at a time, in step with the mobile client team, who updated the app as each endpoint moved, so there was never a single high-risk cutover.</li>
@@ -69,6 +70,7 @@
             <li><b>AI-driven quality.</b> Built an agentic bug-management workflow, using Claude with a custom set of code-evaluation skills, that scans more than a dozen repositories from backend services to front-end clients. Its first pass logged more than 150 prioritized bugs in Jira, from fatal to trivial, mostly data-consistency issues and potential null-pointer failures that could have reached clients. A shared dashboard ranks them and links each bug to the pull request the agent opened with an attempted fix, and the team spends one sprint each quarter reviewing and burning the list down to keep the repositories production-ready. <a href="/ai/bug-manager/">See the case study and demo.</a></li>
             <li><b>AI-driven management.</b> Built an engineering-management dashboard that ran hourly against live Jira, GitHub, PTO calendar, and sprint capacity-planning data. Claude agents assessed team performance, capacity, and consistency and suggested topics for one-on-ones. Because it held evaluations of staff, only I and senior leadership could see it.</li>
             <li><b>Building the team.</b> Grew the team from one engineer by hiring to fill the roster and welcoming two internal transfers who asked to join, and managed as many as 11 direct reports. When a new division started, I began with three transfers and worked with the company on an acqui-hire from an acquired organization, assessing 12 of its engineers and bringing on the five we committed to. Over three and a half years, four people were promoted, including one who moved into engineering management, and only one left the company by choice.</li>
+            <li><b>Hiring.</b> Hired for team dynamic as well as technical strength, weighing compatibility, personality, and drive, to build teams that work well together and excel together.</li>
             <li><b>Partnership.</b> Met regularly with product and program partners to align on priorities and report progress.</li>
           </ul>
         </div>
@@ -187,10 +189,17 @@
       </section>
 
       <section class="row" aria-labelledby="background">
-        <div class="label">Technical background</div>
+        <div class="label">Technology</div>
         <div class="body">
-          <h2 id="background" class="tight">Hands-on foundations.</h2>
-          <p>My leadership rests on a working engineering background: .NET, JavaScript (React and Redux, D3, WebSockets), service-oriented architecture and ORMs, ColdFusion and ASP, SharePoint, and CI/CD tooling including Git, Gitflow, and Jenkins. I keep current through coursework and personal projects.</p>
+          <h2 id="background" class="tight">The stack, then and now.</h2>
+          <dl class="spec">
+            <div><dt>At Fanatics</dt><dd>Java, Kotlin, PostgreSQL, and AWS</dd></div>
+            <div><dt>Operations</dt><dd>Datadog, Terraform, SLOs, FireHydrant, and Slack alerting</dd></div>
+            <div><dt>Planning and code</dt><dd>Jira and Atlassian tools, and GitHub</dd></div>
+            <div><dt>AI</dt><dd>Claude, including agents with custom skills</dd></div>
+            <div><dt>Personal projects</dt><dd>TypeScript and React (Sprint Ledger); Docker, Proxmox, and OPNsense (homelab)</dd></div>
+            <div><dt>Earlier career</dt><dd>.NET, JavaScript with D3 and WebSockets, service-oriented architecture with ORMs, ColdFusion and ASP, SharePoint, Git and Gitflow, and Jenkins</dd></div>
+          </dl>
         </div>
       </section>
 

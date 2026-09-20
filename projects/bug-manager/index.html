@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Manager — Agentic Bug Triage</title>
+  <meta name="description" content="Agents scan repositories, rank what they find, open pull requests with proposed fixes, and log tickets, so a team can burn down one ranked list. A simulated demo." />
+  <link rel="canonical" href="https://davidwaynebaxter.com/projects/bug-manager/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bug Manager — Agentic Bug Triage" />
+  <meta property="og:description" content="Agents scan repositories, rank what they find, open pull requests with proposed fixes, and log tickets. A simulated demo." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/projects/bug-manager/" />
+  <meta name="theme-color" content="#f2f4f8" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23121b26'/%3E%3Crect x='6' y='7' width='20' height='3.5' rx='1' fill='%23ff8a80'/%3E%3Crect x='6' y='14' width='14' height='3.5' rx='1' fill='%23f5c542'/%3E%3Crect x='6' y='21' width='9' height='3.5' rx='1' fill='%237cc4ea'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/app.css" />
+  <script src="assets/theme-init.js"></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect class="tile" width="32" height="32" rx="7"/><rect class="b1" x="6" y="7" width="20" height="3.5" rx="1"/><rect class="b2" x="6" y="14" width="14" height="3.5" rx="1"/><rect class="b3" x="6" y="21" width="9" height="3.5" rx="1"/></svg>
+        <span>Bug Manager</span>
+        <span class="badge-demo">simulated data</span>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="scan">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span id="scan-label">Run scan</span>
+        </button>
+        <button type="button" class="btn btn-ghost" id="theme" aria-label="Switch to dark theme">
+          <svg viewBox="0 0 16 16" aria-hidden="true" id="theme-icon"></svg>
+          <span id="theme-label">Dark</span>
+        </button>
+        <button type="button" class="btn" id="about-btn">About</button>
+      </div>
+    </header>
+
+    <noscript><p class="empty"><b>JavaScript is required.</b> Bug Manager runs entirely in your browser.</p></noscript>
+
+    <ol class="stages" id="stages" aria-label="Pipeline"></ol>
+
+    <main>
+      <section class="summary" aria-label="Summary">
+        <div class="card" id="card-findings"></div>
+        <div class="card" id="card-prs"></div>
+        <div class="card" id="card-risk"></div>
+        <div class="card sprint-card" id="card-sprint">
+          <h2>Burn-down sprint</h2>
+          <div class="big" id="sprint-day">Day 0<small>of 10</small></div>
+          <label for="cap">Findings the team can close: <b id="cap-val">45</b></label>
+          <input type="range" id="cap" min="10" max="60" value="45" />
+          <div class="row">
+            <button type="button" class="btn btn-primary btn-sm" id="play">Play sprint</button>
+            <button type="button" class="btn btn-sm" id="reset-sprint">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <aside class="panel rail" aria-label="Repositories">
+          <h2>Repositories</h2>
+          <ul class="repo-list" id="repos"></ul>
+        </aside>
+
+        <section class="panel main-panel">
+          <div class="tabs" role="tablist" aria-label="Workspace">
+            <button type="button" class="tab" role="tab" id="tab-findings" aria-controls="pane-findings" aria-selected="true">Findings</button>
+            <button type="button" class="tab" role="tab" id="tab-burn" aria-controls="pane-burn" aria-selected="false" tabindex="-1">Burn-down</button>
+          </div>
+
+          <div class="pane" id="pane-findings" role="tabpanel" aria-labelledby="tab-findings">
+            <div class="toolbar">
+              <div class="chips" id="sev-chips" role="group" aria-label="Filter by severity"></div>
+              <select class="field" id="f-cat" aria-label="Category"><option value="">All categories</option></select>
+              <select class="field" id="f-status" aria-label="Status">
+                <option value="">All statuses</option>
+                <option value="pr">PR open</option>
+                <option value="human">Needs engineer</option>
+                <option value="closed">Closed</option>
+              </select>
+              <span class="spacer"></span>
+              <input class="field" type="search" id="f-q" placeholder="Search findings" aria-label="Search findings" />
+            </div>
+            <p class="count-line" id="count" aria-live="polite"></p>
+            <div class="table-wrap" id="table-wrap"></div>
+            <button type="button" class="btn btn-sm more" id="more" hidden>Show more</button>
+          </div>
+
+          <div class="pane" id="pane-burn" role="tabpanel" aria-labelledby="tab-burn" hidden>
+            <svg class="chart" id="chart" viewBox="0 0 640 260" role="img" aria-label="Line chart of total risk remaining over a ten-day sprint: closing findings in ranked order compared with closing them in no particular order"></svg>
+            <p class="key"><span><i></i>Closed in ranked order</span><span><i class="dashed"></i>Closed in no particular order</span></p>
+            <div class="stats" id="burn-stats" aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="page-foot">Simulated data · a portfolio project, not connected to any repository or Jira</footer>
+  </div>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden></aside>
+
+  <dialog id="about" aria-labelledby="about-title">
+    <div class="dh"><h2 id="about-title">About Bug Manager</h2><button type="button" class="btn btn-sm btn-ghost" id="about-close">Close</button></div>
+    <div class="db">
+      <p>Bug Manager shows how agents can turn a pile of defects into one ranked list a team can burn down. Agents scan every repository, classify what they find, rank it, log a ticket for each finding, and attempt a fix by opening a pull request. A team then spends a sprint reviewing from the top of the list.</p>
+      <p><b>Everything here is simulated.</b> The repositories, findings, pull requests, and tickets are generated in your browser. No code is scanned, nothing is sent anywhere, and no language model is called. The real system ran Claude agents over real repositories, and its findings are confidential.</p>
+      <p><b>Ranking is illustrative.</b> A finding’s risk score is its severity weight × (1 + how exposed clients are to the repository) × the agent’s confidence. Open any finding to see its score worked out.</p>
+      <p><b>Not every finding gets a pull request.</b> When the agent’s confidence is low, or the fix needs a design decision, the finding is flagged for an engineer. That rule is illustrative too.</p>
+      <div class="links">
+        <a class="btn btn-sm" href="https://davidwaynebaxter.com/ai/bug-manager/" rel="noopener">Read the case study ↗</a>
+        <a class="btn btn-sm" href="https://davidwaynebaxter.com/ai/" rel="noopener">More AI work ↗</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

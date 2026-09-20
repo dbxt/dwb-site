@@ -19,6 +19,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://davidwaynebaxter.com/projects/sprint-ledger/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://davidwaynebaxter.com/projects/bug-manager/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://davidwaynebaxter.com/ai/homepage/</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
