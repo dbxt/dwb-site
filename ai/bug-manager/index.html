@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agentic Bug Management | AI Work | David Wayne Baxter</title>
-  <meta name="description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with an interactive simulated demo." />
+  <meta name="description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with a live simulated demo app." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://davidwaynebaxter.com/ai/bug-manager/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Agentic Bug Management | AI Work | David Wayne Baxter" />
-  <meta property="og:description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with an interactive simulated demo." />
+  <meta property="og:description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with a live simulated demo app." />
   <meta property="og:url" content="https://davidwaynebaxter.com/ai/bug-manager/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:image" content="https://davidwaynebaxter.com/assets/bug-manager-find-light.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Agentic Bug Management | AI Work | David Wayne Baxter" />
-  <meta name="twitter:description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with an interactive simulated demo." />
+  <meta name="twitter:description" content="Case study of agentic bug management: Claude agents scan a dozen-plus repositories, rank what they find, log Jira tickets, and give a team a ranked list to burn down, with a live simulated demo app." />
   <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/bug-manager-find-light.webp" />
   <link rel="icon" href="/assets/dwb-favicon-512.png?v=20260907" type="image/png" />
   <meta name="theme-color" content="#ffffff" />
@@ -53,18 +53,18 @@
         <h1>Agentic bug management: a ranked list a team can burn down.</h1>
         <p class="lede">AI agents scanned more than a dozen repositories, from backend services to front-end clients, for data-consistency problems, failure risks, security issues, and code smells. They logged what they found as prioritized Jira tickets, attempted a fix for each issue and opened a pull request for review, and gave the team a shared, ranked dashboard that linked every bug to its pull request.</p>
         <div class="actions">
-          <a class="button" href="/ai/bug-manager/demo/">Try the interactive demo&nbsp;→</a>
+          <a class="button" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener">Open the live demo&nbsp;↗</a>
           <a class="textlink" href="#how">See how it works&nbsp;↓</a>
         </div>
         <div class="note">
-          <p><b>About this project.</b> I built the working system at Fanatics, where Claude agents, guided by a custom set of code-evaluation skills, scanned real repositories. Its findings and code are confidential, so the demo on this site is a simulation: fictional repositories and made-up findings that replay the same workflow. The ranking rule in the demo is illustrative.</p>
+          <p><b>About this project.</b> I built the working system at Fanatics, where Claude agents, guided by a custom set of code-evaluation skills, scanned real repositories. Its findings and code are confidential, so the live demo is a simulation: fictional repositories and made-up findings that replay the same workflow. The ranking rule in the demo is illustrative.</p>
         </div>
       </div>
 
       <figure class="figure board">
-        <a class="shot-light" href="/ai/bug-manager/demo/" aria-label="Open the interactive demo"><img src="/assets/bug-manager-find-light.webp" width="832" height="800" loading="lazy" alt="The bug manager demo after a scan: 156 findings across 12 repositories, a severity bar (4 fatal, 28 high, 73 medium, 33 low, 18 trivial), filters, and a ranked table starting with fatal findings." /></a>
-        <a class="shot-dark" href="/ai/bug-manager/demo/" aria-label="Open the interactive demo"><img src="/assets/bug-manager-find-dark.webp" width="832" height="800" loading="lazy" alt="The bug manager demo after a scan: 156 findings across 12 repositories, a severity bar (4 fatal, 28 high, 73 medium, 33 low, 18 trivial), filters, and a ranked table starting with fatal findings." /></a>
-        <figcaption>The demo after a scan: 156 simulated findings across twelve fictional repositories, ranked highest risk first.</figcaption>
+        <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener" aria-label="Open the live demo"><img src="/assets/bug-manager-find-light.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener" aria-label="Open the live demo"><img src="/assets/bug-manager-find-dark.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <figcaption>The app after a scan: 156 simulated findings across twelve fictional repositories, ranked by risk, with the agent’s pull requests alongside.</figcaption>
       </figure>
 
       <div class="spec-wrap">
@@ -76,7 +76,8 @@
           <div><dt>First pass</dt><dd>More than 150 bugs logged, from fatal to trivial</dd></div>
           <div><dt>What it found</dt><dd>Mostly data-consistency issues and potential null-pointer failures that could have reached clients</dd></div>
           <div><dt>Cadence</dt><dd>One sprint each quarter to burn the list down</dd></div>
-          <div><dt>Demo</dt><dd>Interactive and simulated: fictional repositories, no code scanned</dd></div>
+          <div><dt>Live demo</dt><dd><a href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener">bug-manager.projects.davidwaynebaxter.net</a></dd></div>
+          <div><dt>Data</dt><dd>Simulated: fictional repositories, no code scanned</dd></div>
         </dl>
       </div>
 
@@ -119,14 +120,14 @@
         <div class="label">The demo</div>
         <div class="body wide">
           <h2 id="demo-h">Try the workflow yourself.</h2>
-          <p>The demo scans twelve fictional repositories and produces 156 simulated findings in the same mix the real scans surfaced most. It then shows the agent opening a simulated pull request for each fix it can make. You can filter by severity, category, repository, and status, open a finding to see the code, the reasoning, the pull request, and the ticket that would be logged, and then run a review-and-burn-down sprint.</p>
+          <p>The live demo is a standalone app that scans twelve fictional repositories and produces 156 simulated findings in the same mix the real scans surfaced most. It then shows the agent opening a simulated pull request for each fix it can make. You can filter by severity, category, repository, and status, open a finding to see the code, the reasoning, the pull request, and the ticket that would be logged, and then run a review-and-burn-down sprint.</p>
           <figure class="figure">
-            <a class="shot-light" href="/ai/bug-manager/demo/" aria-label="Open the interactive demo"><img src="/assets/bug-manager-burn-light.webp" width="824" height="520" loading="lazy" alt="The burn-down chart from the demo: total risk remaining over a ten-day sprint, falling faster when findings are fixed in ranked order than in no particular order." /></a>
-            <a class="shot-dark" href="/ai/bug-manager/demo/" aria-label="Open the interactive demo"><img src="/assets/bug-manager-burn-dark.webp" width="824" height="520" loading="lazy" alt="The burn-down chart from the demo: total risk remaining over a ten-day sprint, falling faster when findings are fixed in ranked order than in no particular order." /></a>
-            <figcaption>The burn-down view: at the default capacity of 45 findings, fixing in ranked order removes about 57% of the total risk, compared with about 29% for the same number closed in no particular order.</figcaption>
+            <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener" aria-label="Open the live demo"><img src="/assets/bug-manager-burn-light.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener" aria-label="Open the live demo"><img src="/assets/bug-manager-burn-dark.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <figcaption>The burn-down tab after a sprint: at the default capacity of 45 findings, fixing in ranked order removes about 57% of the total risk, compared with about 29% for the same number closed in no particular order.</figcaption>
           </figure>
           <div class="actions">
-            <a class="button" href="/ai/bug-manager/demo/">Open the interactive demo&nbsp;→</a>
+            <a class="button" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener">Open the live demo&nbsp;↗</a>
           </div>
         </div>
       </section>
@@ -172,7 +173,7 @@
         <div class="body">
           <h2 id="see" class="tight">See the ranked list for yourself.</h2>
           <div class="actions">
-            <a class="button" href="/ai/bug-manager/demo/">Try the interactive demo&nbsp;→</a>
+            <a class="button" href="https://bug-manager.projects.davidwaynebaxter.net/" rel="noopener">Open the live demo&nbsp;↗</a>
             <a class="textlink" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener">Discuss it on LinkedIn&nbsp;↗</a>
             <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
           </div>
