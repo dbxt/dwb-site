@@ -145,10 +145,11 @@
       <div class="spec-wrap">
         <dl class="spec">
           <div><dt>Role</dt><dd>Senior Engineering Manager, Fanatics Betting and Gaming (March 2023 – September 2026)</dd></div>
-          <div><dt>Team</dt><dd>An eight-engineer team, working in step with the mobile client team</dd></div>
+          <div><dt>Team</dt><dd>Eight distributed-systems engineers: one senior staff, two staff, and five engineers, working in step with the mobile client team</dd></div>
           <div><dt>The service</dt><dd>The layer between the sportsbook’s data services and its clients, which carries most client data traffic</dd></div>
           <div><dt>Before</dt><dd>A GraphQL service with regular outages and latency of 30 to 60 seconds</dd></div>
           <div><dt>After</dt><dd>A REST-based service that runs at 30 to 60 milliseconds</dd></div>
+          <div><dt>Design</dt><dd>REST with heavy caching and preloading, deployed as several copies of the same service, one for each section of the mobile app</dd></div>
           <div><dt>Result</dt><dd>No production incident in more than six months, and no issues on Super Bowl traffic</dd></div>
           <div><dt>Technology</dt><dd>Java, Kotlin, PostgreSQL, AWS, Datadog, Terraform, and FireHydrant, across the role</dd></div>
         </dl>
@@ -158,8 +159,8 @@
         <div class="label">The problem</div>
         <div class="body">
           <h2 id="problem">Most client traffic ran through a slow, unreliable service.</h2>
-          <p>The content delivery service sits between the sportsbook’s data services and its clients, so most client data traffic passes through it. The GraphQL service that filled that role had regular outages, and its latency ran from 30 to 60 seconds. The content management system that feeds it was slow and error-prone, and it had little validation.</p>
-          <!-- TODO(case-study): one or two sentences on why the GraphQL service was failing (the root causes), and how the problem reached you. -->
+          <p>The content delivery service sits between the sportsbook’s data services and its clients, so most client data traffic passes through it. The GraphQL service that filled that role had regular outages and latency of 30 to 60 seconds. It offered clients too much data, it connected directly to the upstream services with no caching and no failsafe, and its overall performance had been neglected.</p>
+          <p>The content management system that feeds it was also slow and error-prone, and it had little validation.</p>
         </div>
       </section>
 
@@ -167,19 +168,21 @@
         <div class="label">The approach</div>
         <div class="body">
           <h2 id="approach">Replace it one endpoint at a time.</h2>
-          <p>The replacement was a REST-based service. Rather than plan a single cutover, the team moved the service over one endpoint at a time, in step with the mobile client team, who updated the app as each endpoint moved. There was never a single high-risk cutover.</p>
-          <p>It is the working principle from my home page applied to a migration: reliability and release confidence are engineering products in their own right.</p>
-          <!-- TODO(case-study): why REST, what alternatives you weighed, how many endpoints, how long the migration took, and how you could roll an endpoint back. -->
+          <p>The replacement was a REST-based service. REST was the easiest protocol for the mobile engineers to consume, and its structured, predefined data and queries let the service rely heavily on caching and preload data in anticipation of load. The GraphQL service had no caching.</p>
+          <p>The service was also deployed as several copies of the same code, so that each section of the mobile app talks to its own dedicated service. That spreads the load, and it keeps any problem to a single page or function of the app.</p>
+          <p>The team moved the service over one endpoint at a time, in step with the mobile client team, who updated the app as each endpoint moved, so there was never a single high-risk cutover. It is the working principle from my home page applied to a migration: reliability and release confidence are engineering products in their own right.</p>
+          <!-- TODO(case-study): how many endpoints, how long the migration took, and how you could roll an endpoint back. -->
         </div>
       </section>
 
       <section class="row" aria-labelledby="organization">
         <div class="label">The organization</div>
         <div class="body">
-          <h2 id="organization">Eight engineers, and a partner team to move with.</h2>
-          <p>I led the eight engineers who built the service and worked with the mobile client team, whose app updates had to land in step with each endpoint. I also built the monitoring and quality systems around the service and the content management system that feeds it, and I met regularly with product and program partners to align on priorities and report progress.</p>
+          <h2 id="organization">Eight distributed-systems engineers, each with a defined part.</h2>
+          <p>All eight engineers were distributed-systems engineers. One senior staff engineer proposed most of the design and the proofs of concept. Two staff engineers implemented and refined the designs and structures. Five engineers specialized in segments of the service, and typically partnered with upstream services and teams.</p>
+          <p>I led the team and worked with the mobile client team, whose app updates had to land in step with each endpoint. I also built the monitoring and quality systems around the service and the content management system that feeds it, and I met regularly with product and program partners to align on priorities and report progress.</p>
           <p>Across my time at Fanatics, four people on my team were promoted, including one who moved into engineering management, and only one left the company by choice.</p>
-          <!-- TODO(case-study): how you organized the eight engineers (roles, ownership), and a moment where the mobile team partnership was tested. -->
+          <!-- TODO(case-study): a moment where the mobile team partnership was tested. -->
         </div>
       </section>
 
