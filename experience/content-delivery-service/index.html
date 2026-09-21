@@ -171,7 +171,7 @@
           <p>The replacement was a REST-based service. REST was the easiest protocol for the mobile engineers to consume, and its structured, predefined data and queries let the service rely heavily on caching and preload data in anticipation of load. The GraphQL service had no caching.</p>
           <p>The service was also deployed as several copies of the same code, so that each section of the mobile app talks to its own dedicated service. That spreads the load, and it keeps any problem to a single page or function of the app.</p>
           <p>The team moved the service over one endpoint at a time, in step with the mobile client team, who updated the app as each endpoint moved, so there was never a single high-risk cutover. It is the working principle from my home page applied to a migration: reliability and release confidence are engineering products in their own right.</p>
-          <!-- TODO(case-study): how many endpoints, how long the migration took, and how you could roll an endpoint back. -->
+          <p>About 30 endpoints moved over roughly nine months, and upgrades and feature enhancements were part of that effort. Every endpoint was behind a feature flag, so any of them could be rolled back with a toggle.</p>
         </div>
       </section>
 
@@ -182,7 +182,7 @@
           <p>All eight engineers were distributed-systems engineers. One senior staff engineer proposed most of the design and the proofs of concept. Two staff engineers implemented and refined the designs and structures. Five engineers specialized in segments of the service, and typically partnered with upstream services and teams.</p>
           <p>I led the team and worked with the mobile client team, whose app updates had to land in step with each endpoint. I also built the monitoring and quality systems around the service and the content management system that feeds it, and I met regularly with product and program partners to align on priorities and report progress.</p>
           <p>Across my time at Fanatics, four people on my team were promoted, including one who moved into engineering management, and only one left the company by choice.</p>
-          <!-- TODO(case-study): a moment where the mobile team partnership was tested. -->
+          <p>The mobile client team and the distributed-systems team had a close and friendly working relationship.</p>
         </div>
       </section>
 
@@ -215,7 +215,8 @@
             <div class="figure">200+</div>
             <p>Terraform-generated monitors covering latency, errors, memory, CPU, and SLOs.</p>
           </div>
-          <!-- TODO(case-study): what you would do differently, and what this changed about how the organization works. -->
+          <p>Looking back, I would push back harder on including major enhancements and new features in the migration. In some cases a feature reached production sooner, but the extra change added risk and made rollbacks more complicated.</p>
+          <!-- TODO(case-study): what this changed about how the organization works. -->
         </div>
       </section>
 
