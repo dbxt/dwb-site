@@ -1,4 +1,19 @@
+# Canonical URLs: one https, non-www address per page.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
 
+  # www -> apex in a single hop
+  RewriteCond %{HTTP_HOST} ^www\.davidwaynebaxter\.com$ [NC]
+  RewriteRule ^(.*)$ https://davidwaynebaxter.com/$1 [R=301,L]
+
+  # /dir/index.html -> /dir/ (only when requested that way, so the internal DirectoryIndex lookup is untouched)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ https://davidwaynebaxter.com/$1 [R=301,L]
+</IfModule>
+
+# Retired duplicates of /contact/ and /experience/
+Redirect 301 /contact.html /contact/
+Redirect 301 /experience.html /experience/
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php81” package as the default “PHP” programming language.
