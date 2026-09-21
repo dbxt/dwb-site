@@ -10,9 +10,9 @@
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/(.*/)?index\.html[\s?] [NC]
   RewriteRule ^(.*/)?index\.html$ https://davidwaynebaxter.com/$1 [R=301,L]
 
-  # The Homelab section was renamed Engineering Lab: /homelab/... -> /engineering-lab/...
-  RewriteRule ^homelab/?$ /engineering-lab/ [R=301,L]
-  RewriteRule ^homelab/(.+?)/?$ /engineering-lab/$1/ [R=301,L]
+  # The Homelab section became the Engineering Lab at /lab/. Both earlier addresses redirect straight to it.
+  RewriteRule ^(?:homelab|engineering-lab)/?$ /lab/ [R=301,L]
+  RewriteRule ^(?:homelab|engineering-lab)/(.+?)/?$ /lab/$1/ [R=301,L]
 </IfModule>
 
 # Retired duplicates of /contact/ and /experience/

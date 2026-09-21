@@ -6,11 +6,11 @@
   <title>Engineering Lab | David Wayne Baxter</title>
   <meta name="description" content="David Wayne Baxter’s engineering lab: a Proxmox mini PC running OPNsense, a Docker host and Home Assistant OS, plus a second mini PC hosting AI agents." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://davidwaynebaxter.com/engineering-lab/" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/lab/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Engineering Lab | David Wayne Baxter" />
   <meta property="og:description" content="David Wayne Baxter’s engineering lab: a Proxmox mini PC running OPNsense, a Docker host and Home Assistant OS, plus a second mini PC hosting AI agents." />
-  <meta property="og:url" content="https://davidwaynebaxter.com/engineering-lab/" />
+  <meta property="og:url" content="https://davidwaynebaxter.com/lab/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
@@ -50,7 +50,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "Engineering Lab",
-            "item": "https://davidwaynebaxter.com/engineering-lab/"
+            "item": "https://davidwaynebaxter.com/lab/"
           }
         ]
       }
@@ -101,7 +101,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="/experience/">Experience</a>
         <a href="/ai/">AI Work</a>
-        <a href="/engineering-lab/" aria-current="page">Engineering Lab</a>
+        <a href="/lab/" aria-current="page">Engineering Lab</a>
         <a href="/contact/">Contact</a>
         <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
         <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -153,8 +153,8 @@
           <div class="stack" role="group" aria-label="Lab layers, from hardware to virtual machines">
             <p class="tier">Mini PC</p>
             <div class="stack-inner">
-              <p class="tier"><a href="/engineering-lab/proxmox/">Proxmox VE</a> · hypervisor</p>
-              <div class="vms"><a class="vm" href="/engineering-lab/proxmox/opnsense/"><b>OPNsense</b><span>Virtual machine</span></a><a class="vm" href="/engineering-lab/proxmox/docker-host/"><b>Docker Host</b><span>Virtual machine</span></a><a class="vm" href="/engineering-lab/proxmox/home-assistant/"><b>Home Assistant OS</b><span>Virtual machine</span></a></div>
+              <p class="tier"><a href="/lab/proxmox/">Proxmox VE</a> · hypervisor</p>
+              <div class="vms"><a class="vm" href="/lab/proxmox/opnsense/"><b>OPNsense</b><span>Virtual machine</span></a><a class="vm" href="/lab/proxmox/docker-host/"><b>Docker Host</b><span>Virtual machine</span></a><a class="vm" href="/lab/proxmox/home-assistant/"><b>Home Assistant OS</b><span>Virtual machine</span></a></div>
             </div>
           </div>
           <p style="margin-top: 1.5rem">Each physical Ethernet port has its own Linux bridge in Proxmox, and the virtual machines plug into the bridges rather than into the ports. OPNsense is the only guest on both bridges, so it sits between the two networks and all traffic between them has to pass through it. Every guest starts on its own after a power cut, so the lab comes back without anything to do by hand.</p>
@@ -165,9 +165,9 @@
         <div class="label">What runs where</div>
         <div class="body">
           <h2 id="runs">One job per virtual machine.</h2>
-          <p><b><a href="/engineering-lab/proxmox/opnsense/">OPNsense</a>.</b> The firewall and router, running OPNsense 26.7 in a virtual machine with 4 virtual CPUs and 2 GiB of memory. It sits between the two Ethernet ports. Its page has step-by-step guides for static IP mappings, a WireGuard VPN, Unbound ad blocking, and a Caddy reverse proxy.</p>
-          <p><b><a href="/engineering-lab/proxmox/docker-host/">Docker Host</a>.</b> Manjaro Linux running Docker 29.7, managed with Portainer. Nineteen containers run here, grouped into Compose stacks by purpose. The infrastructure stack holds the Homepage dashboard, Uptime Kuma monitoring, and Speedtest Tracker. The organizer stack holds Karakeep bookmarks with full-text search, Vikunja tasks, Radicale calendar and contacts, and a PostgreSQL database. A media stack is defined but nothing runs in it yet. The dashboard is also the subject of a <a href="/ai/homepage/">case study on configuring it with AI</a>.</p>
-          <p><b><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a>.</b> Home Assistant OS 13.1 in a virtual machine with 2 virtual CPUs and 4 GiB of memory. It needs UEFI firmware, so its virtual machine is built a little differently from the other two, and one USB device on the host is passed through to it.</p>
+          <p><b><a href="/lab/proxmox/opnsense/">OPNsense</a>.</b> The firewall and router, running OPNsense 26.7 in a virtual machine with 4 virtual CPUs and 2 GiB of memory. It sits between the two Ethernet ports. Its page has step-by-step guides for static IP mappings, a WireGuard VPN, Unbound ad blocking, and a Caddy reverse proxy.</p>
+          <p><b><a href="/lab/proxmox/docker-host/">Docker Host</a>.</b> Manjaro Linux running Docker 29.7, managed with Portainer. Nineteen containers run here, grouped into Compose stacks by purpose. The infrastructure stack holds the Homepage dashboard, Uptime Kuma monitoring, and Speedtest Tracker. The organizer stack holds Karakeep bookmarks with full-text search, Vikunja tasks, Radicale calendar and contacts, and a PostgreSQL database. A media stack is defined but nothing runs in it yet. The dashboard is also the subject of a <a href="/ai/homepage/">case study on configuring it with AI</a>.</p>
+          <p><b><a href="/lab/proxmox/home-assistant/">Home Assistant OS</a>.</b> Home Assistant OS 13.1 in a virtual machine with 2 virtual CPUs and 4 GiB of memory. It needs UEFI firmware, so its virtual machine is built a little differently from the other two, and one USB device on the host is passed through to it.</p>
         </div>
       </section>
 
@@ -184,7 +184,7 @@
         <div class="label">Limits</div>
         <div class="body">
           <h2 id="limits">Where the lab is tight.</h2>
-          <p>Memory is the tight spot. The three guests are given 14 GiB of the host’s 15.4 GiB, so adding a fourth means shrinking one. The Docker host is the obvious candidate: its containers use only about 1.6 GiB of the 8 GiB it has. Storage is a single SSD with no redundancy, which is fine for a lab like this as long as the important data is backed up somewhere else. The <a href="/engineering-lab/proxmox/">Proxmox page</a> covers both in more detail.</p>
+          <p>Memory is the tight spot. The three guests are given 14 GiB of the host’s 15.4 GiB, so adding a fourth means shrinking one. The Docker host is the obvious candidate: its containers use only about 1.6 GiB of the 8 GiB it has. Storage is a single SSD with no redundancy, which is fine for a lab like this as long as the important data is backed up somewhere else. The <a href="/lab/proxmox/">Proxmox page</a> covers both in more detail.</p>
         </div>
       </section>
 
@@ -193,10 +193,10 @@
         <div class="body">
           <h2 id="pages">Start with Proxmox.</h2>
           <ol class="log">
-            <li><span class="k"><a href="/engineering-lab/proxmox/">Proxmox</a></span><span>The hypervisor at the base of the lab.</span></li>
-            <li><span class="k"><a href="/engineering-lab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
-            <li><span class="k"><a href="/engineering-lab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
-            <li><span class="k"><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/">Proxmox</a></span><span>The hypervisor at the base of the lab.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
           </ol>
         </div>
       </section>
@@ -207,7 +207,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
-      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/engineering-lab/">Engineering Lab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/lab/">Engineering Lab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
     </div>
   </footer>
 </body>
