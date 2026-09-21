@@ -85,6 +85,10 @@
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
         document.head.appendChild(s);
+        var v = document.createElement('script');
+        v.async = true;
+        v.src = '/assets/vitals.js?v=1';
+        document.head.appendChild(v);
       }
       function ready() { if (loaded && painted) setTimeout(inject, 0); }
       window.addEventListener('load', function () { loaded = true; ready(); });

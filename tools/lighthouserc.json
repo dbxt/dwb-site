@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "https://davidwaynebaxter.com/",
+        "https://davidwaynebaxter.com/ai/",
+        "https://davidwaynebaxter.com/ai/bug-manager/",
+        "https://davidwaynebaxter.com/experience/",
+        "https://davidwaynebaxter.com/homelab/proxmox/opnsense/"
+      ],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9, "aggregationMethod": "median" }],
+        "categories:accessibility": ["error", { "minScore": 0.95, "aggregationMethod": "median" }],
+        "categories:best-practices": ["error", { "minScore": 0.9, "aggregationMethod": "median" }],
+        "categories:seo": ["error", { "minScore": 0.95, "aggregationMethod": "median" }],
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500, "aggregationMethod": "median" }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1, "aggregationMethod": "median" }],
+        "total-blocking-time": ["error", { "maxNumericValue": 200, "aggregationMethod": "median" }]
+      }
+    }
+  }
+}
