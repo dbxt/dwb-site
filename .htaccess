@@ -15,6 +15,20 @@
 Redirect 301 /contact.html /contact/
 Redirect 301 /experience.html /experience/
 
+# Custom 404 page (keeps the 404 status code)
+ErrorDocument 404 /404.html
+
+AddType application/manifest+json .webmanifest
+
+# Security headers. HSTS is scoped to this host only (no includeSubDomains) so the app subdomains are unaffected.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php81” package as the default “PHP” programming language.
 <IfModule mime_module>
