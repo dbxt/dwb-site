@@ -63,20 +63,35 @@
     ]
   }
   </script>
-  <!-- Google tag (gtag.js): queued now, downloaded after the page has loaded so it never delays first paint -->
+  <!-- Google tag (gtag.js): calls are queued now; the library itself is fetched only after the page has loaded and
+       painted its largest content (or on first interaction, when the tab is hidden, or after 4 s), so it never competes with LCP -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-G52RNEDQYE');
-    window.addEventListener('load', function () {
-      setTimeout(function () {
+    (function () {
+      var injected = false, loaded = document.readyState === 'complete', painted = false;
+      function inject() {
+        if (injected) return;
+        injected = true;
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
         document.head.appendChild(s);
-      }, 0);
-    });
+      }
+      function ready() { if (loaded && painted) setTimeout(inject, 0); }
+      window.addEventListener('load', function () { loaded = true; ready(); });
+      try {
+        new PerformanceObserver(function (list, obs) { obs.disconnect(); painted = true; ready(); })
+          .observe({ type: 'largest-contentful-paint', buffered: true });
+      } catch (e) { painted = true; }
+      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) {
+        addEventListener(t, inject, { once: true, passive: true });
+      });
+      document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') inject(); });
+      setTimeout(inject, 4000);
+    })();
   </script>
 </head>
 <body>
