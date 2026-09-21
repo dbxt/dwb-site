@@ -419,3 +419,5 @@ table.stackable td, table.stackable th { vertical-align: top; }
 .essay .spec { margin: 2rem 0 2.25rem; }
 .essay .spec dd { font-size: 1.0625rem; }
 @media (max-width: 52rem) { .essay .spec dd { font-size: 1rem; } }
+
+.essay figure.portrait { max-width: 20rem; }
