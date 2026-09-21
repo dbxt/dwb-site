@@ -22,6 +22,8 @@ CARDS = {
     'content-delivery': dict(kicker='Experience · Case study', title='From 30–60 seconds to 30–60 milliseconds', sub='Replacing the service that carries a sportsbook’s client data.'),
     'ai-leadership': dict(kicker='Ideas · Essay', title='AI doesn’t replace engineering management', sub='It changes what managers manage.', image='ideas-ai-leadership-card.webp'),
     'ideas':        dict(kicker='Ideas', title='Writing on engineering leadership and AI', sub='Essays on leading teams and how AI changes the work.', image='ideas-banner.webp'),
+    'fun':           dict(kicker='Fun', title='Things I do for fun', sub='Stories from outside the engineering org.', image='fun-card.webp'),
+    'kindness-claus': dict(kicker='Fun · Story', title='The Kindness Claus', sub='A white beard, a panicked phone call, and a million lights.', image='fun-card.webp'),
     'engineering-lab': dict(kicker='Engineering Lab', title='Engineering Lab', sub='Proxmox, OPNsense, Docker and Home Assistant, documented.'),
 }
 

@@ -414,3 +414,8 @@ table.stackable td, table.stackable th { vertical-align: top; }
   .js .site-nav.open a { padding: 0.95rem 0; border-bottom: 1px solid var(--rule); font-size: 1.05rem; }
   .js .site-nav.open a[aria-current] { padding-left: 0.85rem; border-left: 2px solid var(--accent); font-weight: 500; }
 }
+
+.essay figcaption { margin-top: 0.6rem; font: 400 0.75rem/1.5 var(--mono); color: var(--muted); }
+.essay .spec { margin: 2rem 0 2.25rem; }
+.essay .spec dd { font-size: 1.0625rem; }
+@media (max-width: 52rem) { .essay .spec dd { font-size: 1rem; } }
