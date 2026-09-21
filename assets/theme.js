@@ -38,6 +38,22 @@
     });
   });
 
+  // Mobile menu: the Menu button (visible only under 52rem, once scripts run) opens and closes the primary links.
+  document.addEventListener('DOMContentLoaded', function () {
+    var nav = document.querySelector('.site-nav');
+    var menu = document.querySelector('.menu-toggle');
+    if (!nav || !menu) return;
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      menu.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menu.textContent = open ? 'Close' : 'Menu';
+    }
+    menu.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); menu.focus(); }
+    });
+  });
+
   // Follow the system setting live, unless the visitor has made an explicit choice.
   if (systemDark && systemDark.addEventListener) {
     systemDark.addEventListener('change', function (e) {
