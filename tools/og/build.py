@@ -20,7 +20,8 @@ CARDS = {
     'drop-shipping': dict(kicker='AI Work · Case study', title='Drop shipping automation', sub='Nine AI agents, from request to live listing.', image='ai-dsa-workflow.webp'),
     'homepage':     dict(kicker='AI Work · Case study', title='A private dashboard configured with AI', sub='Live cards for every service in the lab.', image='ai-homepage-cards.webp'),
     'content-delivery': dict(kicker='Experience · Case study', title='From 30–60 seconds to 30–60 milliseconds', sub='Replacing the service that carries a sportsbook’s client data.'),
-    'ai-leadership': dict(kicker='AI Work', title='AI and engineering leadership', sub='Agents with written roles, standards, and human decision points.'),
+    'ai-leadership': dict(kicker='Ideas · Essay', title='AI doesn’t replace engineering management', sub='It changes what managers manage.', image='ideas-ai-leadership-card.webp'),
+    'ideas':        dict(kicker='Ideas', title='Writing on engineering leadership and AI', sub='Essays on leading teams and how AI changes the work.', image='ideas-banner.webp'),
     'engineering-lab': dict(kicker='Engineering Lab', title='Engineering Lab', sub='Proxmox, OPNsense, Docker and Home Assistant, documented.'),
 }
 

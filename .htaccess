@@ -13,6 +13,9 @@
   # The Homelab section became the Engineering Lab at /lab/. Both earlier addresses redirect straight to it.
   RewriteRule ^(?:homelab|engineering-lab)/?$ /lab/ [R=301,L]
   RewriteRule ^(?:homelab|engineering-lab)/(.+?)/?$ /lab/$1/ [R=301,L]
+
+  # The AI and engineering leadership essay moved from AI Work to Ideas.
+  RewriteRule ^ai/ai-and-engineering-leadership/?$ /ideas/ai-and-engineering-leadership/ [R=301,L]
 </IfModule>
 
 # Retired duplicates of /contact/ and /experience/
