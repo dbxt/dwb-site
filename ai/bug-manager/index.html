@@ -30,6 +30,7 @@
   <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)})()</script>
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/site.css?v=20260920" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
@@ -77,13 +78,20 @@
     ]
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE"></script>
+  <!-- Google tag (gtag.js): queued now, downloaded after the page has loaded so it never delays first paint -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-G52RNEDQYE');
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
+        document.head.appendChild(s);
+      }, 0);
+    });
   </script>
 </head>
 <body>
@@ -123,8 +131,8 @@
       </div>
 
       <figure class="figure board">
-        <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-light.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
-        <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-dark.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-light.webp" srcset="/assets/bug-manager-find-light-480.webp 480w, /assets/bug-manager-find-light-720.webp 720w, /assets/bug-manager-find-light-1080.webp 1080w, /assets/bug-manager-find-light.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-dark.webp" srcset="/assets/bug-manager-find-dark-480.webp 480w, /assets/bug-manager-find-dark-720.webp 720w, /assets/bug-manager-find-dark-1080.webp 1080w, /assets/bug-manager-find-dark.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
         <figcaption>The app after a scan: 156 simulated findings across twelve fictional repositories, ranked by risk, with the agent’s pull requests alongside.</figcaption>
       </figure>
 
@@ -183,8 +191,8 @@
           <h2 id="demo-h">Try the workflow yourself.</h2>
           <p>The live demo is a standalone app that scans twelve fictional repositories and produces 156 simulated findings in the same mix the real scans surfaced most. It then shows the agent opening a simulated pull request for each fix it can make. You can filter by severity, category, repository, and status, open a finding to see the code, the reasoning, the pull request, and the ticket that would be logged, and then run a review-and-burn-down sprint.</p>
           <figure class="figure">
-            <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-light.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
-            <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-dark.webp" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-light.webp" srcset="/assets/bug-manager-burn-light-480.webp 480w, /assets/bug-manager-burn-light-720.webp 720w, /assets/bug-manager-burn-light-1080.webp 1080w, /assets/bug-manager-burn-light.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-dark.webp" srcset="/assets/bug-manager-burn-dark-480.webp 480w, /assets/bug-manager-burn-dark-720.webp 720w, /assets/bug-manager-burn-dark-1080.webp 1080w, /assets/bug-manager-burn-dark.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
             <figcaption>The burn-down tab after a sprint: at the default capacity of 45 findings, fixing in ranked order removes about 57% of the total risk, compared with about 29% for the same number closed in no particular order.</figcaption>
           </figure>
           <div class="actions">

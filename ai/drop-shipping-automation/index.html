@@ -30,6 +30,7 @@
   <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)})()</script>
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/site.css?v=20260920" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
@@ -77,13 +78,20 @@
     ]
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE"></script>
+  <!-- Google tag (gtag.js): queued now, downloaded after the page has loaded so it never delays first paint -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-G52RNEDQYE');
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
+        document.head.appendChild(s);
+      }, 0);
+    });
   </script>
 </head>
 <body>
@@ -124,7 +132,7 @@
       </div>
 
       <figure class="figure board">
-        <img src="/assets/ai-dsa-workflow.webp" width="1088" height="1196" loading="lazy" alt="The Workflow page of Mission Control: seven lanes (concept, design, copy, routing, marketplace, storefront, growth), each owned by a named agent, beside queues for items needing review or waiting on the publisher or storefront agent, and a list of live products ready for marketing." />
+        <img src="/assets/ai-dsa-workflow.webp" srcset="/assets/ai-dsa-workflow-480.webp 480w, /assets/ai-dsa-workflow-720.webp 720w, /assets/ai-dsa-workflow.webp 1088w" sizes="(min-width: 72rem) 65rem, 100vw" width="1088" height="1196" loading="lazy" alt="The Workflow page of Mission Control: seven lanes (concept, design, copy, routing, marketplace, storefront, growth), each owned by a named agent, beside queues for items needing review or waiting on the publisher or storefront agent, and a list of live products ready for marketing." />
         <figcaption>The workflow board in Mission Control: seven lanes, each owned by one agent, and the queues where work waits.</figcaption>
       </figure>
 
@@ -191,7 +199,7 @@
           <h2 id="live-h">The result is a real storefront.</h2>
           <p>The pipeline ends in public places: listings on Etsy and matching pages on the shop’s own website, kept in step by the storefront agent.</p>
           <figure class="figure">
-            <img src="/assets/ai-dsa-shop.webp" width="1440" height="1000" loading="lazy" alt="The Velvet Static website home page, with a large headline, a call to shop on Etsy, and a collage of products including a cosmetic bag, a tote, a journal, and a glass can." />
+            <img src="/assets/ai-dsa-shop.webp" srcset="/assets/ai-dsa-shop-480.webp 480w, /assets/ai-dsa-shop-720.webp 720w, /assets/ai-dsa-shop-1080.webp 1080w, /assets/ai-dsa-shop.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="1000" loading="lazy" alt="The Velvet Static website home page, with a large headline, a call to shop on Etsy, and a collage of products including a cosmetic bag, a tote, a journal, and a glass can." />
             <figcaption>The shop’s website, which the storefront agent keeps in step with the live catalog.</figcaption>
           </figure>
           <div class="actions">
@@ -207,7 +215,7 @@
           <h2 id="control-h">Seeing the whole system at a glance.</h2>
           <p>Mission Control is a static dashboard rebuilt from the repository’s state, memory, assets, documents, events, and scheduled jobs. It shows the queue counts, the agent roster, the workflow board, the asset catalog and mockup packs, and an event timeline. Its memory ledger hides secret details by design, so the dashboard can be shared without exposing credentials.</p>
           <figure class="figure">
-            <img src="/assets/ai-dsa-agents.webp" width="1088" height="1140" loading="lazy" alt="The Agents page of Mission Control, showing role cards for Beatrice, Olive, Patty, Grace, Connie, and Phyllis, each with a job title, a description, skill tags, and lists of inputs and outputs." />
+            <img src="/assets/ai-dsa-agents.webp" srcset="/assets/ai-dsa-agents-480.webp 480w, /assets/ai-dsa-agents-720.webp 720w, /assets/ai-dsa-agents.webp 1088w" sizes="(min-width: 72rem) 65rem, 100vw" width="1088" height="1140" loading="lazy" alt="The Agents page of Mission Control, showing role cards for Beatrice, Olive, Patty, Grace, Connie, and Phyllis, each with a job title, a description, skill tags, and lists of inputs and outputs." />
             <figcaption>The agent roster in Mission Control: who owns what, what goes in, and what should come out.</figcaption>
           </figure>
         </div>

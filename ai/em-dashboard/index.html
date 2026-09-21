@@ -30,6 +30,7 @@
   <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)})()</script>
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/site.css?v=20260920" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
@@ -77,13 +78,20 @@
     ]
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE"></script>
+  <!-- Google tag (gtag.js): queued now, downloaded after the page has loaded so it never delays first paint -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-G52RNEDQYE');
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
+        document.head.appendChild(s);
+      }, 0);
+    });
   </script>
 </head>
 <body>
@@ -123,8 +131,8 @@
       </div>
 
       <figure class="figure board">
-        <a class="zoom shot-light" href="/assets/em-dashboard-board-light.webp" target="_blank" rel="noopener" aria-label="Open the full-size dashboard screenshot"><img src="/assets/em-dashboard-board-light.webp" width="1440" height="1552" loading="lazy" alt="Sprint Ledger on day 6 of a simulated sprint. A team-health strip shows 3 Red, 4 Amber, and 3 Green; a progress bar shows 50 of 85 points complete; a burndown chart tracks the sprint; below, one lane per person shows points completed against expected pace, open pull requests, and a status." /></a>
-        <a class="zoom shot-dark" href="/assets/em-dashboard-board-dark.webp" target="_blank" rel="noopener" aria-label="Open the full-size dashboard screenshot"><img src="/assets/em-dashboard-board-dark.webp" width="1440" height="1552" loading="lazy" alt="Sprint Ledger in its dark theme on day 6 of a simulated sprint. A team-health strip shows 3 Red, 4 Amber, and 3 Green; a progress bar shows 50 of 85 points complete; a burndown chart tracks the sprint; below, one lane per person shows points completed against expected pace, open pull requests, and a status." /></a>
+        <a class="zoom shot-light" href="/assets/em-dashboard-board-light.webp" target="_blank" rel="noopener" aria-label="Open the full-size dashboard screenshot"><img src="/assets/em-dashboard-board-light.webp" srcset="/assets/em-dashboard-board-light-480.webp 480w, /assets/em-dashboard-board-light-720.webp 720w, /assets/em-dashboard-board-light-1080.webp 1080w, /assets/em-dashboard-board-light.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="1552" loading="lazy" alt="Sprint Ledger on day 6 of a simulated sprint. A team-health strip shows 3 Red, 4 Amber, and 3 Green; a progress bar shows 50 of 85 points complete; a burndown chart tracks the sprint; below, one lane per person shows points completed against expected pace, open pull requests, and a status." /></a>
+        <a class="zoom shot-dark" href="/assets/em-dashboard-board-dark.webp" target="_blank" rel="noopener" aria-label="Open the full-size dashboard screenshot"><img src="/assets/em-dashboard-board-dark.webp" srcset="/assets/em-dashboard-board-dark-480.webp 480w, /assets/em-dashboard-board-dark-720.webp 720w, /assets/em-dashboard-board-dark-1080.webp 1080w, /assets/em-dashboard-board-dark.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="1552" loading="lazy" alt="Sprint Ledger in its dark theme on day 6 of a simulated sprint. A team-health strip shows 3 Red, 4 Amber, and 3 Green; a progress bar shows 50 of 85 points complete; a burndown chart tracks the sprint; below, one lane per person shows points completed against expected pace, open pull requests, and a status." /></a>
         <figcaption>The board on day 6 of a simulated two-week sprint. Team health, progress, and burndown sit above one lane per person.</figcaption>
       </figure>
 
