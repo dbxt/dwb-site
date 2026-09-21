@@ -118,13 +118,27 @@
       <div class="page-head">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Homelab</li></ol></nav>
         <h1>Homelab</h1>
-        <p class="lede">My homelab runs on two mini PCs. The first runs Proxmox VE and hosts three virtual machines, and each one has its own page with installation and configuration notes. The second hosts my AI agents.</p>
-        <div class="note">
-          <p><b>In progress.</b> This section is being built out one page at a time, starting with the basics.</p>
-        </div>
+        <p class="lede">My homelab runs on two mini PCs. The first runs Proxmox VE and hosts three virtual machines: a firewall, a Docker host for containers, and Home Assistant for home automation. The second hosts my AI agents. Each machine has its own page with installation and configuration notes.</p>
       </div>
 
-      <section class="row first" aria-labelledby="layout">
+            <section class="row first" aria-labelledby="glance">
+        <div class="label">At a glance</div>
+        <div class="body wide">
+          <h2 id="glance">The whole lab in one table.</h2>
+          <div class="spec-wrap">
+            <dl class="spec">
+              <div><dt>Main host</dt><dd>A mini PC with an Intel N100 (4 cores), 16 GB of memory, and a 512 GB SSD</dd></div>
+              <div><dt>Hypervisor</dt><dd>Proxmox VE 8.4, a single node with no subscription</dd></div>
+              <div><dt>Virtual machines</dt><dd>Three, all starting on their own at boot: OPNsense, Docker Host, and Home Assistant OS</dd></div>
+              <div><dt>Containers</dt><dd>19 running on the Docker host, in three Docker Compose stacks plus Portainer</dd></div>
+              <div><dt>Network</dt><dd>Two Ethernet ports on separate bridges, with OPNsense as the only path between them</dd></div>
+              <div><dt>Second mini PC</dt><dd>Hosts my AI agents, Hermes and OpenClaw, which I reach over Telegram</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="layout">
         <div class="label">How it fits together</div>
         <div class="body wide">
           <h2 id="layout">Proxmox: one mini PC, three virtual machines.</h2>
@@ -135,6 +149,17 @@
               <div class="vms"><a class="vm" href="/homelab/proxmox/opnsense/"><b>OPNsense</b><span>Virtual machine</span></a><a class="vm" href="/homelab/proxmox/docker-host/"><b>Docker Host</b><span>Virtual machine</span></a><a class="vm" href="/homelab/proxmox/home-assistant/"><b>Home Assistant OS</b><span>Virtual machine</span></a></div>
             </div>
           </div>
+          <p style="margin-top: 1.5rem">Each physical Ethernet port has its own Linux bridge in Proxmox, and the virtual machines plug into the bridges rather than into the ports. OPNsense is the only guest on both bridges, so it sits between the two networks and all traffic between them has to pass through it. Every guest starts on its own after a power cut, so the lab comes back without anything to do by hand.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="runs">
+        <div class="label">What runs where</div>
+        <div class="body">
+          <h2 id="runs">One job per virtual machine.</h2>
+          <p><b><a href="/homelab/proxmox/opnsense/">OPNsense</a>.</b> The firewall and router, running OPNsense 26.7 in a virtual machine with 4 virtual CPUs and 2 GiB of memory. It sits between the two Ethernet ports. Its page has step-by-step guides for static IP mappings, a WireGuard VPN, Unbound ad blocking, and a Caddy reverse proxy.</p>
+          <p><b><a href="/homelab/proxmox/docker-host/">Docker Host</a>.</b> Manjaro Linux running Docker 29.7, managed with Portainer. Nineteen containers run here, grouped into Compose stacks by purpose. The infrastructure stack holds the Homepage dashboard, Uptime Kuma monitoring, and Speedtest Tracker. The organizer stack holds Karakeep bookmarks with full-text search, Vikunja tasks, Radicale calendar and contacts, and a PostgreSQL database. A media stack is defined but nothing runs in it yet. The dashboard is also the subject of a <a href="/ai/homepage/">case study on configuring it with AI</a>.</p>
+          <p><b><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a>.</b> Home Assistant OS 13.1 in a virtual machine with 2 virtual CPUs and 4 GiB of memory. It needs UEFI firmware, so its virtual machine is built a little differently from the other two, and one USB device on the host is passed through to it.</p>
         </div>
       </section>
 
@@ -144,6 +169,14 @@
           <h2 id="agents">A dedicated machine for agents.</h2>
           <p>A second mini PC hosts my AI agents, Hermes and OpenClaw, separate from the Proxmox host. Both are connected to Telegram, so I can message them and receive their updates from my phone.</p>
           <!-- TODO(homelab): describe what Hermes and OpenClaw each do, plus the hardware and operating system of this second machine. -->
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="limits">
+        <div class="label">Limits</div>
+        <div class="body">
+          <h2 id="limits">Where the lab is tight.</h2>
+          <p>Memory is the tight spot. The three guests are given 14 GiB of the host’s 15.4 GiB, so adding a fourth means shrinking one. The Docker host is the obvious candidate: its containers use only about 1.6 GiB of the 8 GiB it has. Storage is a single SSD with no redundancy, which is fine for a homelab as long as the important data is backed up somewhere else. The <a href="/homelab/proxmox/">Proxmox page</a> covers both in more detail.</p>
         </div>
       </section>
 
@@ -159,7 +192,7 @@
           </ol>
         </div>
       </section>
-      <!-- TODO(homelab): add an overview in your own words: why you built the lab, what you use it for, the hardware (mini PC model, RAM, storage), the network layout, and a list of the services you run. Avoid publishing internal IP addresses, hostnames, or firewall rules. -->
+      <!-- TODO(homelab): add, in your own words, why you built the lab and what you use it for. Avoid publishing internal IP addresses, hostnames, or family details. -->
 
     </div>
   </main>
