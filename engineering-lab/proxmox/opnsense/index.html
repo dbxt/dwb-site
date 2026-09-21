@@ -4,25 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OPNsense | David Wayne Baxter</title>
-  <meta name="description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s homelab. Installation and configuration notes." />
+  <meta name="description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s engineering lab. Installation and configuration notes." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/opnsense/" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/engineering-lab/proxmox/opnsense/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="OPNsense | David Wayne Baxter" />
-  <meta property="og:description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s homelab. Installation and configuration notes." />
-  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/opnsense/" />
+  <meta property="og:description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s engineering lab. Installation and configuration notes." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/engineering-lab/proxmox/opnsense/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta property="og:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="OPNsense | David Wayne Baxter" />
-  <meta name="twitter:description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s homelab. Installation and configuration notes." />
-  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
-  <meta name="twitter:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta name="twitter:description" content="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s engineering lab. Installation and configuration notes." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
+  <meta name="twitter:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -31,7 +31,7 @@
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/site.css?v=20260920" />
+  <link rel="stylesheet" href="/assets/site.css?v=20260921" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
   {
@@ -49,20 +49,20 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Homelab",
-            "item": "https://davidwaynebaxter.com/homelab/"
+            "name": "Engineering Lab",
+            "item": "https://davidwaynebaxter.com/engineering-lab/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Proxmox",
-            "item": "https://davidwaynebaxter.com/homelab/proxmox/"
+            "item": "https://davidwaynebaxter.com/engineering-lab/proxmox/"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "OPNsense",
-            "item": "https://davidwaynebaxter.com/homelab/proxmox/opnsense/"
+            "item": "https://davidwaynebaxter.com/engineering-lab/proxmox/opnsense/"
           }
         ]
       }
@@ -113,7 +113,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="/experience/">Experience</a>
         <a href="/ai/">AI Work</a>
-        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/engineering-lab/" aria-current="true">Engineering Lab</a>
         <a href="/contact/">Contact</a>
         <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
         <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -128,9 +128,9 @@
     <div class="wrap">
 
       <div class="page-head">
-        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li><a href="/homelab/proxmox/">Proxmox</a></li><li aria-current="page">OPNsense</li></ol></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/engineering-lab/">Engineering Lab</a></li><li><a href="/engineering-lab/proxmox/">Proxmox</a></li><li aria-current="page">OPNsense</li></ol></nav>
         <h1>OPNsense</h1>
-        <p class="lede">OPNsense is an open-source firewall and routing platform. In my homelab it runs as a virtual machine on Proxmox.</p>
+        <p class="lede">OPNsense is an open-source firewall and routing platform. In my lab it runs as a virtual machine on Proxmox.</p>
         <div class="note">
           <p><b>About the examples.</b> The addresses, hostnames, and keys in these guides are examples. Replace them with values for your own network. Menu paths match OPNsense 26.7.</p>
         </div>
@@ -161,7 +161,7 @@
           <div><dt>Guides</dt><dd>Static IP mapping, WireGuard VPN, Unbound ad blocking, Caddy reverse proxy</dd></div>
         </dl>
       </div>
-      <!-- TODO(homelab): add your OPNsense first-boot choices you want to record (file system, wizard answers), described without addresses. -->
+      <!-- TODO(lab): add your OPNsense first-boot choices you want to record (file system, wizard answers), described without addresses. -->
 
       <section class="row first" id="vm-setup" aria-labelledby="vmsetup-h">
         <div class="label">VM setup</div>
@@ -364,16 +364,16 @@ $ dig +short example.com @192.168.10.1        # allowed: a normal address</code>
           </ul>
         </div>
       </section>
-      <!-- TODO(homelab): add screenshots of the key screens for each guide (crop or blur anything that shows real addresses, hostnames, or keys). -->
+      <!-- TODO(lab): add screenshots of the key screens for each guide (crop or blur anything that shows real addresses, hostnames, or keys). -->
 
       <section class="row" aria-labelledby="others">
         <div class="label">Related pages</div>
         <div class="body">
           <h2 id="others">The rest of the lab.</h2>
           <ol class="log">
-            <li><span class="k"><a href="/homelab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
           </ol>
         </div>
       </section>
@@ -384,7 +384,7 @@ $ dig +short example.com @192.168.10.1        # allowed: a normal address</code>
   <footer class="site-footer">
     <div class="wrap">
       <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
-      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/engineering-lab/">Engineering Lab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
     </div>
   </footer>
 </body>

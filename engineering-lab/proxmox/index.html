@@ -4,25 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Proxmox | David Wayne Baxter</title>
-  <meta name="description" content="How David Wayne Baxter’s homelab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
+  <meta name="description" content="How David Wayne Baxter’s engineering lab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/engineering-lab/proxmox/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Proxmox | David Wayne Baxter" />
-  <meta property="og:description" content="How David Wayne Baxter’s homelab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
-  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/" />
+  <meta property="og:description" content="How David Wayne Baxter’s engineering lab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/engineering-lab/proxmox/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta property="og:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Proxmox | David Wayne Baxter" />
-  <meta name="twitter:description" content="How David Wayne Baxter’s homelab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
-  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
-  <meta name="twitter:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta name="twitter:description" content="How David Wayne Baxter’s engineering lab uses Proxmox VE on a mini PC to host three virtual machines: OPNsense, a Docker host, and Home Assistant OS." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
+  <meta name="twitter:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -31,7 +31,7 @@
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/site.css?v=20260920" />
+  <link rel="stylesheet" href="/assets/site.css?v=20260921" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
   {
@@ -49,14 +49,14 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Homelab",
-            "item": "https://davidwaynebaxter.com/homelab/"
+            "name": "Engineering Lab",
+            "item": "https://davidwaynebaxter.com/engineering-lab/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Proxmox",
-            "item": "https://davidwaynebaxter.com/homelab/proxmox/"
+            "item": "https://davidwaynebaxter.com/engineering-lab/proxmox/"
           }
         ]
       }
@@ -107,7 +107,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="/experience/">Experience</a>
         <a href="/ai/">AI Work</a>
-        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/engineering-lab/" aria-current="true">Engineering Lab</a>
         <a href="/contact/">Contact</a>
         <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
         <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -122,9 +122,9 @@
     <div class="wrap">
 
       <div class="page-head">
-        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li aria-current="page">Proxmox</li></ol></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/engineering-lab/">Engineering Lab</a></li><li aria-current="page">Proxmox</li></ol></nav>
         <h1>Proxmox</h1>
-        <p class="lede">Proxmox VE is the hypervisor at the base of my homelab. It runs on a mini PC and hosts three virtual machines: OPNsense, a Docker host, and Home Assistant OS.</p>
+        <p class="lede">Proxmox VE is the hypervisor at the base of my lab. It runs on a mini PC and hosts three virtual machines: OPNsense, a Docker host, and Home Assistant OS.</p>
         <div class="note">
           <p><b>About this page.</b> The hardware and settings below were read from the running system. Addresses, MAC addresses, and serial numbers are left out on purpose.</p>
         </div>
@@ -143,7 +143,7 @@
 
       <div class="spec-wrap">
         <dl class="spec">
-          <div><dt>Role</dt><dd>Hypervisor for the homelab</dd></div>
+          <div><dt>Role</dt><dd>Hypervisor for the lab</dd></div>
           <div><dt>Version</dt><dd>Proxmox VE 8.4, on Debian 12 with the Proxmox 6.8 kernel</dd></div>
           <div><dt>Cluster</dt><dd>Single node</dd></div>
           <div><dt>Runs on</dt><dd>A mini PC</dd></div>
@@ -155,7 +155,7 @@
           <div><dt>License</dt><dd>No subscription; the no-subscription repository is used</dd></div>
         </dl>
       </div>
-      <!-- TODO(homelab): add the mini PC's make and model to the spec sheet above. -->
+      <!-- TODO(lab): add the mini PC's make and model to the spec sheet above. -->
 
       <section class="row first" id="resources" aria-labelledby="res-h">
         <div class="label">Resources</div>
@@ -166,9 +166,9 @@
             <table class="grid">
               <thead><tr><th>Virtual machine</th><th class="num">ID</th><th class="num">vCPUs</th><th class="num">Memory</th><th class="num">Disk</th></tr></thead>
               <tbody>
-                <tr><th scope="row"><a href="/homelab/proxmox/opnsense/">OPNsense</a></th><td class="num">100</td><td class="num">4</td><td class="num">2 GiB</td><td class="num">32 GiB</td></tr>
-                <tr><th scope="row"><a href="/homelab/proxmox/docker-host/">Docker Host</a></th><td class="num">101</td><td class="num">4</td><td class="num">8 GiB</td><td class="num">64 GiB</td></tr>
-                <tr><th scope="row"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></th><td class="num">102</td><td class="num">2</td><td class="num">4 GiB</td><td class="num">32 GiB</td></tr>
+                <tr><th scope="row"><a href="/engineering-lab/proxmox/opnsense/">OPNsense</a></th><td class="num">100</td><td class="num">4</td><td class="num">2 GiB</td><td class="num">32 GiB</td></tr>
+                <tr><th scope="row"><a href="/engineering-lab/proxmox/docker-host/">Docker Host</a></th><td class="num">101</td><td class="num">4</td><td class="num">8 GiB</td><td class="num">64 GiB</td></tr>
+                <tr><th scope="row"><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a></th><td class="num">102</td><td class="num">2</td><td class="num">4 GiB</td><td class="num">32 GiB</td></tr>
               </tbody>
               <tfoot><tr><th scope="row">Allocated</th><td class="num"></td><td class="num">10 of 4 cores</td><td class="num">14 of 15.4 GiB</td><td class="num">128 GiB</td></tr></tfoot>
             </table>
@@ -196,7 +196,7 @@
             </table>
           </div>
           <p>The virtual disks use the VirtIO SCSI single controller with a dedicated I/O thread per disk, and TRIM (discard) is enabled on the OPNsense and Home Assistant disks so that freed space returns to the thin pool.</p>
-          <p>There is one SSD and no redundancy. That is fine for a homelab as long as the important data is backed up somewhere else, which is covered under <a href="#improve">next steps</a>.</p>
+          <p>There is one SSD and no redundancy. That is fine for a lab like this as long as the important data is backed up somewhere else, which is covered under <a href="#improve">next steps</a>.</p>
         </div>
       </section>
 
@@ -266,7 +266,7 @@
             <li>Click <i>Add</i>, choose <i>No-Subscription</i>, and add it.</li>
             <li>Go back to <code class="path">Updates</code>, click <i>Refresh</i>, then <i>Upgrade</i>. Reboot afterward if the kernel changed.</li>
           </ol>
-          <p>The no-subscription repository is not intended for production systems, because its packages get less testing than the enterprise ones. For a homelab that trade is reasonable, and it is worth taking a snapshot or backup of the important guests before a large upgrade.</p>
+          <p>The no-subscription repository is not intended for production systems, because its packages get less testing than the enterprise ones. For a lab like this that trade is reasonable, and it is worth taking a snapshot or backup of the important guests before a large upgrade.</p>
         </div>
       </section>
 
@@ -274,7 +274,7 @@
         <div class="label">Next steps</div>
         <div class="body">
           <h2 id="imp-h">Where the setup could be stronger.</h2>
-          <!-- TODO(homelab): confirm or edit this list so it matches what you actually plan to do. These items come from reading the current configuration. -->
+          <!-- TODO(lab): confirm or edit this list so it matches what you actually plan to do. These items come from reading the current configuration. -->
           <ul class="plain">
             <li><b>Scheduled backups.</b> No backup job exists yet, and everything sits on one SSD, so a failed disk would lose every guest. A scheduled backup to a second disk or another machine is the first improvement.</li>
             <li><b>Memory headroom.</b> The guests are allocated 14 of about 15.4 GiB. The Docker host’s containers use about 1.6 GiB of its 8 GiB, so trimming that guest is the easiest way to make room for another one.</li>
@@ -288,9 +288,9 @@
         <div class="body">
           <h2 id="vms">Three guests, one page each.</h2>
           <ol class="log">
-            <li><span class="k"><a href="/homelab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
           </ol>
         </div>
       </section>
@@ -301,7 +301,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
-      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/engineering-lab/">Engineering Lab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
     </div>
   </footer>
 </body>

@@ -360,3 +360,11 @@ table.stackable td, table.stackable th { vertical-align: top; }
 .flow.five, .flow.six { grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 36rem) { .flow.five, .flow.six { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 62rem) { .flow.five { grid-template-columns: repeat(5, minmax(0, 1fr)); } .flow.six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---------- home: "what I build" and "team outcomes" cards ---------- */
+.build-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 40rem) { .build-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.build-card { display: grid; gap: 0.7rem; align-content: start; padding: 1.35rem 1.5rem; border: 1px solid var(--rule); border-radius: 2px; }
+.build-card h3 { margin: 0; }
+.build-card p { margin: 0; color: var(--muted); }
+.build-card .textlink { justify-self: start; margin-top: 0.15rem; }

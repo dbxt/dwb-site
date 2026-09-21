@@ -18,8 +18,8 @@ CARDS = {
     'bug-manager':  dict(kicker='AI Work · Case study', title='Agentic bug management', sub='A ranked list a team can burn down.', image='bug-manager-find-light.webp'),
     'sprint-ledger': dict(kicker='AI Work · Case study', title='Sprint Ledger', sub='An engineering-manager dashboard built with Claude.', image='em-dashboard-board-light.webp'),
     'drop-shipping': dict(kicker='AI Work · Case study', title='Drop shipping automation', sub='Nine AI agents, from request to live listing.', image='ai-dsa-workflow.webp'),
-    'homepage':     dict(kicker='AI Work · Case study', title='A private dashboard configured with AI', sub='Live cards for every service in the homelab.', image='ai-homepage-cards.webp'),
-    'homelab':      dict(kicker='Homelab', title='Homelab notes', sub='Proxmox, OPNsense, Docker and Home Assistant, documented.'),
+    'homepage':     dict(kicker='AI Work · Case study', title='A private dashboard configured with AI', sub='Live cards for every service in the lab.', image='ai-homepage-cards.webp'),
+    'engineering-lab': dict(kicker='Engineering Lab', title='Engineering Lab', sub='Proxmox, OPNsense, Docker and Home Assistant, documented.'),
 }
 
 def main():

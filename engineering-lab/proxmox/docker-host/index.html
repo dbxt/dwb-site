@@ -4,25 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Docker Host | David Wayne Baxter</title>
-  <meta name="description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
+  <meta name="description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s lab." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://davidwaynebaxter.com/homelab/proxmox/docker-host/" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/engineering-lab/proxmox/docker-host/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Docker Host | David Wayne Baxter" />
-  <meta property="og:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
-  <meta property="og:url" content="https://davidwaynebaxter.com/homelab/proxmox/docker-host/" />
+  <meta property="og:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s lab." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/engineering-lab/proxmox/docker-host/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta property="og:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Docker Host | David Wayne Baxter" />
-  <meta name="twitter:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s homelab." />
-  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-homelab.jpg" />
-  <meta name="twitter:image:alt" content="Homelab notes: Proxmox, OPNsense, Docker and Home Assistant" />
+  <meta name="twitter:description" content="The Docker host is a virtual machine on Proxmox that runs my containerized services. Installation and configuration notes from David Wayne Baxter’s lab." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
+  <meta name="twitter:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
@@ -31,7 +31,7 @@
   <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/site.css?v=20260920" />
+  <link rel="stylesheet" href="/assets/site.css?v=20260921" />
   <script src="/assets/theme.js" defer></script>
   <script type="application/ld+json">
   {
@@ -49,20 +49,20 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Homelab",
-            "item": "https://davidwaynebaxter.com/homelab/"
+            "name": "Engineering Lab",
+            "item": "https://davidwaynebaxter.com/engineering-lab/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Proxmox",
-            "item": "https://davidwaynebaxter.com/homelab/proxmox/"
+            "item": "https://davidwaynebaxter.com/engineering-lab/proxmox/"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "Docker Host",
-            "item": "https://davidwaynebaxter.com/homelab/proxmox/docker-host/"
+            "item": "https://davidwaynebaxter.com/engineering-lab/proxmox/docker-host/"
           }
         ]
       }
@@ -113,7 +113,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="/experience/">Experience</a>
         <a href="/ai/">AI Work</a>
-        <a href="/homelab/" aria-current="true">Homelab</a>
+        <a href="/engineering-lab/" aria-current="true">Engineering Lab</a>
         <a href="/contact/">Contact</a>
         <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
         <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -128,7 +128,7 @@
     <div class="wrap">
 
       <div class="page-head">
-        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/homelab/">Homelab</a></li><li><a href="/homelab/proxmox/">Proxmox</a></li><li aria-current="page">Docker Host</li></ol></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/engineering-lab/">Engineering Lab</a></li><li><a href="/engineering-lab/proxmox/">Proxmox</a></li><li aria-current="page">Docker Host</li></ol></nav>
         <h1>Docker Host</h1>
         <p class="lede">The Docker host is a virtual machine on Proxmox that runs my containerized services.</p>
         <div class="note">
@@ -168,7 +168,7 @@
           <h2 id="what-h">Nineteen containers, grouped by purpose.</h2>
           <p>Everything on this host is deployed and managed through Portainer. Services are grouped into numbered Docker Compose stacks by function, so related containers start, update, and stop together, and the numbering leaves room for new groups. Docker uses the overlay2 storage driver, and 17 volumes hold the persistent data.</p>
           <div class="scroll"><table class="grid"><thead><tr><th class="">Stack</th><th class="">What it contains</th><th class="num">Running</th></tr></thead><tbody><tr><th scope="row"><code>2000-infrastructure</code></th><td class="">A dashboard (<a href="/ai/homepage/">Homepage</a>), uptime monitoring (Uptime Kuma), and internet speed tracking (Speedtest Tracker)</td><td class="num">3</td></tr><tr><th scope="row"><code>3000-organizer</code></th><td class="">Bookmarks with full-text search (Karakeep, Meilisearch, and a headless browser for page capture), tasks (Vikunja), calendar and contacts (Radicale), a PostgreSQL database, and a few other personal services</td><td class="num">8</td></tr><tr><th scope="row"><code>4000-entertainment</code></th><td class="">Defined for media services, with nothing running at the moment</td><td class="num">0</td></tr><tr><th scope="row">Helper containers</th><td class="">Small containers that feed live widgets to the dashboard: host metrics (Glances), image update checks (What’s Up Docker), and status feeds from other systems in the lab. They run outside a stack.</td><td class="num">7</td></tr><tr><th scope="row"><code>opt</code></th><td class="">Portainer itself</td><td class="num">1</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td class=""></td><td class="num">19</td></tr></tfoot></table></div>
-          <!-- TODO(homelab): add anything you want to say about how the stack files are backed up, where the volumes live, or which of these services are reachable from the internet, described without hostnames or addresses. -->
+          <!-- TODO(lab): add anything you want to say about how the stack files are backed up, where the volumes live, or which of these services are reachable from the internet, described without hostnames or addresses. -->
         </div>
       </section>
 
@@ -253,7 +253,7 @@ volumes:
 <pre><code>$ docker compose up -d
 $ curl http://192.168.10.20:8080</code></pre>
           <p>The same address and port are what you enter as the upstream in the Caddy handler (OPNsense Guide 4), which puts the service behind a trusted HTTPS hostname. <code>restart: unless-stopped</code> brings the container back after a reboot.</p>
-          <!-- TODO(homelab): describe how you organise your real stacks (folders, Compose files, environment files, backups of volumes) without listing internal service names or addresses. -->
+          <!-- TODO(lab): describe how you organise your real stacks (folders, Compose files, environment files, backups of volumes) without listing internal service names or addresses. -->
         </div>
       </section>
 
@@ -268,7 +268,7 @@ $ curl http://192.168.10.20:8080</code></pre>
             <li>Restart the VM, then confirm the guest sees it with <code>lsusb</code>.</li>
             <li>To give a container access, pass the device node through in Compose with a <code>devices:</code> entry.</li>
           </ol>
-          <!-- TODO(homelab): say what the device is and which container uses it (for example a radio or storage adapter), without publishing the device's identifiers. -->
+          <!-- TODO(lab): say what the device is and which container uses it (for example a radio or storage adapter), without publishing the device's identifiers. -->
         </div>
       </section>
 
@@ -294,9 +294,9 @@ $ curl http://192.168.10.20:8080</code></pre>
         <div class="body">
           <h2 id="others">The rest of the lab.</h2>
           <ol class="log">
-            <li><span class="k"><a href="/homelab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
-            <li><span class="k"><a href="/homelab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/">Proxmox</a></span><span>The hypervisor that hosts this virtual machine.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
+            <li><span class="k"><a href="/engineering-lab/proxmox/home-assistant/">Home Assistant OS</a></span><span>The appliance operating system for Home Assistant.</span></li>
           </ol>
         </div>
       </section>
@@ -307,7 +307,7 @@ $ curl http://192.168.10.20:8080</code></pre>
   <footer class="site-footer">
     <div class="wrap">
       <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
-      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/homelab/">Homelab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/engineering-lab/">Engineering Lab</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
     </div>
   </footer>
 </body>
