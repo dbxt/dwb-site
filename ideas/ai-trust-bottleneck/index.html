@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter</title>
+  <meta name="description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter" />
+  <meta property="og:description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-ai-trust.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Three hourglasses with yellow, red and green sand running side by side" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter" />
+  <meta name="twitter:description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-ai-trust.jpg" />
+  <meta name="twitter:image:alt" content="Three hourglasses with yellow, red and green sand running side by side" />
+  <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#ffffff" />
+  <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t);d.className+=" js"})()</script>
+  <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/site.css?v=20260921e" />
+  <script src="/assets/theme.js?v=20260921c" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Ideas", "item": "https://davidwaynebaxter.com/ideas/" },
+          { "@type": "ListItem", "position": 3, "name": "AI and trust", "item": "https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "AI didn’t make us faster. Trust is why.",
+        "description": "AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-ai-trust.jpg",
+        "url": "https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-09-24",
+        "dateModified": "2026-09-24"
+      }
+    ]
+  }
+  </script>
+  <!-- Privacy-friendly analytics by Plausible (self-hosted) -->
+  <script async src="https://stats.davidwaynebaxter.net/js/pa-iYwXIyg4oiHZHdkaSnwFi.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+  <!-- Google tag (gtag.js): calls are queued now; the library itself is fetched only after the page has loaded and
+       painted its largest content (or on first interaction, when the tab is hidden, or after 4 s), so it never competes with LCP -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G52RNEDQYE');
+    (function () {
+      var injected = false, loaded = document.readyState === 'complete', painted = false;
+      function inject() {
+        if (injected) return;
+        injected = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
+        document.head.appendChild(s);
+        var v = document.createElement('script');
+        v.async = true;
+        v.src = '/assets/vitals.js?v=1';
+        document.head.appendChild(v);
+      }
+      function ready() { if (loaded && painted) setTimeout(inject, 0); }
+      window.addEventListener('load', function () { loaded = true; ready(); });
+      try {
+        new PerformanceObserver(function (list, obs) { obs.disconnect(); painted = true; ready(); })
+          .observe({ type: 'largest-contentful-paint', buffered: true });
+      } catch (e) { painted = true; }
+      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) {
+        addEventListener(t, inject, { once: true, passive: true });
+      });
+      document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') inject(); });
+      setTimeout(inject, 4000);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <a href="/experience/">Experience</a>
+        <a href="/ai/">AI Work</a>
+        <a href="/lab/">Engineering Lab</a>
+        <a href="/ideas/" aria-current="true">Ideas</a>
+        <a href="/fun/">Fun</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="article-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/ideas/">Ideas</a></li><li aria-current="page">AI and trust</li></ol></nav>
+        <h1>AI didn’t make us faster. Trust is why.</h1>
+        <p class="lede">At my last company, AI was part of every stage of how we built software. Our feature output barely moved. The tools were not the problem.</p>
+        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-24">September 24, 2026</time> · 5 min read</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/ideas-ai-trust-hero.webp" srcset="/assets/ideas-ai-trust-hero-480.webp 480w, /assets/ideas-ai-trust-hero-720.webp 720w, /assets/ideas-ai-trust-hero.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="Three hourglasses with yellow, red and green sand running side by side" />
+      </figure>
+
+    <article class="essay">
+      <p>Enthusiasm for AI spread through the company like wildfire. Every chart, slide deck, dashboard and report carried the aroma of AI generation. Developers used it to write code, check code and even deploy code. AI had reached nearly every stage of how we built software.</p>
+      <p>With that much help, we should have been shipping features at several times our old pace. We weren’t. The gain in feature delivery was small enough to argue about, which raised an obvious question: why?</p>
+      <p>The answer was not the tools. It was trust.</p>
+
+      <h2 id="pipeline">Follow a feature from idea to production.</h2>
+      <p>To see where the time went, follow one feature through the process. AI shows up at every stage. So does a person, checking its work.</p>
+
+      <div class="habit">
+        <h3>Requirements.</h3>
+        <p>People write the requirements with AI’s help. Then people read the draft to make sure it makes sense and says what the business actually wants. AI makes the first draft faster. The reading takes as long as it always did.</p>
+      </div>
+      <div class="habit">
+        <h3>System design.</h3>
+        <p>We waver on letting AI design the system, so that stays with people. Resident experts make sure the design fits the rest of our infrastructure and follows design policies that AI may not know exist. Then we meet to review the diagrams and the proposed structure. Those meetings run without AI, and they take time.</p>
+      </div>
+      <div class="habit">
+        <h3>Ticket breakdown.</h3>
+        <p>Senior engineers take the requirements and break them into tickets a person can pick up. The tickets are written for people, because people are still the ones assigned to them.</p>
+      </div>
+      <div class="habit">
+        <h3>Code, review and tests.</h3>
+        <p>An engineer writes the feature, or has AI write it and then reviews the result. AI reviews the code, writes the tests, and works through compliance, security and style. This is where AI delivers the most speed and the most stability. It is the one stage that got dramatically faster.</p>
+      </div>
+      <div class="habit">
+        <h3>Validation.</h3>
+        <p>After the deploy, people confirm that the feature exists and works as expected. That takes time too.</p>
+      </div>
+
+      <blockquote class="pull"><p>AI made one stage faster. Every other stage still waits on a person.</p></blockquote>
+
+      <h2 id="amdahl">Speed landed where the time wasn’t.</h2>
+      <p>Engineers know this problem as Amdahl’s law: the speedup of a whole system is limited by the part you did not speed up. If writing code is a quarter of the time between an idea and a working feature, making it four times faster saves less than a fifth of the total. Make it infinitely fast and the feature still spends three quarters of its life in the other stages.</p>
+      <p>We pointed the most powerful tool we had at the stage that was already the fastest. The time was never in typing code. It was in the checkpoints, and every checkpoint on that list has a person standing at it.</p>
+
+      <h2 id="trust">Trust is the real constraint.</h2>
+      <p>Those people are not there out of habit. Each checkpoint exists because we do not yet trust AI with that decision, and for now that is reasonable.</p>
+      <p>A senior engineer or product manager carries years of systems knowledge, training and onboarding: why a service is shaped the way it is, which policy a design would break, what went wrong the last time someone tried this. AI has little of that context, and without it, expecting AI to do those jobs is naive. Without experience, proof and validation, there is also no basis yet for relying on it to do them at least as well as a person.</p>
+      <p>We would not give a new senior hire design authority on day one either. We would watch their work, check it, and widen their scope as they proved themselves. In <a class="textlink" href="/ideas/ai-and-engineering-leadership/">my last essay</a> I argued for keeping a person at the decision points, and expected the pushback that people slow the system down. This is that slowdown, seen from the inside. The answer is not to remove the people. It is to earn the trust that lets them step back.</p>
+
+      <blockquote class="pull"><p>The limit is not how fast AI can work. It is how fast we can trust it.</p></blockquote>
+
+      <h2 id="earn">How a team earns it, one stage at a time.</h2>
+      <p>Right now AI is an assistant that takes on the tedious and undesirable work. It will not move beyond that because someone declares it trusted. It will move the way a new engineer does: deliberately, one stage at a time, on evidence. This is where I would start.</p>
+
+      <h3>Measure every checkpoint.</h3>
+      <p>Track how often a person changes the AI’s output at each stage, and how much. If reviewers almost never touch AI-drafted requirements, that review can get lighter. If they rewrite every design, that checkpoint is doing its job. Either way, the decision rests on data instead of a feeling.</p>
+      <h3>Write down what your senior engineers know.</h3>
+      <p>Much of the gap is context. Architecture decisions, infrastructure constraints and design policies often live only in people’s heads. Written down where AI can read them, they close part of the gap that keeps design with people. It is the same habit as <a class="textlink" href="/ideas/ai-and-engineering-leadership/#habits">writing an agent’s role down</a>.</p>
+      <h3>Turn manual validation into automated checks.</h3>
+      <p>Every contract test or synthetic check in production that replaces a person clicking through a feature does two things. It saves time on every release, and it builds the track record that trust depends on.</p>
+      <h3>Grow AI’s scope like a new hire’s.</h3>
+      <p>At each stage, move people from author to reviewer, and then from reviewer to an auditor who samples the work. Widen the scope where the evidence supports it, and pull it back where it does not.</p>
+
+      <p>We’ll get there. It takes time, trust and experimentation, and trust is something a team can build on purpose.</p>
+
+      <h2 id="conversation">Where I expect the argument.</h2>
+      <p>Some teams will say they have already removed these checkpoints and ship faster for it. I would like to hear how, and what it took for them to trust the result.</p>
+
+      <div class="ask">
+        <p class="mono">Over to you</p>
+        <ul class="plain">
+          <li>Which stage of your pipeline has AI actually made shorter?</li>
+          <li>What would it take for you to remove one human checkpoint?</li>
+        </ul>
+        <div class="actions flush">
+          <a class="button" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">Continue the conversation on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/lab/">Engineering Lab</a> · <a href="/ideas/">Ideas</a> · <a href="/fun/">Fun</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+    </div>
+  </footer>
+</body>
+</html>
