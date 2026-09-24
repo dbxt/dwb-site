@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter</title>
-  <meta name="description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta name="description" content="AI sped up coding without speeding up the system around it. The time lives in the human checkpoints, and the AI trust bottleneck is what keeps people there." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter" />
-  <meta property="og:description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta property="og:description" content="AI sped up coding without speeding up the system around it. The time lives in the human checkpoints, and the AI trust bottleneck is what keeps people there." />
   <meta property="og:url" content="https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Three hourglasses with yellow, red and green sand running side by side" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Why AI Didn’t Make Us Faster | Ideas | David Wayne Baxter" />
-  <meta name="twitter:description" content="AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there." />
+  <meta name="twitter:description" content="AI sped up coding without speeding up the system around it. The time lives in the human checkpoints, and the AI trust bottleneck is what keeps people there." />
   <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-ai-trust.jpg" />
   <meta name="twitter:image:alt" content="Three hourglasses with yellow, red and green sand running side by side" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
@@ -48,7 +48,7 @@
       {
         "@type": "Article",
         "headline": "AI didn’t make us faster. Trust is why.",
-        "description": "AI sped up the one stage of software delivery that was never slow. The time lives in the human checkpoints, and trust is what keeps people there.",
+        "description": "AI sped up coding without speeding up the system around it. The time lives in the human checkpoints, and the AI trust bottleneck is what keeps people there.",
         "image": "https://davidwaynebaxter.com/assets/og/og-ai-trust.jpg",
         "url": "https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/",
         "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/ai-trust-bottleneck/",
@@ -129,8 +129,8 @@
       <div class="article-head">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/ideas/">Ideas</a></li><li aria-current="page">AI and trust</li></ol></nav>
         <h1>AI didn’t make us faster. Trust is why.</h1>
-        <p class="lede">At my last company, AI was part of every stage of how we built software. Our feature output barely moved. The tools were not the problem.</p>
-        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-24">September 24, 2026</time> · 5 min read</p>
+        <p class="lede">AI can do the work faster than an organization can learn to trust it with the decisions. That gap, not the model, sets the pace.</p>
+        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-24">September 24, 2026</time> · 6 min read</p>
       </div>
 
       <figure class="banner">
@@ -138,9 +138,10 @@
       </figure>
 
     <article class="essay">
-      <p>Enthusiasm for AI spread through the company like wildfire. Every chart, slide deck, dashboard and report carried the aroma of AI generation. Developers used it to write code, check code and even deploy code. AI had reached nearly every stage of how we built software.</p>
-      <p>With that much help, we should have been shipping features at several times our old pace. We weren’t. The gain in feature delivery was small enough to argue about, which raised an obvious question: why?</p>
-      <p>The answer was not the tools. It was trust.</p>
+      <p>At my last company, we put AI everywhere in how we built software. Requirements. Code. Reviews. Tests. Documentation.</p>
+      <p>And our feature delivery barely got faster.</p>
+      <p>That bothered me, because by almost every AI productivity story, we should have been flying. Eventually I realized we were optimizing the wrong thing. Coding wasn’t the bottleneck. Trust was.</p>
+      <p>It was not for lack of enthusiasm. AI spread through the company like wildfire. Every chart, slide deck, dashboard and report carried the aroma of AI generation, and developers used it to write code, check code and even deploy code.</p>
 
       <h2 id="pipeline">Follow a feature from idea to production.</h2>
       <p>To see where the time went, follow one feature through the process. AI shows up at every stage. So does a person, checking its work.</p>
@@ -170,31 +171,45 @@
 
       <h2 id="amdahl">Speed landed where the time wasn’t.</h2>
       <p>Engineers know this problem as Amdahl’s law: the speedup of a whole system is limited by the part you did not speed up. If writing code is a quarter of the time between an idea and a working feature, making it four times faster saves less than a fifth of the total. Make it infinitely fast and the feature still spends three quarters of its life in the other stages.</p>
-      <p>We pointed the most powerful tool we had at the stage that was already the fastest. The time was never in typing code. It was in the checkpoints, and every checkpoint on that list has a person standing at it.</p>
+      <p>We dramatically accelerated coding without accelerating the system around it. Most of the time was never in writing code. It was in the checkpoints, and every checkpoint on that list has a person standing at it.</p>
 
-      <h2 id="trust">Trust is the real constraint.</h2>
+      <blockquote class="pull"><p>A 10× engineer does not create a 10× delivery organization. Neither does a 10× AI coding assistant.</p></blockquote>
+
+      <p>The organization still moves at the speed of its architecture decisions, product decisions, security reviews, validation, coordination and trust.</p>
+
+      <h2 id="trust">The AI trust bottleneck.</h2>
       <p>Those people are not there out of habit. Each checkpoint exists because we do not yet trust AI with that decision, and for now that is reasonable.</p>
+      <p>I think of this as the <strong>AI trust bottleneck</strong>: AI can perform work faster than an organization can become comfortable delegating decisions to it.</p>
+      <p>Trust here does not mean confidence or enthusiasm. It means accumulated evidence that lets you safely reduce supervision. That is something a team can build, and something it can measure.</p>
       <p>A senior engineer or product manager carries years of systems knowledge, training and onboarding: why a service is shaped the way it is, which policy a design would break, what went wrong the last time someone tried this. AI has little of that context, and without it, expecting AI to do those jobs is naive. Without experience, proof and validation, there is also no basis yet for relying on it to do them at least as well as a person.</p>
       <p>We would not give a new senior hire design authority on day one either. We would watch their work, check it, and widen their scope as they proved themselves. In <a class="textlink" href="/ideas/ai-and-engineering-leadership/">my last essay</a> I argued for keeping a person at the decision points, and expected the pushback that people slow the system down. This is that slowdown, seen from the inside. The answer is not to remove the people. It is to earn the trust that lets them step back.</p>
 
-      <blockquote class="pull"><p>The limit is not how fast AI can work. It is how fast we can trust it.</p></blockquote>
-
       <h2 id="earn">How a team earns it, one stage at a time.</h2>
-      <p>Right now AI is an assistant that takes on the tedious and undesirable work. It will not move beyond that because someone declares it trusted. It will move the way a new engineer does: deliberately, one stage at a time, on evidence. This is where I would start.</p>
+      <p>Right now AI is an assistant that takes on the tedious and undesirable work. It will not move beyond that because someone declares it trusted. It will move the way a new engineer does: deliberately, one stage at a time, on evidence.</p>
+      <p>At each stage, the person’s role with AI should evolve along the same path:</p>
+
+      <ol class="log">
+        <li><span class="k">1 · Author</span><span>The person does the work, and AI assists.</span></li>
+        <li><span class="k">2 · Reviewer</span><span>AI does the work, and a person approves every piece before it moves on.</span></li>
+        <li><span class="k">3 · Auditor</span><span>AI’s work moves on by default, and a person checks a sample.</span></li>
+        <li><span class="k">4 · Exception handler</span><span>A person steps in only when a check fails or the AI flags that it is unsure.</span></li>
+      </ol>
+
+      <p>Moving a stage one step along that path is a decision, and it should rest on evidence. This is where I would start.</p>
 
       <h3>Measure every checkpoint.</h3>
-      <p>Track how often a person changes the AI’s output at each stage, and how much. If reviewers almost never touch AI-drafted requirements, that review can get lighter. If they rewrite every design, that checkpoint is doing its job. Either way, the decision rests on data instead of a feeling.</p>
+      <p>One metric I would start tracking is the <strong>human intervention rate</strong>: the share of AI output that a person materially changes at each stage. If AI drafts 100 requirements documents and people materially change 70 of them, the intervention rate is 70%. If six months later it is 15%, that is evidence that review can move from mandatory approval to sampling. If it stays high, the checkpoint is doing its job. Either way, the decision rests on data instead of a feeling.</p>
       <h3>Write down what your senior engineers know.</h3>
       <p>Much of the gap is context. Architecture decisions, infrastructure constraints and design policies often live only in people’s heads. Written down where AI can read them, they close part of the gap that keeps design with people. It is the same habit as <a class="textlink" href="/ideas/ai-and-engineering-leadership/#habits">writing an agent’s role down</a>.</p>
       <h3>Turn manual validation into automated checks.</h3>
       <p>Every contract test or synthetic check in production that replaces a person clicking through a feature does two things. It saves time on every release, and it builds the track record that trust depends on.</p>
       <h3>Grow AI’s scope like a new hire’s.</h3>
-      <p>At each stage, move people from author to reviewer, and then from reviewer to an auditor who samples the work. Widen the scope where the evidence supports it, and pull it back where it does not.</p>
+      <p>Move each stage one step along the path from author to exception handler when its intervention rate supports it, and back when it does not. Different stages will move at different speeds, and that is fine.</p>
 
-      <p>We’ll get there. It takes time, trust and experimentation, and trust is something a team can build on purpose.</p>
+      <h2 id="finish">Adoption isn’t finished at access.</h2>
+      <p>AI adoption is not finished when everyone has access to an AI tool. It is finished when we have accumulated enough evidence to safely remove work from the human path.</p>
 
-      <h2 id="conversation">Where I expect the argument.</h2>
-      <p>Some teams will say they have already removed these checkpoints and ship faster for it. I would like to hear how, and what it took for them to trust the result.</p>
+      <blockquote class="pull"><p>The next productivity breakthrough won’t come from AI writing code faster. It will come from humans needing to check less of what AI does.</p></blockquote>
 
       <div class="ask">
         <p class="mono">Over to you</p>
