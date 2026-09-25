@@ -11,6 +11,8 @@ jobs:
           fetch-depth: 0   # full history, so the sitemap script can read each page's last-modified date
       - name: Refresh sitemap lastmod dates
         run: python3 tools/sitemap-lastmod.py
+      - name: Refresh the home page's Latest list
+        run: python3 tools/latest.py
       # Only files this action uploaded earlier are ever deleted (tracked in .ftp-deploy-sync-state.json),
       # so other folders on the server, such as subdomain document roots, are left alone.
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
