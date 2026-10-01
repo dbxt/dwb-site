@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Engineering Lab | David Wayne Baxter</title>
-  <meta name="description" content="David Wayne Baxter’s engineering lab: a Proxmox mini PC running OPNsense, a Docker host and Home Assistant OS, plus a second mini PC hosting AI agents." />
+  <meta name="description" content="David Wayne Baxter’s engineering lab: Proxmox networking, Home Assistant, a dedicated Docker service host, AI tooling, monitoring, Git-backed stack management and restore-tested backups." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://davidwaynebaxter.com/lab/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Engineering Lab | David Wayne Baxter" />
-  <meta property="og:description" content="David Wayne Baxter’s engineering lab: a Proxmox mini PC running OPNsense, a Docker host and Home Assistant OS, plus a second mini PC hosting AI agents." />
+  <meta property="og:description" content="Proxmox networking, Home Assistant, a dedicated Docker service host, AI tooling, monitoring, Git-backed stack management and restore-tested backups." />
   <meta property="og:url" content="https://davidwaynebaxter.com/lab/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Engineering Lab | David Wayne Baxter" />
-  <meta name="twitter:description" content="David Wayne Baxter’s engineering lab: a Proxmox mini PC running OPNsense, a Docker host and Home Assistant OS, plus a second mini PC hosting AI agents." />
+  <meta name="twitter:description" content="Proxmox networking, Home Assistant, a dedicated Docker service host, AI tooling, monitoring, Git-backed stack management and restore-tested backups." />
   <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg" />
   <meta name="twitter:image:alt" content="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant" />
   <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
@@ -127,7 +127,7 @@
       <div class="page-head">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Engineering Lab</li></ol></nav>
         <h1>Engineering Lab</h1>
-        <p class="lede">My engineering lab runs on two mini PCs. The first runs Proxmox VE and hosts three virtual machines: a firewall, a Docker host for containers, and Home Assistant for home automation. The second hosts my AI agents. Each machine has its own page with installation and configuration notes.</p>
+        <p class="lede">My engineering lab is a small self-hosted platform for networking, home automation, personal services, media, documents, AI tooling, monitoring and recovery practice. The current platform uses Proxmox for the network and appliance layer, a dedicated Docker service host for application stacks, Git-backed configuration, Komodo for deployment, and Backrest/Restic backups with restore drills.</p>
       </div>
 
             <section class="row first" aria-labelledby="why">
@@ -141,15 +141,15 @@
       <section class="row" aria-labelledby="glance">
         <div class="label">At a glance</div>
         <div class="body wide">
-          <h2 id="glance">The whole lab in one table.</h2>
+          <h2 id="glance">The current lab in one table.</h2>
           <div class="spec-wrap">
             <dl class="spec">
-              <div><dt>Main host</dt><dd>A mini PC with an Intel N100 (4 cores), 16 GB of memory, and a 512 GB SSD</dd></div>
-              <div><dt>Hypervisor</dt><dd>Proxmox VE 8.4, a single node with no subscription</dd></div>
-              <div><dt>Virtual machines</dt><dd>Three, all starting on their own at boot: OPNsense, Docker Host, and Home Assistant OS</dd></div>
-              <div><dt>Containers</dt><dd>19 running on the Docker host, in three Docker Compose stacks plus Portainer</dd></div>
-              <div><dt>Network</dt><dd>Two Ethernet ports on separate bridges, with OPNsense as the only path between them</dd></div>
-              <div><dt>Second mini PC</dt><dd>Hosts my AI agents, Hermes and OpenClaw, which I reach over Telegram</dd></div>
+              <div><dt>Network and appliance layer</dt><dd>A Proxmox host running OPNsense and Home Assistant OS, with the firewall sitting between the network bridges</dd></div>
+              <div><dt>Service host</dt><dd>A dedicated Docker host for application stacks, dashboards, monitoring, organizer tools, media, photos, analytics and AI services</dd></div>
+              <div><dt>Deployment model</dt><dd>Docker Compose stacks managed from Git through Komodo, with stale manual stack copies archived after reconciliation</dd></div>
+              <div><dt>Observability</dt><dd>Homepage, Uptime Kuma, update checks, speed tests and small custom widgets for operational context</dd></div>
+              <div><dt>Recovery</dt><dd>Backrest and Restic cover the application state; a Vaultwarden restore drill verified files, database integrity and representative table counts</dd></div>
+              <div><dt>AI access</dt><dd>Hermes and OpenClaw agents reachable over Telegram, with supporting model routing and workflow services on the lab platform</dd></div>
             </dl>
           </div>
         </div>
@@ -173,9 +173,10 @@
       <section class="row" aria-labelledby="runs">
         <div class="label">What runs where</div>
         <div class="body">
-          <h2 id="runs">One job per virtual machine.</h2>
+          <h2 id="runs">The lab is now split by responsibility.</h2>
           <p><b><a href="/lab/proxmox/opnsense/">OPNsense</a>.</b> The firewall and router, running OPNsense 26.7 in a virtual machine with 4 virtual CPUs and 2 GiB of memory. It sits between the two Ethernet ports. Its page has step-by-step guides for static IP mappings, a WireGuard VPN, Unbound ad blocking, and a Caddy reverse proxy.</p>
-          <p><b><a href="/lab/proxmox/docker-host/">Docker Host</a>.</b> Manjaro Linux running Docker 29.7, managed with Portainer. Nineteen containers run here, grouped into Compose stacks by purpose. The infrastructure stack holds the Homepage dashboard, Uptime Kuma monitoring, and Speedtest Tracker. The organizer stack holds Karakeep bookmarks with full-text search, Vikunja tasks, Radicale calendar and contacts, and a PostgreSQL database. A media stack is defined but nothing runs in it yet. The dashboard is also the subject of a <a href="/ai/homepage/">case study on configuring it with AI</a>.</p>
+          <p><b>Dedicated service host.</b> The application platform now runs on a dedicated Docker host with Compose stacks grouped by purpose: infrastructure, organizer tools, analytics, AI tooling, backups, media and photos. Stack definitions are reconciled into Git and deployed through Komodo. The dashboard is also the subject of a <a href="/ai/homepage/">case study on configuring it with AI</a>.</p>
+          <p><b><a href="/lab/service-host-migration/">Service host migration</a>.</b> The migration moved the active self-hosted platform off the constrained Docker VM, retired a stale duplicate analytics stack, reconciled live definitions into Git and proved recovery with a Vaultwarden restore drill.</p>
           <p><b><a href="/lab/proxmox/home-assistant/">Home Assistant OS</a>.</b> Home Assistant OS 13.1 in a virtual machine with 2 virtual CPUs and 4 GiB of memory. It needs UEFI firmware, so its virtual machine is built a little differently from the other two, and one USB device on the host is passed through to it.</p>
         </div>
       </section>
@@ -184,24 +185,24 @@
         <div class="label">Second mini PC</div>
         <div class="body">
           <h2 id="agents">A dedicated machine for agents.</h2>
-          <p>A second mini PC hosts my AI agents, Hermes and OpenClaw, separate from the Proxmox host. Both are connected to Telegram, so I can message them and receive their updates from my phone.</p>
-          <!-- TODO(lab): describe what Hermes and OpenClaw each do, plus the hardware and operating system of this second machine. -->
+          <p>A dedicated machine hosts my AI agents and supporting services, including model routing, workflow automation, agent memory and web UI tooling. Hermes and OpenClaw are connected to Telegram, so I can message them and receive updates from my phone while keeping the operational pieces on infrastructure I control.</p>
         </div>
       </section>
 
       <section class="row" aria-labelledby="limits">
         <div class="label">Limits</div>
         <div class="body">
-          <h2 id="limits">Where the lab is tight.</h2>
-          <p>Memory is the tight spot. The three guests are given 14 GiB of the host’s 15.4 GiB, so adding a fourth means shrinking one. The Docker host is the obvious candidate: its containers use only about 1.6 GiB of the 8 GiB it has. Storage is a single SSD with no redundancy, which is fine for a lab like this as long as the important data is backed up somewhere else. The <a href="/lab/proxmox/">Proxmox page</a> covers both in more detail.</p>
+          <h2 id="limits">Where I draw the public/private line.</h2>
+          <p>The public version of the lab intentionally avoids hostnames, addresses, private routes, credential paths and exact service endpoints. The interesting part is the operating model: services are grouped by purpose, configuration is kept in Git, the deployment control plane is reconciled with the live containers, and backups are tested with restore drills instead of assumed from green job output.</p>
         </div>
       </section>
 
       <section class="row" aria-labelledby="pages">
         <div class="label">In this section</div>
         <div class="body">
-          <h2 id="pages">Start with Proxmox.</h2>
+          <h2 id="pages">Start with the migration story.</h2>
           <ol class="log">
+            <li><span class="k"><a href="/lab/service-host-migration/">Service Host Migration</a></span><span>A public-safe case study on moving the self-hosted platform, reconciling Git and Komodo, and proving recovery.</span></li>
             <li><span class="k"><a href="/lab/proxmox/">Proxmox</a></span><span>The hypervisor at the base of the lab.</span></li>
             <li><span class="k"><a href="/lab/proxmox/opnsense/">OPNsense</a></span><span>An open-source firewall and routing platform.</span></li>
             <li><span class="k"><a href="/lab/proxmox/docker-host/">Docker Host</a></span><span>A virtual machine for running containers.</span></li>
