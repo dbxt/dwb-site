@@ -16,6 +16,9 @@
 
   # The AI and engineering leadership essay moved from AI Work to Ideas.
   RewriteRule ^ai/ai-and-engineering-leadership/?$ /ideas/ai-and-engineering-leadership/ [R=301,L]
+
+  # The Bug Manager demo moved to its own subdomain. The stub page at /ai/bug-manager/demo/ is replaced by this redirect.
+  RewriteRule ^ai/bug-manager/demo/?$ https://bug-manager.projects.davidwaynebaxter.com/ [R=301,L]
 </IfModule>
 
 # Retired duplicates of /contact/ and /experience/
