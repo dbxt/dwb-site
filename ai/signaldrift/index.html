@@ -157,9 +157,9 @@
         </div>
       </div>
 
-      <!-- TODO: capture before publishing — one placeholder remains (GitHub Actions run summary), blocked on in-browser GitHub auth. -->
+      <!-- All four screenshots are real captures from the live, deployed apps and admin surface. -->
       <div class="note">
-        <p><b>About the screenshots.</b> Three of four are real captures from the live, deployed apps and admin surface. The fourth — a GitHub Actions run summary — is still a placeholder pending an authenticated GitHub session.</p>
+        <p><b>About the screenshots.</b> All four are real captures from the live, deployed apps and admin surface — no mockups.</p>
       </div>
 
       <div class="spec-wrap">
@@ -236,8 +236,9 @@
         <div class="body wide">
           <h2 id="discipline-h">Small team, production habits.</h2>
           <p>187 automated tests currently pass (180 passing, 7 intentionally skipped, 0 failing) through Node's built-in test runner — no separate framework dependency. Every brand has its own GitHub Actions deploy workflow, isolated from the others, and changes are validated on a <code>dev</code> environment before promotion to <code>main</code>; production deployment is brand-scoped rather than one shared release train. Database migrations are version-numbered SQL files applied in order, which is how a recent production incident was caught and fixed: three migrations had been written into the wrong directory and silently never applied, breaking a trends endpoint until the files were moved into the path the migration runner actually scans.</p>
-          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
-            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: a GitHub Actions run summary showing the per-brand dev-to-main deploy workflows green.]</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/public-signals-board.png" alt="TechDrift's public signals page: technology topics rising now, with trend badges and story/source counts" loading="lazy" />
+            <figcaption>The public signal board — evidence-first, no login required: each topic shows its trend, story count, and source count.</figcaption>
           </figure>
         </div>
       </section>
