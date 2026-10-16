@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignalDrift | AI Work | David Wayne Baxter</title>
+  <meta name="description" content="Technical brief on SignalDrift: a single engine running three evidence-first signal products (TechDrift, GamingDrift, SportsDrift), with a bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://davidwaynebaxter.com/ai/signaldrift/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SignalDrift | AI Work | David Wayne Baxter" />
+  <meta property="og:description" content="One engine, three evidence-first signal products. A bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta property="og:url" content="https://davidwaynebaxter.com/ai/signaldrift/" />
+  <meta property="og:site_name" content="David Wayne Baxter" />
+  <meta property="og:locale" content="en_US" />
+  <!-- TODO(ai): replace with a dedicated /assets/og/og-signaldrift.jpg (1200x630) once produced. Using the site default for now. -->
+  <meta property="og:image" content="https://davidwaynebaxter.com/assets/og/og-default.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="SignalDrift: TechDrift, GamingDrift, and SportsDrift signal boards" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SignalDrift | AI Work | David Wayne Baxter" />
+  <meta name="twitter:description" content="One engine, three evidence-first signal products. A bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-default.jpg" />
+  <meta name="twitter:creator" content="@davidwaynebax" />
+  <meta name="twitter:image:alt" content="SignalDrift: TechDrift, GamingDrift, and SportsDrift signal boards" />
+  <link rel="icon" href="/assets/dwb-favicon-64.png?v=20260907" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#ffffff" />
+  <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t);d.className+=" js"})()</script>
+  <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/site.css?v=20260921e" />
+  <script src="/assets/theme.js?v=20260921c" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "AI Work", "item": "https://davidwaynebaxter.com/ai/" },
+          { "@type": "ListItem", "position": 3, "name": "SignalDrift", "item": "https://davidwaynebaxter.com/ai/signaldrift/" }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "SignalDrift",
+        "description": "A single engine running three evidence-first signal products (TechDrift, GamingDrift, SportsDrift), with a bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-default.jpg",
+        "url": "https://davidwaynebaxter.com/ai/signaldrift/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/signaldrift/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-10-16",
+        "dateModified": "2026-10-16"
+      }
+    ]
+  }
+  </script>
+  <!-- Privacy-friendly analytics by Plausible (self-hosted) -->
+  <script async src="https://stats.davidwaynebaxter.net/js/pa-iYwXIyg4oiHZHdkaSnwFi.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+  <!-- Google tag (gtag.js): calls are queued now; the library itself is fetched only after the page has loaded and
+       painted its largest content (or on first interaction, when the tab is hidden, or after 4 s), so it never competes with LCP -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G52RNEDQYE');
+    (function () {
+      var injected = false, loaded = document.readyState === 'complete', painted = false;
+      function inject() {
+        if (injected) return;
+        injected = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G52RNEDQYE';
+        document.head.appendChild(s);
+        var v = document.createElement('script');
+        v.async = true;
+        v.src = '/assets/vitals.js?v=1';
+        document.head.appendChild(v);
+      }
+      function ready() { if (loaded && painted) setTimeout(inject, 0); }
+      window.addEventListener('load', function () { loaded = true; ready(); });
+      try {
+        new PerformanceObserver(function (list, obs) { obs.disconnect(); painted = true; ready(); })
+          .observe({ type: 'largest-contentful-paint', buffered: true });
+      } catch (e) { painted = true; }
+      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (t) {
+        addEventListener(t, inject, { once: true, passive: true });
+      });
+      document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') inject(); });
+      setTimeout(inject, 4000);
+    })();
+  </script>
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//matomo.davidwaynebaxter.net/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">David Wayne Baxter</a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <a href="/experience/">Experience</a>
+        <a href="/ai/" aria-current="true">AI Work</a>
+        <a href="/lab/">Engineering Lab</a>
+        <a href="/ideas/">Ideas</a>
+        <a href="/fun/">Fun</a>
+        <a href="/contact/">Contact</a>
+        <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/ai/">AI Work</a></li><li aria-current="page">SignalDrift</li></ol></nav>
+        <h1>SignalDrift: one engine, three evidence-first signal products.</h1>
+        <p class="lede">SignalDrift is a shared codebase that collects, groups, and scores recurring coverage from curated source catalogs, then shows readers the underlying stories instead of a black-box score. The same engine runs three standalone, white-labeled products: <a class="textlink" href="https://techdrift.app/" target="_blank" rel="noopener">TechDrift</a>, <a class="textlink" href="https://gamingdrift.app/" target="_blank" rel="noopener">GamingDrift</a>, and <a class="textlink" href="https://sportsdrift.app/" target="_blank" rel="noopener">SportsDrift</a>, each with its own source pack, database, and identity.</p>
+        <div class="actions">
+          <a class="textlink" href="#laya">The AI layer&nbsp;↓</a>
+          <a class="textlink" href="#brands">White-labeling&nbsp;↓</a>
+          <a class="textlink" href="#admin">Administration&nbsp;↓</a>
+        </div>
+        <div class="note">
+          <p><b>About this page.</b> This is a public-safe account of a private repository I built and operate solo. It describes real architecture, numbers, and feature names from the codebase. It leaves out hostnames, credentials, internal infrastructure addresses, and anything else that would expose the operating environment, the way my other engineering write-ups do.</p>
+        </div>
+      </div>
+
+      <!-- TODO: capture before publishing. No browser automation was available in the session that wrote this draft.
+           Capture each of the four screenshots below from the live apps, export as .webp, and replace the placeholder
+           boxes with real <figure><img></figure> markup (see /ai/homepage/ for the exact img/srcset pattern). -->
+      <div class="note">
+        <p><b>About the screenshots.</b> The four callouts below mark exactly what to capture and from where. They are placeholders, not yet real images — this draft was written without working browser access in this session.</p>
+      </div>
+
+      <div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Project</dt><dd>SignalDrift, a shared evidence-first trend-discovery engine</dd></div>
+          <div><dt>Live brands</dt><dd>TechDrift (17 sources), GamingDrift (25 sources), SportsDrift (25 sources)</dd></div>
+          <div><dt>Clients</dt><dd>Web app per brand, plus a Kotlin Multiplatform Android app and an early SwiftUI/iOS host</dd></div>
+          <div><dt>AI usage</dt><dd>Laya, a self-hosted LLM service used only for bounded, advisory tasks — never for deterministic feed delivery</dd></div>
+          <div><dt>Tests</dt><dd>187 automated tests, 180 passing, 7 intentionally skipped, 0 failing</dd></div>
+          <div><dt>Release model</dt><dd>Every change ships to a <code>dev</code> environment before promotion to <code>main</code>, with brand-isolated deploy workflows</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" id="overview" aria-labelledby="overview-h">
+        <div class="label">Overview</div>
+        <div class="body wide">
+          <h2 id="overview-h">Evidence first, scoring second.</h2>
+          <p>Scheduled workers pull items from each brand's configured source catalog, normalize them, and record each collection run. The pipeline groups related coverage into topics and scores them for repetition and persistence rather than raw popularity — a story mentioned once by one outlet does not become a "signal" just because it is loud. Every topic a reader sees links back to the stories that produced it, so the evidence trail stays inspectable instead of hidden behind a score.</p>
+          <p>A 96-hour collection window captures what is current, and a configurable 7–14 day freshness filter on each article's actual publication date keeps backdated or republished RSS entries out of the evidence shown for a topic — a problem that showed up in production before the filter existed.</p>
+          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
+            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: TechDrift signal board, logged in, showing the two-row topic cards (icon/title/actions on row 1, trend status + article count on row 2) and the left-nav topic list.]</p>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="brands" aria-labelledby="brands-h">
+        <div class="label">White-labeling</div>
+        <div class="body wide">
+          <h2 id="brands-h">One codebase, three isolated products.</h2>
+          <p>TechDrift, GamingDrift, and SportsDrift run from the same application and analysis code, selected at runtime by a <code>BRAND_ID</code> environment variable. A single <code>brand-config.mjs</code> module centralizes everything that varies by brand: display name, tagline, page copy, cookie prefix, base URLs, legal contact, source catalog, topic-scoring thresholds, and even the admin UI's light/dark color palette.</p>
+          <ul class="plain">
+            <li><b>TechDrift</b> — tagline "Signal in motion," 17 sources (Hacker News, Ars Technica, The Verge, TechCrunch, Wired, and others), teal admin accent.</li>
+            <li><b>GamingDrift</b> — tagline "Game trends live," 25 sources (IGN, Polygon, PC Gamer, Eurogamer, GameSpot, and more), its own palette.</li>
+            <li><b>SportsDrift</b> — tagline "Sports desk live," 25 sources (BBC Sport, ESPN, Sky Sports, MLB, Formula 1, and more), its own palette.</li>
+          </ul>
+          <p>Sharing code without sharing data was the harder half of the problem. Each brand gets its own Postgres database, role, and storage volumes — this is not a multi-tenant row-level-security setup, it is physically separate data per brand. Browser-side state is brand-scoped too: a real production bug surfaced when a new account, created in a browser that still held a previous account's local signals, silently inherited them. The fix was brand-prefixed localStorage keys, clearing state on logout, and removing an over-eager "migrate anonymous signals" path that was quietly treating stale browser data as a legitimate first-login migration. Content-Security-Policy headers, outbound email templates, and the public API's base-URL resolution are all brand-aware for the same reason: nothing about one brand's identity should leak into another's.</p>
+          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
+            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: TechDrift, GamingDrift, and SportsDrift public landing pages side by side, showing identical layout with distinct branding, taglines, and color palettes.]</p>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="laya" aria-labelledby="laya-h">
+        <div class="label">AI usage</div>
+        <div class="body wide">
+          <h2 id="laya-h">Laya: an LLM that advises, never gates.</h2>
+          <p>Laya is a self-hosted LLM reasoning service the pipeline calls for a small, deliberately bounded set of tasks — never for deciding what a user sees. Deterministic feed delivery never depends on Laya succeeding; if it is slow, wrong, or unavailable, the feed still works. That constraint shaped everything else about how it is used:</p>
+          <ul class="plain">
+            <li><b>Topic-pair clustering.</b> Deciding whether two topic candidates are really the same story. A cheap statistical similarity pass runs first so Laya is only called on pairs that already look plausible — avoiding an O(n²) sweep of LLM calls across every topic pair.</li>
+            <li><b>Sig/keyword normalization.</b> Deduplicating and grouping the keywords users save ("Sigs") so near-duplicates collapse into one signal instead of fragmenting a user's saved list.</li>
+            <li><b>Per-user advisory analysis.</b> A bounded batch job that reads a capped number of users and a capped number of recent items per user, asks Laya for a decision, and records the result — bounded by max-users, max-items, timeout, and retry environment variables, with a hard cap on each so a stalled model can't block ingestion or run away on cost.</li>
+          </ul>
+          <p>The other half of using an LLM responsibly in a pipeline is not trusting its raw output. Laya's choice-style answers come back as a probability distribution over options plus a confidence value, and a typed-decision contract normalizes that shape before any other code touches it — a live probe against the deployed instance is what revealed its actual response shape in the first place, rather than assuming a spec. Every Laya call is logged to its own run table with a prompt version, a status, and an attempted-count, so a model or prompt change is auditable after the fact instead of invisible.</p>
+          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
+            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: the admin panel's "Laya analysis" card, showing recent run status/success counts.]</p>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="admin" aria-labelledby="admin-h">
+        <div class="label">Administration</div>
+        <div class="body wide">
+          <h2 id="admin-h">An operator surface, not just a product.</h2>
+          <p>A separate admin service sits alongside the consumer app for source management, moderation, and observability. Its dashboard surfaces, at a glance: active users, ingestion health, Laya analysis results, notification delivery and recent notification failures, pending decisions awaiting review, overall product health, source attention (which feeds are noisy, stale, or failing), subscription counts, and 30-day usage.</p>
+          <p>Beyond monitoring, the admin surface runs real operational workflows: per-source collection configuration and flags, a waitlist-to-beta-invite flow where an admin assigns a plan tier (Free/Plus/Pro) and the system generates a time-limited signup link and email, and a digest-scheduling tool for the daily email send. None of this is exposed to end users — it is the control plane that keeps three brands' worth of sources, users, and notifications legible to one operator.</p>
+          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
+            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: the admin dashboard home, showing the full card grid (Active users, Ingestion health, Laya analysis, Notification delivery, Pending decisions, Product health, Source attention, Subscriptions, Usage).]</p>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="discipline" aria-labelledby="discipline-h">
+        <div class="label">Engineering discipline</div>
+        <div class="body wide">
+          <h2 id="discipline-h">Small team, production habits.</h2>
+          <p>187 automated tests currently pass (180 passing, 7 intentionally skipped, 0 failing) through Node's built-in test runner — no separate framework dependency. Every brand has its own GitHub Actions deploy workflow, isolated from the others, and changes are validated on a <code>dev</code> environment before promotion to <code>main</code>; production deployment is brand-scoped rather than one shared release train. Database migrations are version-numbered SQL files applied in order, which is how a recent production incident was caught and fixed: three migrations had been written into the wrong directory and silently never applied, breaking a trends endpoint until the files were moved into the path the migration runner actually scans.</p>
+          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
+            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: a GitHub Actions run summary showing the per-brand dev-to-main deploy workflows green.]</p>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="next" aria-labelledby="next-h">
+        <div class="label">What's next</div>
+        <div class="body">
+          <h2 id="next-h">The open bucket.</h2>
+          <p>The next phase is scoped only loosely so far: letting users add their own feed URLs beyond the curated catalog, credential handling for private or paid feeds, analytics beyond the current admin dashboard, and archiving the admin metrics-snapshot table before its unbounded growth becomes a problem instead of a line item.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="see">
+        <div class="label">More</div>
+        <div class="body">
+          <h2 id="see" class="tight">See the products or the rest of the lab.</h2>
+          <div class="actions">
+            <a class="button" href="https://techdrift.app/" target="_blank" rel="noopener">Open TechDrift<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="https://gamingdrift.app/" target="_blank" rel="noopener">Open GamingDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="https://sportsdrift.app/" target="_blank" rel="noopener">Open SportsDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+      <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/lab/">Engineering Lab</a> · <a href="/ideas/">Ideas</a> · <a href="/fun/">Fun</a> · <a href="/contact/">Contact</a> · <a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+    </div>
+  </footer>
+</body>
+</html>
