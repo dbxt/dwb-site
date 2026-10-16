@@ -1,0 +1,65 @@
+name: Deploy Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dwb-site-cloudflare-pages-production
+  cancel-in-progress: true
+
+env:
+  # This Pages project must exist before the first deploy. The workflow uploads
+  # only static assets and never creates, changes, or binds DNS/custom domains.
+  CLOUDFLARE_PAGES_PROJECT: davidwaynebaxter-com
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Refresh generated public content
+        run: |
+          python3 tools/sitemap-lastmod.py
+          python3 tools/latest.py
+
+      - name: Assemble the public Pages artifact
+        env:
+          OUTPUT_DIR: ${{ runner.temp }}/dwb-site
+        run: |
+          rm -rf "$OUTPUT_DIR"
+          mkdir -p "$OUTPUT_DIR"
+          rsync -a --delete \
+            --exclude '.git' \
+            --exclude '.github/' \
+            --exclude 'tools/' \
+            --exclude 'node_modules/' \
+            --exclude '.htaccess' \
+            ./ "$OUTPUT_DIR/"
+          test -f "$OUTPUT_DIR/index.html"
+          test -f "$OUTPUT_DIR/404.html"
+          test -f "$OUTPUT_DIR/robots.txt"
+          test -f "$OUTPUT_DIR/sitemap.xml"
+          test ! -e "$OUTPUT_DIR/.htaccess"
+          if grep -R --exclude='*.map' -nE '__[A-Z][A-Z0-9_]*__' "$OUTPUT_DIR"; then
+            echo 'Unresolved deployment placeholders found in Pages artifact.' >&2
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy "${{ runner.temp }}/dwb-site"
+            --project-name="${{ env.CLOUDFLARE_PAGES_PROJECT }}"
+            --branch=main
