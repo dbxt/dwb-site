@@ -226,10 +226,11 @@
         <div class="label">Administration</div>
         <div class="body wide">
           <h2 id="admin-h">An operator surface, not just a product.</h2>
-          <p>A separate admin service sits alongside the consumer app for source management, moderation, and observability. Its dashboard surfaces, at a glance: active users, ingestion health, Laya analysis results, notification delivery and recent notification failures, pending decisions awaiting review, overall product health, source attention (which feeds are noisy, stale, or failing), subscription counts, and 30-day usage.</p>
+          <p>A separate admin service sits alongside the consumer app for source management, moderation, and observability. Its "Today" view is built around decisions, not raw metrics: a decision queue for things like duplicate topic-cluster merges, source health (which feeds are current vs. stalled), digest delivery (sent/failed/pending/suppressed over the last 7 days), and a 30-day onboarding funnel (registered → verified → profile complete → source selected → first use). Everything else — collection run history, per-source diagnostics, scoring internals, Laya run logs — lives one level down under Data &amp; diagnostics, kept out of the way until something actually needs attention.</p>
           <p>Beyond monitoring, the admin surface runs real operational workflows: per-source collection configuration and flags, a waitlist-to-beta-invite flow where an admin assigns a plan tier (Free/Plus/Pro) and the system generates a time-limited signup link and email, and a digest-scheduling tool for the daily email send. None of this is exposed to end users — it is the control plane that keeps three brands' worth of sources, users, and notifications legible to one operator.</p>
-          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
-            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: the admin dashboard home, showing the full card grid (Active users, Ingestion health, Laya analysis, Notification delivery, Pending decisions, Product health, Source attention, Subscriptions, Usage).]</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/admin-today.png" alt="TechDrift admin 'Today' control surface: decision queue, source health, digest delivery, onboarding funnel" loading="lazy" />
+            <figcaption>The admin "Today" view: decision queue, source health, digest delivery, and onboarding funnel at a glance.</figcaption>
           </figure>
         </div>
       </section>
