@@ -157,11 +157,9 @@
         </div>
       </div>
 
-      <!-- TODO: capture before publishing. No browser automation was available in the session that wrote this draft.
-           Capture each of the four screenshots below from the live apps, export as .webp, and replace the placeholder
-           boxes with real <figure><img></figure> markup (see /ai/homepage/ for the exact img/srcset pattern). -->
+      <!-- TODO: capture before publishing — one placeholder remains (GitHub Actions run summary), blocked on in-browser GitHub auth. -->
       <div class="note">
-        <p><b>About the screenshots.</b> The four callouts below mark exactly what to capture and from where. They are placeholders, not yet real images — this draft was written without working browser access in this session.</p>
+        <p><b>About the screenshots.</b> Three of four are real captures from the live, deployed apps and admin surface. The fourth — a GitHub Actions run summary — is still a placeholder pending an authenticated GitHub session.</p>
       </div>
 
       <div class="spec-wrap">
@@ -181,8 +179,9 @@
           <h2 id="overview-h">Evidence first, scoring second.</h2>
           <p>Scheduled workers pull items from each brand's configured source catalog, normalize them, and record each collection run. The pipeline groups related coverage into topics and scores them for repetition and persistence rather than raw popularity — a story mentioned once by one outlet does not become a "signal" just because it is loud. Every topic a reader sees links back to the stories that produced it, so the evidence trail stays inspectable instead of hidden behind a score.</p>
           <p>A 96-hour collection window captures what is current, and a configurable 7–14 day freshness filter on each article's actual publication date keeps backdated or republished RSS entries out of the evidence shown for a topic — a problem that showed up in production before the filter existed.</p>
-          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
-            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: TechDrift signal board, logged in, showing the two-row topic cards (icon/title/actions on row 1, trend status + article count on row 2) and the left-nav topic list.]</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/consumer-signal-board.png" alt="TechDrift signal board, logged in, showing left-nav topic cards with trend status and an open topic's articles" loading="lazy" />
+            <figcaption>The logged-in signal board: saved and trending topics on the left, each with a trend arrow and article count; an open topic on the right.</figcaption>
           </figure>
         </div>
       </section>
@@ -215,10 +214,7 @@
             <li><b>Sig/keyword normalization.</b> Deduplicating and grouping the keywords users save ("Sigs") so near-duplicates collapse into one signal instead of fragmenting a user's saved list.</li>
             <li><b>Per-user advisory analysis.</b> A bounded batch job that reads a capped number of users and a capped number of recent items per user, asks Laya for a decision, and records the result — bounded by max-users, max-items, timeout, and retry environment variables, with a hard cap on each so a stalled model can't block ingestion or run away on cost.</li>
           </ul>
-          <p>The other half of using an LLM responsibly in a pipeline is not trusting its raw output. Laya's choice-style answers come back as a probability distribution over options plus a confidence value, and a typed-decision contract normalizes that shape before any other code touches it — a live probe against the deployed instance is what revealed its actual response shape in the first place, rather than assuming a spec. Every Laya call is logged to its own run table with a prompt version, a status, and an attempted-count, so a model or prompt change is auditable after the fact instead of invisible.</p>
-          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
-            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: the admin panel's "Laya analysis" card, showing recent run status/success counts.]</p>
-          </figure>
+          <p>The other half of using an LLM responsibly in a pipeline is not trusting its raw output. Laya's choice-style answers come back as a probability distribution over options plus a confidence value, and a typed-decision contract normalizes that shape before any other code touches it — a live probe against the deployed instance is what revealed its actual response shape in the first place, rather than assuming a spec. Every Laya call is logged to its own run table with a prompt version, a status, and an attempted-count, so a model or prompt change is auditable after the fact instead of invisible — though today that log lives in the database, not in a dedicated admin screen. That is the honest gap in this write-up: Laya is observable to the person who can query Postgres, not yet to an operator clicking around the admin UI, which is the next piece of admin work worth doing on its own operational merits rather than for a screenshot.</p>
         </div>
       </section>
 
