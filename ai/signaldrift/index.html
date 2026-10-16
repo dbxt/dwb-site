@@ -198,8 +198,9 @@
             <li><b>SportsDrift</b> — tagline "Sports desk live," 25 sources (BBC Sport, ESPN, Sky Sports, MLB, Formula 1, and more), its own palette.</li>
           </ul>
           <p>Sharing code without sharing data was the harder half of the problem. Each brand gets its own Postgres database, role, and storage volumes — this is not a multi-tenant row-level-security setup, it is physically separate data per brand. Browser-side state is brand-scoped too: a real production bug surfaced when a new account, created in a browser that still held a previous account's local signals, silently inherited them. The fix was brand-prefixed localStorage keys, clearing state on logout, and removing an over-eager "migrate anonymous signals" path that was quietly treating stale browser data as a legitimate first-login migration. Content-Security-Policy headers, outbound email templates, and the public API's base-URL resolution are all brand-aware for the same reason: nothing about one brand's identity should leak into another's.</p>
-          <figure class="figure note" style="padding: 1.25rem 1.5rem;">
-            <p class="mono" style="margin: 0;">[Screenshot placeholder — capture: TechDrift, GamingDrift, and SportsDrift public landing pages side by side, showing identical layout with distinct branding, taglines, and color palettes.]</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/brands-side-by-side.png" alt="TechDrift, GamingDrift, and SportsDrift public signal pages side by side, same layout, distinct source catalogs" loading="lazy" width="3880" height="577" />
+            <figcaption>Live public signal pages: TechDrift, GamingDrift, SportsDrift &mdash; one codebase, three source catalogs.</figcaption>
           </figure>
         </div>
       </section>
