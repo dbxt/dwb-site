@@ -154,7 +154,23 @@
 
           <article class="project">
             <div>
-              <p class="mono meta">Featured · Case study · Built with Claude · Working prototype</p>
+              <p class="mono meta">Featured · Case study · Live in production · Bounded LLM service</p>
+              <h3><a href="/ai/signaldrift/">SignalDrift</a></h3>
+              <p>One engine running three evidence-first signal products — TechDrift, GamingDrift, SportsDrift — each white-labeled with its own source catalog, database, and identity. A self-hosted LLM, Laya, handles only bounded advisory work (topic clustering, keyword dedup, per-user analysis) and never gates what a user sees. A full admin surface covers sources, users, notifications, and ingestion health.</p>
+              <p class="mono meta">Node.js · Postgres · Self-hosted LLM · White-labeling · Kotlin Multiplatform</p>
+              <div class="actions">
+                <a class="textlink" href="/ai/signaldrift/">Read the case study&nbsp;→</a>
+                <a class="textlink" href="https://techdrift.app/" target="_blank" rel="noopener">Open TechDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+              </div>
+            </div>
+            <figure class="project-shot">
+              <a href="/ai/signaldrift/" aria-label="Read the SignalDrift case study"><img src="/assets/ai-signaldrift-board.webp" srcset="/assets/ai-signaldrift-board-480.webp 480w, /assets/ai-signaldrift-board-720.webp 720w, /assets/ai-signaldrift-board-1080.webp 1080w, /assets/ai-signaldrift-board.webp 1280w" sizes="(min-width: 62rem) 21rem, 100vw" width="1280" height="577" loading="lazy" alt="The TechDrift signal board: saved and trending topics on the left, each with a trend arrow and article count." /></a>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div>
+              <p class="mono meta">Case study · Built with Claude · Working prototype</p>
               <h3><a href="/ai/em-dashboard/">Sprint Ledger</a></h3>
               <p>An engineering-manager dashboard that scores each direct report’s capacity, pace, and open pull requests as Red, Amber, or Green, and suggests a starting point for the next one on one. It runs on simulated data, and the write-up covers the scoring rules, the design decisions, and how AI was used to build it.</p>
               <p class="mono meta">React · TypeScript · Vite · Vitest</p>
@@ -217,20 +233,7 @@
             </figure>
           </article>
 
-          <article class="project">
-            <div>
-              <p class="mono meta">Case study · Live in production · Bounded LLM service</p>
-              <h3><a href="/ai/signaldrift/">SignalDrift</a></h3>
-              <p>One engine running three evidence-first signal products — TechDrift, GamingDrift, SportsDrift — each white-labeled with its own source catalog, database, and identity. A self-hosted LLM, Laya, handles only bounded advisory work (topic clustering, keyword dedup, per-user analysis) and never gates what a user sees. A full admin surface covers sources, users, notifications, and ingestion health.</p>
-              <p class="mono meta">Node.js · Postgres · Self-hosted LLM · White-labeling · Kotlin Multiplatform</p>
-              <div class="actions">
-                <a class="textlink" href="/ai/signaldrift/">Read the case study&nbsp;→</a>
-                <a class="textlink" href="https://techdrift.app/" target="_blank" rel="noopener">Open TechDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- TODO(ai): add further projects here, one article.project block per project. Sprint Ledger is pinned first; add new projects below it, most relevant first. Candidate: the AI project dashboard, once it is recreated with sample data.
+          <!-- TODO(ai): add further projects here, one article.project block per project. SignalDrift is pinned first; add new projects below it, most relevant first. Candidate: the AI project dashboard, once it is recreated with sample data.
                To add a project:
                1. Create ai/<project-slug>/index.html by copying ai/em-dashboard/index.html, then edit the title, canonical URL, breadcrumb, headline, and sections.
                2. Copy the article.project block above, and change the link, title, summary, tags, and screenshot.
