@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SignalDrift | AI Work | David Wayne Baxter</title>
-  <meta name="description" content="Technical brief on SignalDrift: a single engine running three evidence-first signal products (TechDrift, GamingDrift, SportsDrift), with a bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta name="description" content="SignalDrift powers TechDrift, GamingDrift, and SportsDrift: evidence-first signal products with public sharing, branded lifecycle email, durable board fallbacks, and a mobile roadmap." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://davidwaynebaxter.com/ai/signaldrift/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="SignalDrift | AI Work | David Wayne Baxter" />
-  <meta property="og:description" content="One engine, three evidence-first signal products. A bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta property="og:description" content="Three evidence-first signal products with public sharing, private-by-default profiles, durable board fallbacks, branded lifecycle email, and a mobile roadmap." />
   <meta property="og:url" content="https://davidwaynebaxter.com/ai/signaldrift/" />
   <meta property="og:site_name" content="David Wayne Baxter" />
   <meta property="og:locale" content="en_US" />
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="SignalDrift: TechDrift, GamingDrift, and SportsDrift signal boards" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SignalDrift | AI Work | David Wayne Baxter" />
-  <meta name="twitter:description" content="One engine, three evidence-first signal products. A bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface." />
+  <meta name="twitter:description" content="Three evidence-first signal products with public sharing, private-by-default profiles, durable board fallbacks, branded lifecycle email, and a mobile roadmap." />
   <meta name="twitter:image" content="https://davidwaynebaxter.com/assets/og/og-default.jpg" />
   <meta name="twitter:creator" content="@davidwaynebax" />
   <meta name="twitter:image:alt" content="SignalDrift: TechDrift, GamingDrift, and SportsDrift signal boards" />
@@ -50,13 +50,13 @@
       {
         "@type": "TechArticle",
         "headline": "SignalDrift",
-        "description": "A single engine running three evidence-first signal products (TechDrift, GamingDrift, SportsDrift), with a bounded advisory LLM service, isolated white-labeled brands, and a full admin/observability surface.",
+        "description": "SignalDrift powers three evidence-first signal products with public sharing, branded lifecycle email, durable board fallbacks, and a mobile roadmap.",
         "image": "https://davidwaynebaxter.com/assets/og/og-default.jpg",
         "url": "https://davidwaynebaxter.com/ai/signaldrift/",
         "mainEntityOfPage": "https://davidwaynebaxter.com/ai/signaldrift/",
         "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
         "datePublished": "2026-10-16",
-        "dateModified": "2026-10-16"
+        "dateModified": "2026-10-22"
       }
     ]
   }
@@ -145,12 +145,14 @@
 
       <div class="page-head">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/ai/">AI Work</a></li><li aria-current="page">SignalDrift</li></ol></nav>
-        <h1>SignalDrift: one engine, three evidence-first signal products.</h1>
-        <p class="lede">SignalDrift is a shared codebase that collects, groups, and scores recurring coverage from curated source catalogs, then shows readers the underlying stories instead of a black-box score. The same engine runs three standalone, white-labeled products: <a class="textlink" href="https://techdrift.app/" target="_blank" rel="noopener">TechDrift</a>, <a class="textlink" href="https://gamingdrift.app/" target="_blank" rel="noopener">GamingDrift</a>, and <a class="textlink" href="https://sportsdrift.app/" target="_blank" rel="noopener">SportsDrift</a>, each with its own source pack, database, and identity.</p>
+        <h1>SignalDrift: evidence-first products that can be shared, trusted, and operated.</h1>
+        <p class="lede">SignalDrift is the shared codebase behind <a class="textlink" href="https://techdrift.app/" target="_blank" rel="noopener">TechDrift</a>, <a class="textlink" href="https://gamingdrift.app/" target="_blank" rel="noopener">GamingDrift</a>, and <a class="textlink" href="https://sportsdrift.app/" target="_blank" rel="noopener">SportsDrift</a>. Each product collects coverage from a curated catalog, groups related stories, and promotes a topic only when it holds across independent sources over time.</p>
+        <p class="lede muted">The web products are live. Native Android and iOS apps are in development and coming soon.</p>
         <div class="actions">
-          <a class="textlink" href="#laya">The AI layer&nbsp;↓</a>
-          <a class="textlink" href="#brands">White-labeling&nbsp;↓</a>
-          <a class="textlink" href="#admin">Administration&nbsp;↓</a>
+          <a class="textlink" href="#evidence">Evidence and scoring&nbsp;↓</a>
+          <a class="textlink" href="#sharing">Sharing and acquisition&nbsp;↓</a>
+          <a class="textlink" href="#reliability">Reliability&nbsp;↓</a>
+          <a class="textlink" href="#admin">Operations&nbsp;↓</a>
         </div>
         <div class="note">
           <p><b>About this page.</b> This is a public-safe account of a private repository I built and operate solo. It describes real architecture, numbers, and feature names from the codebase. It leaves out hostnames, credentials, internal infrastructure addresses, and anything else that would expose the operating environment, the way my other engineering write-ups do.</p>
@@ -165,41 +167,55 @@
       <div class="spec-wrap">
         <dl class="spec">
           <div><dt>Project</dt><dd>SignalDrift, a shared evidence-first trend-discovery engine</dd></div>
-          <div><dt>Live brands</dt><dd>TechDrift (17 sources), GamingDrift (25 sources), SportsDrift (25 sources)</dd></div>
-          <div><dt>Clients</dt><dd>Web app per brand. Android and iOS apps coming soon.</dd></div>
-          <div><dt>AI usage</dt><dd>Laya, a self-hosted LLM service used only for bounded, advisory tasks — never for deterministic feed delivery</dd></div>
-          <div><dt>Tests</dt><dd>187 automated tests, 180 passing, 7 intentionally skipped, 0 failing</dd></div>
-          <div><dt>Release model</dt><dd>Every change ships to a <code>dev</code> environment before promotion to <code>main</code>, with brand-isolated deploy workflows</dd></div>
+          <div><dt>Live brands</dt><dd>TechDrift (23 sources), GamingDrift (25 sources), SportsDrift (60 sources)</dd></div>
+          <div><dt>Clients</dt><dd>Web app per brand. Native Android and iOS apps are in development.</dd></div>
+          <div><dt>Recent product work</dt><dd>Public signal sharing, profile sharing, online briefs, branded lifecycle email, and onboarding hardening</dd></div>
+          <div><dt>AI usage</dt><dd>Laya, a self-hosted LLM service used only for bounded, advisory tasks. It never gates deterministic feed delivery.</dd></div>
+          <div><dt>Tests</dt><dd>641 automated tests: 633 passing, 8 intentionally skipped, 0 failing</dd></div>
+          <div><dt>Release model</dt><dd>Every change is verified in <code>dev</code> before approved promotion to <code>main</code>, with brand-isolated deploy workflows</dd></div>
         </dl>
       </div>
 
-      <section class="row first" id="overview" aria-labelledby="overview-h">
-        <div class="label">Overview</div>
+      <section class="row first" id="evidence" aria-labelledby="evidence-h">
+        <div class="label">Evidence and scoring</div>
         <div class="body wide">
-          <h2 id="overview-h">Evidence first, scoring second.</h2>
-          <p>Scheduled workers pull items from each brand's configured source catalog, normalize them, and record each collection run. The pipeline groups related coverage into topics and scores them for repetition and persistence rather than raw popularity — a story mentioned once by one outlet does not become a "signal" just because it is loud. Every topic a reader sees links back to the stories that produced it, so the evidence trail stays inspectable instead of hidden behind a score.</p>
-          <p>A 96-hour collection window captures what is current, and a configurable 7–14 day freshness filter on each article's actual publication date keeps backdated or republished RSS entries out of the evidence shown for a topic — a problem that showed up in production before the filter existed.</p>
+          <h2 id="evidence-h">Evidence first, scoring second.</h2>
+          <p>Scheduled workers pull from each brand's configured catalog, normalize the items, and record every collection run. The system groups related coverage into topics and scores persistence across independent sources instead of raw popularity. One loud story from one publisher does not become a signal just because it is loud.</p>
+          <p>Coverage is bounded by publication time and comparison windows, so backdated or republished RSS items cannot inflate a topic. The public product shows the evidence trail behind a signal rather than asking readers to trust a black-box score.</p>
           <figure class="figure">
             <img src="/assets/img/signaldrift/consumer-signal-board.png" alt="TechDrift signal board, logged in, showing left-nav topic cards with trend status and an open topic's articles" loading="lazy" />
-            <figcaption>The logged-in signal board: saved and trending topics on the left, each with a trend arrow and article count; an open topic on the right.</figcaption>
+            <figcaption>The logged-in signal board: saved and trending topics on the left, with an open topic and its evidence on the right.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="sharing" aria-labelledby="sharing-h">
+        <div class="label">Sharing and acquisition</div>
+        <div class="body wide">
+          <h2 id="sharing-h">A shareable product without giving the product away.</h2>
+          <p>Each published signal has a lightweight public teaser route designed for a link, mobile share sheet, or pasted URL. It shows the signal, status, story count, and a small set of source-labelled headlines. The next action is clear: add the signal to your own board. For a signed-in reader that goes straight to the matching topic. For everyone else it preserves the topic through signup.</p>
+          <p>Daily briefs also have a token-gated online view that expires after 48 hours. Public profiles have an explicit, private-by-default sharing model, and a native share button with clipboard fallback. These surfaces make the product legible and shareable while keeping full reading, personalization, and account data inside the product.</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/public-signals-board.png" alt="TechDrift public signals page with technology topics, trend badges, story counts, and source counts" loading="lazy" />
+            <figcaption>The public signal surface gives a visitor enough context to understand the product, then hands off to a focused account flow.</figcaption>
           </figure>
         </div>
       </section>
 
       <section class="row" id="brands" aria-labelledby="brands-h">
-        <div class="label">White-labeling</div>
+        <div class="label">One platform, three products</div>
         <div class="body wide">
-          <h2 id="brands-h">One codebase, three isolated products.</h2>
-          <p>TechDrift, GamingDrift, and SportsDrift run from the same application and analysis code, selected at runtime by a <code>BRAND_ID</code> environment variable. A single <code>brand-config.mjs</code> module centralizes everything that varies by brand: display name, tagline, page copy, cookie prefix, base URLs, legal contact, source catalog, topic-scoring thresholds, and even the admin UI's light/dark color palette.</p>
+          <h2 id="brands-h">Shared engineering, separate customer products.</h2>
+          <p>TechDrift, GamingDrift, and SportsDrift run from one codebase, selected by an explicit brand configuration. It owns product identity, source catalog, topic lexicon, scoring thresholds, public copy, cookie namespace, domains, legal contact, branding, and email presentation.</p>
           <ul class="plain">
-            <li><b>TechDrift</b> — tagline "Signal in motion," 17 sources (Hacker News, Ars Technica, The Verge, TechCrunch, Wired, and others), teal admin accent.</li>
-            <li><b>GamingDrift</b> — tagline "Game trends live," 25 sources (IGN, Polygon, PC Gamer, Eurogamer, GameSpot, and more), its own palette.</li>
-            <li><b>SportsDrift</b> — tagline "Sports desk live," 25 sources (BBC Sport, ESPN, Sky Sports, MLB, Formula 1, and more), its own palette.</li>
+            <li><b>TechDrift.</b> Technology coverage from 23 configured sources.</li>
+            <li><b>GamingDrift.</b> Gaming coverage from 25 configured sources.</li>
+            <li><b>SportsDrift.</b> Multi-sport coverage from 60 configured sources.</li>
           </ul>
-          <p>Sharing code without sharing data was the harder half of the problem. Each brand gets its own Postgres database, role, and storage volumes — this is not a multi-tenant row-level-security setup, it is physically separate data per brand. Browser-side state is brand-scoped too: a real production bug surfaced when a new account, created in a browser that still held a previous account's local signals, silently inherited them. The fix was brand-prefixed localStorage keys, clearing state on logout, and removing an over-eager "migrate anonymous signals" path that was quietly treating stale browser data as a legitimate first-login migration. Content-Security-Policy headers, outbound email templates, and the public API's base-URL resolution are all brand-aware for the same reason: nothing about one brand's identity should leak into another's.</p>
+          <p>Isolation is deliberate. Each brand has its own database, role, storage, customer-facing domain, and browser state. Shared code reduces repeated engineering work, but one brand's identity, account state, or source catalog does not bleed into another.</p>
           <figure class="figure">
-            <img src="/assets/img/signaldrift/brands-side-by-side.png" alt="TechDrift, GamingDrift, and SportsDrift public signal pages side by side, same layout, distinct source catalogs" loading="lazy" width="3880" height="577" />
-            <figcaption>Live public signal pages: TechDrift, GamingDrift, SportsDrift &mdash; one codebase, three source catalogs.</figcaption>
+            <img src="/assets/img/signaldrift/brands-side-by-side.png" alt="TechDrift, GamingDrift, and SportsDrift public signal pages side by side, with distinct source catalogs" loading="lazy" width="3880" height="577" />
+            <figcaption>Three customer products, one shared platform, and independent source catalogs.</figcaption>
           </figure>
         </div>
       </section>
@@ -207,14 +223,18 @@
       <section class="row" id="laya" aria-labelledby="laya-h">
         <div class="label">AI usage</div>
         <div class="body wide">
-          <h2 id="laya-h">Laya: an LLM that advises, never gates.</h2>
-          <p>Laya is a self-hosted LLM reasoning service the pipeline calls for a small, deliberately bounded set of tasks — never for deciding what a user sees. Deterministic feed delivery never depends on Laya succeeding; if it is slow, wrong, or unavailable, the feed still works. That constraint shaped everything else about how it is used:</p>
-          <ul class="plain">
-            <li><b>Topic-pair clustering.</b> Deciding whether two topic candidates are really the same story. A cheap statistical similarity pass runs first so Laya is only called on pairs that already look plausible — avoiding an O(n²) sweep of LLM calls across every topic pair.</li>
-            <li><b>Sig/keyword normalization.</b> Deduplicating and grouping the keywords users save ("Sigs") so near-duplicates collapse into one signal instead of fragmenting a user's saved list.</li>
-            <li><b>Per-user advisory analysis.</b> A bounded batch job that reads a capped number of users and a capped number of recent items per user, asks Laya for a decision, and records the result — bounded by max-users, max-items, timeout, and retry environment variables, with a hard cap on each so a stalled model can't block ingestion or run away on cost.</li>
-          </ul>
-          <p>The other half of using an LLM responsibly in a pipeline is not trusting its raw output. Laya's choice-style answers come back as a probability distribution over options plus a confidence value, and a typed-decision contract normalizes that shape before any other code touches it — a live probe against the deployed instance is what revealed its actual response shape in the first place, rather than assuming a spec. Every Laya call is logged to its own run table with a prompt version, a status, and an attempted-count, so a model or prompt change is auditable after the fact instead of invisible — though today that log lives in the database, not in a dedicated admin screen. That is the honest gap in this write-up: Laya is observable to the person who can query Postgres, not yet to an operator clicking around the admin UI, which is the next piece of admin work worth doing on its own operational merits rather than for a screenshot.</p>
+          <h2 id="laya-h">Laya advises. It does not decide what readers see.</h2>
+          <p>Laya is a self-hosted LLM service used for bounded advisory work, including topic-pair clustering, saved-keyword normalization, and capped per-user analysis. Deterministic collection and feed delivery do not depend on it. If the model is unavailable, readers still get the evidence-backed product.</p>
+          <p>Its calls are capped, time-bounded, typed, and logged with a prompt version, status, and attempt count. That keeps model behavior inspectable and prevents it from quietly becoming an unbounded dependency in the collection path.</p>
+        </div>
+      </section>
+
+      <section class="row" id="reliability" aria-labelledby="reliability-h">
+        <div class="label">Reliability and onboarding</div>
+        <div class="body wide">
+          <h2 id="reliability-h">A slow board should not become a broken product.</h2>
+          <p>The shared board is persisted as a durable, brand-scoped snapshot after successful collection. If an expensive trends query hits its database timeout, the app serves the latest known-good board instead of returning an error. If there is no board yet, it returns an honest preparing state while refresh work happens in the background.</p>
+          <p>Recent onboarding work keeps that same principle at the front door. A new account gets a usable starter board without waiting for full personalization or synchronization, then lands on the board after setup rather than being stranded in profile management. Article and collection paths also deduplicate by canonical identity, preventing repeated source items from turning into repeated cards.</p>
         </div>
       </section>
 
@@ -222,8 +242,8 @@
         <div class="label">Administration</div>
         <div class="body wide">
           <h2 id="admin-h">An operator surface, not just a product.</h2>
-          <p>A separate admin service sits alongside the consumer app for source management, moderation, and observability. Its "Today" view is built around decisions, not raw metrics: a decision queue for things like duplicate topic-cluster merges, source health (which feeds are current vs. stalled), digest delivery (sent/failed/pending/suppressed over the last 7 days), and a 30-day onboarding funnel (registered → verified → profile complete → source selected → first use). Everything else — collection run history, per-source diagnostics, scoring internals, Laya run logs — lives one level down under Data &amp; diagnostics, kept out of the way until something actually needs attention.</p>
-          <p>Beyond monitoring, the admin surface runs real operational workflows: per-source collection configuration and flags, a waitlist-to-beta-invite flow where an admin assigns a plan tier (Free/Plus/Pro) and the system generates a time-limited signup link and email, and a digest-scheduling tool for the daily email send. None of this is exposed to end users — it is the control plane that keeps three brands' worth of sources, users, and notifications legible to one operator.</p>
+          <p>A separate admin service manages source health, collection jobs, topic clustering, user access, invitations, feedback, digest runs, operational settings, and application errors. The Today view is built around decisions: source exceptions, activation milestones, recent delivery results, feedback needing review, and the newest bounded error records.</p>
+          <p>Lifecycle email is part of that operating model. Verification, password recovery, account changes, plan changes, invitations, digests, and administrator notices now use brand-aware presentation with the product logo and a safe return path into the app. Admin notices include an account identifier when an operator needs to act, without leaking it into public surfaces.</p>
           <figure class="figure">
             <img src="/assets/img/signaldrift/admin-today.png" alt="TechDrift admin 'Today' control surface: decision queue, source health, digest delivery, onboarding funnel" loading="lazy" />
             <figcaption>The admin "Today" view: decision queue, source health, digest delivery, and onboarding funnel at a glance.</figcaption>
@@ -235,7 +255,8 @@
         <div class="label">Engineering discipline</div>
         <div class="body wide">
           <h2 id="discipline-h">Small team, production habits.</h2>
-          <p>187 automated tests currently pass (180 passing, 7 intentionally skipped, 0 failing) through Node's built-in test runner — no separate framework dependency. Every brand has its own GitHub Actions deploy workflow, isolated from the others, and changes are validated on a <code>dev</code> environment before promotion to <code>main</code>; production deployment is brand-scoped rather than one shared release train. Database migrations are version-numbered SQL files applied in order, which is how a recent production incident was caught and fixed: three migrations had been written into the wrong directory and silently never applied, breaking a trends endpoint until the files were moved into the path the migration runner actually scans.</p>
+          <p>The product now has 641 automated tests, with 633 passing and 8 intentionally skipped integration checks. The suite covers account isolation, public pages and sharing, email rendering, onboarding, source collection, deduplication, durable board snapshots, operational controls, and the three brand configurations. Database migrations are versioned and every rollout is verified in development before an approved production promotion.</p>
+          <p>The important rule is practical: a successful deploy command is not enough. A change is not done until the relevant customer route, public surface, and protected boundary have been read back on the deployed brand.</p>
           <figure class="figure">
             <img src="/assets/img/signaldrift/public-signals-board.png" alt="TechDrift's public signals page: technology topics rising now, with trend badges and story/source counts" loading="lazy" />
             <figcaption>The public signal board — evidence-first, no login required: each topic shows its trend, story count, and source count.</figcaption>
@@ -246,8 +267,8 @@
       <section class="row" id="next" aria-labelledby="next-h">
         <div class="label">What's next</div>
         <div class="body">
-          <h2 id="next-h">The open bucket.</h2>
-          <p>The next phase is scoped only loosely so far: letting users add their own feed URLs beyond the curated catalog, credential handling for private or paid feeds, analytics beyond the current admin dashboard, and archiving the admin metrics-snapshot table before its unbounded growth becomes a problem instead of a line item.</p>
+          <h2 id="next-h">The next product surface.</h2>
+          <p>The immediate roadmap is native Android and iOS clients that stay aligned with the web product. The platform work continues underneath them: richer source selection, careful handling for private or paid feeds, more operator-facing diagnostics, and retention controls for long-running operational data. The product remains web-first today, with the mobile experience being built to match it rather than become a second, divergent product.</p>
         </div>
       </section>
 
