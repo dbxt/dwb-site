@@ -1,6 +1,2 @@
-# Cloudflare Pages rules. The production apex remains on shared hosting;
-# www is bound to Pages and must not serve a stale duplicate.
-https://www.davidwaynebaxter.com/* https://davidwaynebaxter.com/:splat 301
-
 # Retire the legacy embedded demo in favor of its dedicated project host.
 /ai/bug-manager/demo/ https://bug-manager.projects.davidwaynebaxter.com/ 301
