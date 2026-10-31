@@ -375,21 +375,6 @@ table.stackable td, table.stackable th { vertical-align: top; }
 .build-card p { margin: 0; color: var(--muted); }
 .build-card .textlink { justify-self: start; margin-top: 0.15rem; }
 
-/* ---------- SignalDrift brand cards ---------- */
-.drift-brand-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin-top: 1.75rem; }
-.drift-brand-card { display: grid; gap: 1rem; align-content: start; min-height: 18rem; padding: 1.35rem; border: 1px solid var(--rule); border-top: 3px solid var(--accent); border-radius: 2px; background: var(--bg); }
-.drift-brand-card h3 { margin: 0; }
-.drift-brand-card p { margin: 0; color: var(--muted); }
-.drift-brand-card .textlink { align-self: end; justify-self: start; }
-.drift-brand-heading { display: flex; align-items: center; gap: 0.8rem; }
-.drift-brand-heading img { flex: 0 0 auto; width: 2.5rem; height: 2.5rem; }
-.drift-brand-heading .mono { margin-top: 0.12rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
-.drift-brand-card.techdrift { --brand: #176b61; border-top-color: var(--brand); }
-.drift-brand-card.gamingdrift { --brand: #8d6ee8; border-top-color: var(--brand); }
-.drift-brand-card.sportsdrift { --brand: #bc5c42; border-top-color: var(--brand); }
-@media (min-width: 40rem) { .drift-brand-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 62rem) { .drift-brand-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-
 /* ---------- Ideas: index banner and long-form articles ---------- */
 
 .banner { margin: 0 0 1rem; }
