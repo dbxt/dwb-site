@@ -2,14 +2,14 @@ name: Deploy Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: dwb-site-cloudflare-pages-production
+  group: dwb-site-cloudflare-pages-${{ github.ref_name }}
   cancel-in-progress: true
 
 env:
@@ -97,4 +97,4 @@ jobs:
           command: >-
             pages deploy "${{ runner.temp }}/dwb-site"
             --project-name="${{ env.CLOUDFLARE_PAGES_PROJECT }}"
-            --branch=main
+            --branch="${{ github.ref_name }}"
