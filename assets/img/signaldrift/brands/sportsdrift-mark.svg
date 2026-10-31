@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title>SportsDrift</title>
+  <rect width="48" height="48" rx="12" fill="#08121D"/>
+  <g fill="none" stroke="#F06B4F" stroke-linecap="round" stroke-width="3.2">
+    <path d="M9 18 C20 18 23 13 37 13" opacity=".58"/>
+    <path d="M9 24 C20 24 23 22 37 22" opacity=".95"/>
+    <path d="M9 30 C20 30 23 33 37 33" opacity=".58"/>
+  </g>
+  <circle cx="38" cy="22" r="3.5" fill="#B8DC68"/>
+</svg>
