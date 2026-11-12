@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="td-icon-title">
+  <defs>
+    <radialGradient id="td-glow" cx="134" cy="80" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#F5A623" stop-opacity="0.38"/>
+      <stop offset="65%"  stop-color="#F5A623" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <title id="td-icon-title">TechDrift</title>
+  <rect width="160" height="160" rx="0" fill="#0D1622"/>
+  <polyline points="0,35 80,35 134,80" fill="none" stroke="#4DCEC0" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square" opacity="0.28"/>
+  <polyline points="0,57 80,57 134,80" fill="none" stroke="#4DCEC0" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square" opacity="0.55"/>
+  <line x1="0" y1="80" x2="122" y2="80" stroke="#4DCEC0" stroke-width="11" stroke-linecap="square" opacity="0.92"/>
+  <polyline points="0,103 80,103 134,80" fill="none" stroke="#4DCEC0" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square" opacity="0.55"/>
+  <polyline points="0,125 80,125 134,80" fill="none" stroke="#4DCEC0" stroke-width="5" stroke-linejoin="miter" stroke-linecap="square" opacity="0.28"/>
+  <circle cx="134" cy="80" r="30" fill="url(#td-glow)"/>
+  <circle cx="134" cy="80" r="14" fill="#F5A623"/>
+  <circle cx="130" cy="76" r="4.8" fill="#FFE8A8" opacity="0.55"/>
+</svg>
