@@ -85,7 +85,7 @@ import '../../../styles/guides.css';
           <p>Scheduled workers pull from each brand's configured catalog, normalize the items, and record every collection run. The system groups related coverage into topics and scores persistence across independent sources instead of raw popularity. One loud story from one publisher does not become a signal just because it is loud.</p>
           <p>Coverage is bounded by publication time and comparison windows, so backdated or republished RSS items cannot inflate a topic. The public product shows the evidence trail behind a signal rather than asking readers to trust a black-box score.</p>
           <figure class="figure">
-            <img src="/assets/img/signaldrift/techdrift-signals-current.png" alt="Current TechDrift public signal page, showing a technology brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <img src="/assets/img/signaldrift/techdrift-signals-current.webp" alt="Current TechDrift public signal page, showing a technology brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
             <figcaption>Current TechDrift public signal page: a short change brief with evidence, source counts, and direct links to supporting coverage.</figcaption>
           </figure>
         </div>
@@ -98,7 +98,7 @@ import '../../../styles/guides.css';
           <p>Each published signal has a lightweight public teaser route designed for a link, mobile share sheet, or pasted URL. It shows the signal, status, story count, and a small set of source-labelled headlines. The next action is clear: add the signal to your own board. For a signed-in reader that goes straight to the matching topic. For everyone else it preserves the topic through signup.</p>
           <p>Daily briefs also have a token-gated online view that expires after 48 hours. Public profiles have an explicit, private-by-default sharing model, and a native share button with clipboard fallback. These surfaces make the product legible and shareable while keeping full reading, personalization, and account data inside the product.</p>
           <figure class="figure">
-            <img src="/assets/img/signaldrift/gamingdrift-signals-current.png" alt="Current GamingDrift public signal page, showing a gaming brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <img src="/assets/img/signaldrift/gamingdrift-signals-current.webp" alt="Current GamingDrift public signal page, showing a gaming brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
             <figcaption>Current GamingDrift public signal page: the same evidence model expressed through a brand-specific customer experience.</figcaption>
           </figure>
         </div>
@@ -116,9 +116,9 @@ import '../../../styles/guides.css';
           </ul>
           <p>Isolation is deliberate. Each brand has its own database, role, storage, customer-facing domain, and browser state. Shared code reduces repeated engineering work, but one brand's identity, account state, or source catalog does not bleed into another.</p>
           <div class="brand-captures" aria-label="Current public TechDrift family brand pages">
-            <figure><img src="/assets/img/signaldrift/techdrift-signals-current.png" alt="Current TechDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>TechDrift</figcaption></figure>
-            <figure><img src="/assets/img/signaldrift/gamingdrift-signals-current.png" alt="Current GamingDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>GamingDrift</figcaption></figure>
-            <figure><img src="/assets/img/signaldrift/sportsdrift-signals-current.png" alt="Current SportsDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>SportsDrift</figcaption></figure>
+            <figure><img src="/assets/img/signaldrift/techdrift-signals-current.webp" alt="Current TechDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>TechDrift</figcaption></figure>
+            <figure><img src="/assets/img/signaldrift/gamingdrift-signals-current.webp" alt="Current GamingDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>GamingDrift</figcaption></figure>
+            <figure><img src="/assets/img/signaldrift/sportsdrift-signals-current.webp" alt="Current SportsDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>SportsDrift</figcaption></figure>
           </div>
           <p class="muted">Three customer products, one shared platform, and independent source catalogs.</p>
         </div>
@@ -149,7 +149,7 @@ import '../../../styles/guides.css';
           <p>A separate admin service manages source health, collection jobs, topic clustering, user access, invitations, feedback, digest runs, operational settings, and application errors. The Today view is built around decisions: source exceptions, activation milestones, recent delivery results, feedback needing review, and the newest bounded error records.</p>
           <p>Lifecycle email is part of that operating model. Verification, password recovery, account changes, plan changes, invitations, digests, and administrator notices now use brand-aware presentation with the product logo and a safe return path into the app. Admin notices include an account identifier when an operator needs to act, without leaking it into public surfaces.</p>
           <figure class="figure">
-            <img src="/assets/img/signaldrift/admin-today.png" alt="TechDrift admin 'Today' control surface: decision queue, source health, digest delivery, onboarding funnel" loading="lazy" />
+            <img width="1280" height="577" src="/assets/img/signaldrift/admin-today.webp" alt="TechDrift admin 'Today' control surface: decision queue, source health, digest delivery, onboarding funnel" loading="lazy" />
             <figcaption>The admin "Today" view: decision queue, source health, digest delivery, and onboarding funnel at a glance.</figcaption>
           </figure>
         </div>
@@ -162,7 +162,7 @@ import '../../../styles/guides.css';
           <p>The product now has 922 automated tests, with 914 passing and 8 intentionally skipped integration checks. The suite covers account isolation, public pages and sharing, email rendering, onboarding, source collection, deduplication, durable board snapshots, operational controls, and the three brand configurations. Database migrations are versioned and every rollout is verified in development before an approved production promotion.</p>
           <p>The important rule is practical: a successful deploy command is not enough. A change is not done until the relevant customer route, public surface, and protected boundary have been read back on the deployed brand.</p>
           <figure class="figure">
-            <img src="/assets/img/signaldrift/sportsdrift-signals-current.png" alt="Current SportsDrift public signal page, showing a sports brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <img src="/assets/img/signaldrift/sportsdrift-signals-current.webp" alt="Current SportsDrift public signal page, showing a sports brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
             <figcaption>Current SportsDrift public signal page: evidence-first, no login required, with a plain-language explanation of the trend and the coverage behind it.</figcaption>
           </figure>
         </div>
