@@ -1,7 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Experience", "/experience/"]]),
+  {
+    "@type": "ProfilePage",
+    "url": "https://davidwaynebaxter.com/experience/",
+    "name": "Experience | David Wayne Baxter",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "David Wayne Baxter",
+      "url": "https://davidwaynebaxter.com/",
+      "jobTitle": "Engineering Leader",
+      "sameAs": [
+        "https://www.linkedin.com/in/davidwbaxter",
+        "https://github.com/dbxt",
+        "https://hub.docker.com/u/dbxt"
+      ]
+    }
+  },
+];
 ---
 <Base
+  schema={schema}
   title="Experience | David Wayne Baxter"
   description="Career history of David Wayne Baxter: platform teams at Fanatics Betting and Gaming, Carvana and Rosetta Stone, plus earlier roles as CTO and director."
   canonical="/experience/"
@@ -9,48 +31,6 @@ import Base from '../../layouts/Base.astro';
   navCurrent="/experience/"
   navKind="page"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Experience",
-            "item": "https://davidwaynebaxter.com/experience/"
-          }
-        ]
-      },
-      {
-        "@type": "ProfilePage",
-        "url": "https://davidwaynebaxter.com/experience/",
-        "name": "Experience | David Wayne Baxter",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "David Wayne Baxter",
-          "url": "https://davidwaynebaxter.com/",
-          "jobTitle": "Engineering Leader",
-          "sameAs": [
-            "https://www.linkedin.com/in/davidwbaxter",
-            "https://github.com/dbxt",
-            "https://hub.docker.com/u/dbxt"
-          ]
-        }
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

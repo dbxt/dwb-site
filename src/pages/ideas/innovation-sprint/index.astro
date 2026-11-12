@@ -2,8 +2,15 @@
 import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/essay.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Ideas", "/ideas/"], ["Innovation sprint", "/ideas/innovation-sprint/"]]),
+  article("/ideas/innovation-sprint/"),
+];
 ---
 <Base
+  schema={schema}
   title="The Quarterly Innovation Sprint | Ideas | David Wayne Baxter"
   description="Innovation sprints aren't fun time. They're a structural investment in the kind of engineering culture that makes good delivery the norm. Here's what the best version looks like."
   canonical="/ideas/innovation-sprint/"
@@ -12,34 +19,6 @@ import '../../../styles/essay.css';
   navCurrent="/ideas/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Ideas", "item": "https://davidwaynebaxter.com/ideas/" },
-          { "@type": "ListItem", "position": 3, "name": "Innovation sprint", "item": "https://davidwaynebaxter.com/ideas/innovation-sprint/" }
-        ]
-      },
-      {
-        "@type": "Article",
-        "headline": "The quarterly innovation sprint: what you're leaving on the table",
-        "description": "Innovation sprints aren't fun time. They're a structural investment in the kind of engineering culture that makes good delivery the norm. Here's what the best version looks like.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-default.jpg",
-        "url": "https://davidwaynebaxter.com/ideas/innovation-sprint/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/innovation-sprint/",
-        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
-        "datePublished": "2026-10-03",
-        "dateModified": "2026-10-03"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

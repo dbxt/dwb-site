@@ -2,8 +2,15 @@
 import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/results.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Experience", "/experience/"], ["Content delivery service", "/experience/content-delivery-service/"]]),
+  article("/experience/content-delivery-service/"),
+];
 ---
 <Base
+  schema={schema}
   title="Content Delivery Service | Experience | David Wayne Baxter"
   description="Case study: how an eight-engineer team replaced a GraphQL service with a REST service about a thousand times faster, migrating one endpoint at a time."
   canonical="/experience/content-delivery-service/"
@@ -12,53 +19,6 @@ import '../../../styles/results.css';
   navCurrent="/experience/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Experience",
-            "item": "https://davidwaynebaxter.com/experience/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Content delivery service",
-            "item": "https://davidwaynebaxter.com/experience/content-delivery-service/"
-          }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "Content delivery: from 30–60 seconds to 30–60 milliseconds",
-        "description": "Case study: how an eight-engineer team replaced a GraphQL service with a REST service about a thousand times faster, migrating one endpoint at a time.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-content-delivery.jpg",
-        "url": "https://davidwaynebaxter.com/experience/content-delivery-service/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/experience/content-delivery-service/",
-        "author": {
-          "@type": "Person",
-          "name": "David Wayne Baxter",
-          "url": "https://davidwaynebaxter.com/"
-        },
-        "datePublished": "2026-09-21",
-        "dateModified": "2026-09-21"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

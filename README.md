@@ -9,7 +9,8 @@ framework; the only scripts are the theme/menu toggle and Google Analytics with 
 public/                 Served as-is at the site root: assets/ (images, fonts, vitals.js), robots.txt, _redirects and
                         _headers (Cloudflare Pages), .htaccess (legacy FTPS host), favicons, manifest, IndexNow key
 src/layouts/Base.astro  Document shell: head metadata, share cards, analytics, header, footer
-src/lib/pages.js       Build-time page inventory: feeds the home page Latest list and sitemap.xml
+src/lib/                articles.js (article metadata), schema.js (JSON-LD helpers), pages.js (page inventory for
+                        the sitemap and the home page Latest list)
 src/scripts/theme.js    Theme and mobile-menu toggle (bundled by Astro)
 src/components/         SiteHeader, SiteFooter, Crumbs (scoped styles live inside each), Analytics
 src/pages/              One folder per URL: src/pages/ai/signaldrift/index.astro -> /ai/signaldrift/
@@ -33,8 +34,12 @@ Requires Node 22.23.4 or newer.
 
 Copy a similar page folder. The frontmatter props on `<Base>` set the title, description, canonical path, share-card
 image and which primary-nav link is highlighted (`navCurrent`, plus `navKind="page"` for the section's own page and
-`"true"` for pages inside it). Page-specific JSON-LD goes in the `<Fragment slot="head">` block, and the body is the
-`<main id="main">` markup.
+`"true"` for pages inside it). The body is the `<main id="main">` markup.
+
+**Structured data** is built in the page frontmatter and passed as `schema={schema}`: `crumbs([["Home", "/"], ...])`
+for breadcrumbs, `article("/ideas/my-essay/")` for an Article or TechArticle, or a plain object for other types.
+Article pages must be registered in `src/lib/articles.js` (headline, description, image, published and modified dates);
+that file also feeds the home page "Latest" list, and `article()` fails the build if a page is missing from it.
 
 ## Styles
 
@@ -54,8 +59,8 @@ image and which primary-nav link is highlighted (`navCurrent`, plus `navKind="pa
   `<lastmod>` taken from git (the last commit that touched the page, or today if it has uncommitted edits). Add
   `[skip-lastmod]` to a commit message when a change does not alter page content. New pages need a `changefreq` and
   `priority` entry in the `META` table in that file, or they get monthly / 0.5.
-- **Home page "Latest"** shows the three newest `Article` or `TechArticle` pages in Ideas, AI Work, Engineering Lab and
-  Fun, read from each page's JSON-LD (`src/lib/pages.js`). A page with malformed JSON-LD fails the build.
+- **Home page "Latest"** shows the three newest entries in `src/lib/articles.js` that sit under Ideas, AI Work,
+  Engineering Lab or Fun.
 
 ## Checks
 

@@ -3,8 +3,15 @@ import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/guides.css';
 import '../../../styles/tables.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Engineering Lab", "/lab/"], ["Service Host Migration", "/lab/service-host-migration/"]]),
+  article("/lab/service-host-migration/"),
+];
 ---
 <Base
+  schema={schema}
   title="Service Host Migration | David Wayne Baxter"
   description="A public-safe case study from David Wayne Baxter’s engineering lab: migrating a self-hosted Docker platform to a dedicated service host with Git-backed configuration, monitoring, backups, and a restore drill."
   canonical="/lab/service-host-migration/"
@@ -15,34 +22,6 @@ import '../../../styles/tables.css';
   navCurrent="/lab/"
   navKind="page"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Engineering Lab", "item": "https://davidwaynebaxter.com/lab/" },
-          { "@type": "ListItem", "position": 3, "name": "Service Host Migration", "item": "https://davidwaynebaxter.com/lab/service-host-migration/" }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "Service Host Migration",
-        "description": "A public-safe case study from David Wayne Baxter’s engineering lab: migrating a self-hosted Docker platform to a dedicated service host with Git-backed configuration, monitoring, backups, and a restore drill.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg",
-        "url": "https://davidwaynebaxter.com/lab/service-host-migration/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/lab/service-host-migration/",
-        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
-        "datePublished": "2026-09-30",
-        "dateModified": "2026-09-30"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

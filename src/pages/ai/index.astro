@@ -2,8 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import '../../styles/casestudy.css';
 import '../../styles/projects.css';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["AI Work", "/ai/"]]),
+];
 ---
 <Base
+  schema={schema}
   title="AI Work | David Wayne Baxter"
   description="AI projects by David Wayne Baxter, starting with Sprint Ledger, an engineering-manager dashboard built with Claude, each with a write-up of how AI was used."
   canonical="/ai/"
@@ -13,32 +19,6 @@ import '../../styles/projects.css';
   navCurrent="/ai/"
   navKind="page"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "AI Work",
-            "item": "https://davidwaynebaxter.com/ai/"
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

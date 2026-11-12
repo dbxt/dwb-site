@@ -1,34 +1,24 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Now", "/now/"]]),
+  {
+    "@type": "WebPage",
+    "url": "https://davidwaynebaxter.com/now/",
+    "name": "Now | David Wayne Baxter",
+    "description": "What David Wayne Baxter is doing right now.",
+    "dateModified": "2026-10-03"
+  },
+];
 ---
 <Base
+  schema={schema}
   title="Now | David Wayne Baxter"
   description="What David Wayne Baxter is doing right now: job search, active projects, and current focus areas. Updated October 2026."
   canonical="/now/"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Now", "item": "https://davidwaynebaxter.com/now/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://davidwaynebaxter.com/now/",
-        "name": "Now | David Wayne Baxter",
-        "description": "What David Wayne Baxter is doing right now.",
-        "dateModified": "2026-10-03"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

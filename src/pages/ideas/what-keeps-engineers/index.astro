@@ -3,8 +3,15 @@ import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/projects.css';
 import '../../../styles/essay.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Ideas", "/ideas/"], ["What keeps engineers", "/ideas/what-keeps-engineers/"]]),
+  article("/ideas/what-keeps-engineers/"),
+];
 ---
 <Base
+  schema={schema}
   title="Six Promotions, One Departure | Ideas | David Wayne Baxter"
   description="Over three and a half years and about 25 people, six engineers were promoted and one left. How I hire, pair and advocate for engineers so they grow on the team."
   canonical="/ideas/what-keeps-engineers/"
@@ -14,34 +21,6 @@ import '../../../styles/essay.css';
   navCurrent="/ideas/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Ideas", "item": "https://davidwaynebaxter.com/ideas/" },
-          { "@type": "ListItem", "position": 3, "name": "What keeps engineers", "item": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/" }
-        ]
-      },
-      {
-        "@type": "Article",
-        "headline": "Six promotions, one departure: what keeps engineers on a team",
-        "description": "Over three and a half years and about 25 people, six engineers were promoted and one left. How I hire, pair and advocate for engineers so they grow on the team.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-retention.jpg",
-        "url": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/",
-        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
-        "datePublished": "2026-09-25",
-        "dateModified": "2026-09-25"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

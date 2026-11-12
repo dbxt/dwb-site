@@ -3,8 +3,15 @@ import Base from '../../../../layouts/Base.astro';
 import Crumbs from '../../../../components/Crumbs.astro';
 import '../../../../styles/guides.css';
 import '../../../../styles/tables.css';
+import { crumbs, article } from '../../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Engineering Lab", "/lab/"], ["Proxmox", "/lab/proxmox/"], ["OPNsense", "/lab/proxmox/opnsense/"]]),
+  article("/lab/proxmox/opnsense/"),
+];
 ---
 <Base
+  schema={schema}
   title="OPNsense | David Wayne Baxter"
   description="OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s engineering lab. Installation and configuration notes."
   canonical="/lab/proxmox/opnsense/"
@@ -13,59 +20,6 @@ import '../../../../styles/tables.css';
   navCurrent="/lab/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Engineering Lab",
-            "item": "https://davidwaynebaxter.com/lab/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Proxmox",
-            "item": "https://davidwaynebaxter.com/lab/proxmox/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "OPNsense",
-            "item": "https://davidwaynebaxter.com/lab/proxmox/opnsense/"
-          }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "OPNsense",
-        "description": "OPNsense, an open-source firewall and routing platform, runs as a Proxmox VM in David Wayne Baxter’s engineering lab. Installation and configuration notes.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg",
-        "url": "https://davidwaynebaxter.com/lab/proxmox/opnsense/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/lab/proxmox/opnsense/",
-        "author": {
-          "@type": "Person",
-          "name": "David Wayne Baxter",
-          "url": "https://davidwaynebaxter.com/"
-        },
-        "datePublished": "2026-09-19",
-        "dateModified": "2026-09-23"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

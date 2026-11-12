@@ -1,8 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Engineering Lab", "/lab/"]]),
+];
 ---
 <Base
+  schema={schema}
   title="Engineering Lab | David Wayne Baxter"
   description="David Wayne Baxter’s engineering lab: Proxmox networking, Home Assistant, a dedicated Docker service host, AI tooling, monitoring, Git-backed stack management and restore-tested backups."
   canonical="/lab/"
@@ -12,32 +18,6 @@ import Crumbs from '../../components/Crumbs.astro';
   navCurrent="/lab/"
   navKind="page"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Engineering Lab",
-            "item": "https://davidwaynebaxter.com/lab/"
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

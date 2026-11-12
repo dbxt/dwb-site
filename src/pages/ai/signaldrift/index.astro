@@ -3,8 +3,15 @@ import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/casestudy.css';
 import '../../../styles/guides.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["AI Work", "/ai/"], ["TechDrift", "/ai/signaldrift/"]]),
+  article("/ai/signaldrift/"),
+];
 ---
 <Base
+  schema={schema}
   title="TechDrift | AI Work | David Wayne Baxter"
   description="TechDrift and its sister products GamingDrift and SportsDrift: evidence-first products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline."
   canonical="/ai/signaldrift/"
@@ -14,34 +21,6 @@ import '../../../styles/guides.css';
   navCurrent="/ai/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
-          { "@type": "ListItem", "position": 2, "name": "AI Work", "item": "https://davidwaynebaxter.com/ai/" },
-          { "@type": "ListItem", "position": 3, "name": "TechDrift", "item": "https://davidwaynebaxter.com/ai/signaldrift/" }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "TechDrift",
-        "description": "TechDrift and its sister products GamingDrift and SportsDrift are evidence-first signal products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-default.jpg",
-        "url": "https://davidwaynebaxter.com/ai/signaldrift/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/signaldrift/",
-        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
-        "datePublished": "2026-10-16",
-        "dateModified": "2026-10-26"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

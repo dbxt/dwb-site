@@ -4,8 +4,15 @@ import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/casestudy.css';
 import '../../../styles/tables.css';
 import '../../../styles/workflow.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["AI Work", "/ai/"], ["Drop Shipping Automation", "/ai/drop-shipping-automation/"]]),
+  article("/ai/drop-shipping-automation/"),
+];
 ---
 <Base
+  schema={schema}
   title="Drop Shipping Automation | AI Work | David Wayne Baxter"
   description="A live print-on-demand shop run by nine AI agents: how a product moves from request to live listing without manual hand-offs."
   canonical="/ai/drop-shipping-automation/"
@@ -14,53 +21,6 @@ import '../../../styles/workflow.css';
   navCurrent="/ai/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "AI Work",
-            "item": "https://davidwaynebaxter.com/ai/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Drop Shipping Automation",
-            "item": "https://davidwaynebaxter.com/ai/drop-shipping-automation/"
-          }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "Drop Shipping Automation",
-        "description": "A live print-on-demand shop run by nine AI agents: how a product moves from request to live listing without manual hand-offs.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-drop-shipping.jpg",
-        "url": "https://davidwaynebaxter.com/ai/drop-shipping-automation/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/drop-shipping-automation/",
-        "author": {
-          "@type": "Person",
-          "name": "David Wayne Baxter",
-          "url": "https://davidwaynebaxter.com/"
-        },
-        "datePublished": "2026-09-19",
-        "dateModified": "2026-09-21"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

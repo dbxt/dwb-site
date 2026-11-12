@@ -1,8 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
 import '../../styles/projects.css';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Fun", "/fun/"]]),
+  {
+    "@type": "CollectionPage",
+    "url": "https://davidwaynebaxter.com/fun/",
+    "name": "Fun | David Wayne Baxter"
+  },
+];
 ---
 <Base
+  schema={schema}
   title="Fun | David Wayne Baxter"
   description="Stories from outside the engineering org, by David Wayne Baxter."
   canonical="/fun/"
@@ -11,37 +22,6 @@ import '../../styles/projects.css';
   navCurrent="/fun/"
   navKind="page"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Fun",
-            "item": "https://davidwaynebaxter.com/fun/"
-          }
-        ]
-      },
-      {
-        "@type": "CollectionPage",
-        "url": "https://davidwaynebaxter.com/fun/",
-        "name": "Fun | David Wayne Baxter"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

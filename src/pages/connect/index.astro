@@ -1,45 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { crumbs, article } from '../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["Find me online", "/connect/"]]),
+  {
+    "@type": "ContactPage",
+    "url": "https://davidwaynebaxter.com/connect/",
+    "name": "Find me online | David Wayne Baxter",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "David Wayne Baxter",
+      "url": "https://davidwaynebaxter.com/"
+    }
+  },
+];
 ---
 <Base
+  schema={schema}
   title="Find me online | David Wayne Baxter"
   description="Where to find David Wayne Baxter online: LinkedIn, GitHub, Dev.to, X, Bluesky, Threads, Instagram and TikTok."
   canonical="/connect/"
   ogDescription="Engineering leader, still in the details. Posting about managing AI agents and building solo."
   footerConnect
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Find me online",
-            "item": "https://davidwaynebaxter.com/connect/"
-          }
-        ]
-      },
-      {
-        "@type": "ContactPage",
-        "url": "https://davidwaynebaxter.com/connect/",
-        "name": "Find me online | David Wayne Baxter",
-        "mainEntity": {"@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/"}
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap connect">
       <div class="page-head">

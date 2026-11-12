@@ -4,78 +4,76 @@ import '../styles/results.css';
 import { latest } from '../lib/pages.js';
 
 const recent = latest(3);
+import { crumbs, article } from '../lib/schema.js';
+
+const schema = [
+  {
+    "@type": "WebSite",
+    "@id": "https://davidwaynebaxter.com/#website",
+    "name": "David Wayne Baxter",
+    "publisher": {
+      "@id": "https://davidwaynebaxter.com/#person"
+    },
+    "url": "https://davidwaynebaxter.com/"
+  },
+  {
+    "@type": "Person",
+    "@id": "https://davidwaynebaxter.com/#person",
+    "name": "David Wayne Baxter",
+    "givenName": "David",
+    "additionalName": "Wayne",
+    "familyName": "Baxter",
+    "mainEntityOfPage": "https://davidwaynebaxter.com/",
+    "disambiguatingDescription": "Software engineering leader and builder of TechDrift; not the country music artist of the same name.",
+    "alternateName": "Bax",
+    "description": "Engineering leader with 20+ years in software leadership, specializing in platform engineering, observability, AI-augmented workflows, and building high-retention engineering teams.",
+    "url": "https://davidwaynebaxter.com/",
+    "image": "https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906",
+    "jobTitle": "Engineering Leader",
+    "knowsAbout": [
+      "engineering management",
+      "director of engineering",
+      "platform engineering",
+      "observability",
+      "site reliability",
+      "AI-augmented engineering",
+      "agentic workflows",
+      "engineering leadership",
+      "team retention",
+      "developer experience",
+      "Datadog",
+      "Terraform",
+      "AWS",
+      "continuous delivery",
+      "engineering operating systems"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/davidwbaxter",
+      "https://github.com/dbxt",
+      "https://mentorcruise.com/mentor/davidbaxter/",
+      "https://dev.to/davidwaynebax",
+      "https://x.com/davidwaynebax",
+      "https://bsky.app/profile/davidwaynebax",
+      "https://www.threads.com/@davidwaynebax",
+      "https://www.instagram.com/davidwaynebax/",
+      "https://www.tiktok.com/@davidwaynebax"
+    ]
+  },
+];
 ---
 <Base
+  schema={schema}
   title={"David Wayne Baxter | Engineering Leader, Platform Reliability & AI Agents"}
   description="David Wayne Baxter is a software engineering leader in Los Angeles with 20+ years of experience in platform reliability, observability and AI-agent workflows. Open to Senior Engineering Manager and Director roles."
   canonical="/"
   ogDescription="Engineering leader with 20+ years of experience building reliable platforms and teams that stay together."
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://davidwaynebaxter.com/#website",
-        "name": "David Wayne Baxter",
-        "publisher": { "@id": "https://davidwaynebaxter.com/#person" },
-        "url": "https://davidwaynebaxter.com/"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://davidwaynebaxter.com/#person",
-        "name": "David Wayne Baxter",
-        "givenName": "David",
-        "additionalName": "Wayne",
-        "familyName": "Baxter",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/",
-        "disambiguatingDescription": "Software engineering leader and builder of TechDrift; not the country music artist of the same name.",
-        "alternateName": "Bax",
-        "description": "Engineering leader with 20+ years in software leadership, specializing in platform engineering, observability, AI-augmented workflows, and building high-retention engineering teams.",
-        "url": "https://davidwaynebaxter.com/",
-        "image": "https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906",
-        "jobTitle": "Engineering Leader",
-        "knowsAbout": [
-          "engineering management",
-          "director of engineering",
-          "platform engineering",
-          "observability",
-          "site reliability",
-          "AI-augmented engineering",
-          "agentic workflows",
-          "engineering leadership",
-          "team retention",
-          "developer experience",
-          "Datadog",
-          "Terraform",
-          "AWS",
-          "continuous delivery",
-          "engineering operating systems"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Los Angeles",
-          "addressRegion": "CA",
-          "addressCountry": "US"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/davidwbaxter",
-          "https://github.com/dbxt",
-          "https://mentorcruise.com/mentor/davidbaxter/",
-          "https://dev.to/davidwaynebax",
-          "https://x.com/davidwaynebax",
-          "https://bsky.app/profile/davidwaynebax",
-          "https://www.threads.com/@davidwaynebax",
-          "https://www.instagram.com/davidwaynebax/",
-          "https://www.tiktok.com/@davidwaynebax"
-        ]
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

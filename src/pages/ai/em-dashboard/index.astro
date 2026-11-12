@@ -3,8 +3,15 @@ import Base from '../../../layouts/Base.astro';
 import Crumbs from '../../../components/Crumbs.astro';
 import '../../../styles/casestudy.css';
 import '../../../styles/tables.css';
+import { crumbs, article } from '../../../lib/schema.js';
+
+const schema = [
+  crumbs([["Home", "/"], ["AI Work", "/ai/"], ["Sprint Ledger", "/ai/em-dashboard/"]]),
+  article("/ai/em-dashboard/"),
+];
 ---
 <Base
+  schema={schema}
   title="Sprint Ledger | AI Work | David Wayne Baxter"
   description="Case study of Sprint Ledger, an engineering-manager dashboard built with Claude that rates each person Red, Amber or Green on capacity, pace and PRs."
   canonical="/ai/em-dashboard/"
@@ -14,53 +21,6 @@ import '../../../styles/tables.css';
   navCurrent="/ai/"
   navKind="true"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://davidwaynebaxter.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "AI Work",
-            "item": "https://davidwaynebaxter.com/ai/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Sprint Ledger",
-            "item": "https://davidwaynebaxter.com/ai/em-dashboard/"
-          }
-        ]
-      },
-      {
-        "@type": "TechArticle",
-        "headline": "Sprint Ledger",
-        "description": "Case study of Sprint Ledger, an engineering-manager dashboard built with Claude that rates each person Red, Amber or Green on capacity, pace and PRs.",
-        "image": "https://davidwaynebaxter.com/assets/og/og-sprint-ledger.jpg",
-        "url": "https://davidwaynebaxter.com/ai/em-dashboard/",
-        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/em-dashboard/",
-        "author": {
-          "@type": "Person",
-          "name": "David Wayne Baxter",
-          "url": "https://davidwaynebaxter.com/"
-        },
-        "datePublished": "2026-09-19",
-        "dateModified": "2026-09-21"
-      }
-    ]
-  }
-  </script>
-  </Fragment>
 <main id="main">
     <div class="wrap">
 

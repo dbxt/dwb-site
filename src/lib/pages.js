@@ -1,5 +1,7 @@
 // Build-time page inventory, read from the page sources themselves. Feeds the home page "Latest" list and sitemap.xml,
 // so neither needs a hand-edited file or a script that rewrites source in CI.
+import { articles } from './articles.js';
+
 const sources = import.meta.glob('/src/pages/**/index.astro', { query: '?raw', import: 'default', eager: true });
 
 export const SITE = 'https://davidwaynebaxter.com';
@@ -12,27 +14,18 @@ export const pages = Object.entries(sources).map(([file, source]) => {
   return { file: file.slice(1), path: '/' + rel, source };
 });
 
-function articleOf(page) {
-  const m = page.source.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-  if (!m) return null;
-  let data;
-  try { data = JSON.parse(m[1]); } catch (e) { throw new Error(`Invalid JSON-LD in ${page.file}: ${e.message}`); }
-  const node = (data['@graph'] ?? [data]).find((n) => ['Article', 'TechArticle'].includes(n['@type']) && n.datePublished && n.headline);
-  return node ?? null;
-}
-
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const decode = (s) => s.replace(/&rsquo;|&#8217;/g, '\u2019').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 
-/** The newest Article/TechArticle pages in Ideas, AI Work, Engineering Lab and Fun (section index pages carry no Article). */
+/** The newest Article/TechArticle pages in Ideas, AI Work, Engineering Lab and Fun (from articles.js). */
 export function latest(count = 3) {
-  return pages
-    .map((p) => ({ p, section: SECTIONS[p.path.split('/')[1]], node: articleOf(p) }))
-    .filter((x) => x.section && x.node)
-    .map(({ p, section, node }) => {
-      const [y, m, d] = node.datePublished.split('-').map(Number);
-      return { url: p.path, section, title: decode(node.headline), date: node.datePublished, label: `${MONTHS[m - 1]} ${d}, ${y}` };
+  return Object.entries(articles)
+    .map(([url, a]) => ({ url, section: SECTIONS[url.split('/')[1]], a }))
+    .filter((x) => x.section)
+    .map(({ url, section, a }) => {
+      const [y, m, d] = a.published.split('-').map(Number);
+      return { url, section, title: decode(a.headline), date: a.published, label: `${MONTHS[m - 1]} ${d}, ${y}` };
     })
-    .sort((a, b) => b.date.localeCompare(a.date) || a.url.localeCompare(b.url))
+    .sort((x, y) => y.date.localeCompare(x.date) || x.url.localeCompare(y.url))
     .slice(0, count);
 }
