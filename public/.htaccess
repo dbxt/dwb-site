@@ -32,6 +32,11 @@ ErrorDocument 404 /404.html
 
 AddType application/manifest+json .webmanifest
 
+# Cloudflare Pages config files ride along in dist/; the FTPS host has no use for them
+<FilesMatch "^(_redirects|_headers)$">
+  Require all denied
+</FilesMatch>
+
 # Security headers. HSTS is scoped to this host only (no includeSubDomains) so the app subdomains are unaffected.
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000"
