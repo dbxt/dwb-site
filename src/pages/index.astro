@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/results.css';
+import { latest } from '../lib/pages.js';
+
+const recent = latest(3);
 ---
 <Base
   title={"David Wayne Baxter | Engineering Leader, Platform Reliability & AI Agents"}
@@ -30,7 +33,7 @@ import '../styles/results.css';
         "mainEntityOfPage": "https://davidwaynebaxter.com/",
         "disambiguatingDescription": "Software engineering leader and builder of TechDrift; not the country music artist of the same name.",
         "alternateName": "Bax",
-        "description": "Senior Engineering Manager with 20+ years in software leadership, specializing in platform engineering, observability, AI-augmented workflows, and building high-retention engineering teams.",
+        "description": "Engineering leader with 20+ years in software leadership, specializing in platform engineering, observability, AI-augmented workflows, and building high-retention engineering teams.",
         "url": "https://davidwaynebaxter.com/",
         "image": "https://davidwaynebaxter.com/assets/headshot-20260906.jpg?v=20260906",
         "jobTitle": "Engineering Leader",
@@ -78,10 +81,10 @@ import '../styles/results.css';
 
       <section class="hero" aria-labelledby="intro">
         <div>
-          <p class="mono eyebrow">Senior Engineering Manager · Los Angeles, California</p>
+          <p class="mono eyebrow">Engineering leader · Los Angeles, California</p>
           <h1 id="intro">Engineering leadership through better systems.</h1>
           <p class="lede">I lead engineering teams that ship reliably and stay together, and I build the platforms, observability, delivery process, and AI-enabled workflows that make an engineering organization faster, more reliable, and easier to lead.</p>
-          <p class="lede muted">I am a Senior Engineering Manager with more than twenty years in software, and coworkers and friends call me Bax. Most recently, at Fanatics Betting and Gaming, I led the teams behind content delivery, the CMS, and shared platform services for a sportsbook and retail product on web and mobile. I have also worked as a developer, architect, CTO, and director.</p>
+          <p class="lede muted">I am an engineering leader with more than twenty years in software, and coworkers and friends call me Bax. Most recently, at Fanatics Betting and Gaming, I led the teams behind content delivery, the CMS, and shared platform services for a sportsbook and retail product on web and mobile. I have also worked as a developer, architect, CTO, and director.</p>
           <p class="lede muted">My approach is consistent. I learn the system quickly, agree with the business on what it needs, turn that into work engineers can act on, and put in place the process and tooling that make good delivery repeatable.</p>
           <p class="lede muted">I am between roles and building TechDrift, a signal-discovery product I designed, shipped, and now run with AI agents. <a class="textlink" href="/ai/signaldrift/">See the case study&nbsp;→</a></p>
           <div class="actions">
@@ -283,11 +286,9 @@ import '../styles/results.css';
         <div class="body">
           <h2 id="latest">New on the site.</h2>
           <ol class="log">
-            <!-- latest:start -->
-            <li><time datetime="2026-10-16">Oct 16, 2026</time><span><a class="textlink" href="/ai/signaldrift/">TechDrift</a> <span class="where">· AI Work</span></span></li>
-            <li><time datetime="2026-10-03">Oct 3, 2026</time><span><a class="textlink" href="/ideas/innovation-sprint/">The quarterly innovation sprint: what you're leaving on the table</a> <span class="where">· Ideas</span></span></li>
-            <li><time datetime="2026-09-30">Sep 30, 2026</time><span><a class="textlink" href="/lab/service-host-migration/">Service Host Migration</a> <span class="where">· Engineering Lab</span></span></li>
-            <!-- latest:end -->
+            {recent.map((p) => (
+              <li><time datetime={p.date}>{p.label}</time><span><a class="textlink" href={p.url}>{p.title}</a> <span class="where">· {p.section}</span></span></li>
+            ))}
           </ol>
           <div class="actions">
             <a class="textlink" href="/ideas/">Ideas&nbsp;→</a>

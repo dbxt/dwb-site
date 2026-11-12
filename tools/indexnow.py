@@ -17,9 +17,9 @@ ENDPOINT = 'https://api.indexnow.org/IndexNow'
 MAX_CHANGED = 20  # a bigger change (a redesign, a shared template edit) is simply resubmitted in full
 
 def sitemap_urls():
-    return re.findall(r'<loc>([^<]+)</loc>', (ROOT / 'public' / 'sitemap.xml').read_text())
+    return re.findall(r'<loc>([^<]+)</loc>', (ROOT / 'dist' / 'sitemap.xml').read_text())
 
-SHARED = ('src/layouts/', 'src/components/', 'src/styles/')  # edits here change every page
+SHARED = ('src/layouts/', 'src/components/', 'src/styles/', 'src/scripts/')  # edits here change every page
 
 def page_url(path):
     if path == 'src/pages/index.astro': return f'https://{HOST}/'
@@ -29,7 +29,7 @@ def page_url(path):
 def changed_urls(before, after):
     if not before or set(before) == {'0'}: return sitemap_urls()
     names = subprocess.run(['git', 'diff', '--name-only', before, after], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()
-    if 'public/sitemap.xml' in names or len(names) > MAX_CHANGED or any(n.startswith(SHARED) for n in names): return sitemap_urls()
+    if 'src/pages/sitemap.xml.js' in names or len(names) > MAX_CHANGED or any(n.startswith(SHARED) for n in names): return sitemap_urls()
     known = set(sitemap_urls())
     return sorted({u for u in map(page_url, names) if u in known})
 
