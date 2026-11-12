@@ -1,19 +1,30 @@
 name: Deploy
+# One build feeds both hosts: every push to dev or main publishes a Cloudflare Pages deployment (dev is the preview),
+# and main also uploads to the legacy FTPS host. Third-party actions are pinned to commit SHAs because two of them
+# hold deploy secrets; the tag each one tracks is in the comment.
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: ${{ github.ref_name != 'main' }}   # never interrupt a half-finished production upload
+
+env:
+  CLOUDFLARE_PAGES_PROJECT: davidwaynebaxter-com
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          fetch-depth: 0   # full history, so the sitemap script can read each page's last-modified date
-      - name: Refresh sitemap lastmod dates
-        run: python3 tools/sitemap-lastmod.py
-      - name: Refresh the home page's Latest list
-        run: python3 tools/latest.py
-      - uses: actions/setup-node@v4
+          fetch-depth: 0   # full history: sitemap lastmod dates are read from git at build time
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: npm
@@ -21,12 +32,68 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Check the build
+        run: |
+          python3 tools/check-dist.py dist
           test -f dist/index.html
           test -f dist/404.html
+          test -f dist/robots.txt
+          test -f dist/sitemap.xml
+          test -f dist/_headers
+          test -f dist/_redirects
           test -f dist/.htaccess
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: dist
+          path: dist
+          include-hidden-files: true   # .htaccess files are hidden, and the FTPS host needs them
+          if-no-files-found: error
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Uploads static assets only; it never creates or changes DNS or custom domains.
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PAGES_PROJECT }} --branch=${{ github.ref_name }}
+
+  lighthouse-preview:
+    # Advisory: audits the dev preview before anything is merged. SEO is skipped because Pages marks previews noindex.
+    # Flip continue-on-error to false to make it a hard gate.
+    if: github.ref_name == 'dev'
+    needs: pages
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
+        with:
+          configPath: ./tools/lighthouserc-preview.json
+          uploadArtifacts: true
+
+  ftps:
+    if: github.ref_name == 'main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0   # IndexNow diffs the push range below
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: dist
+          path: dist
       # Only files this action uploaded earlier are ever deleted (tracked in .ftp-deploy-sync-state.json),
       # so other folders on the server, such as subdomain document roots, are left alone.
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -38,6 +105,8 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            _headers
+            _redirects
       # A courtesy ping so Bing and other IndexNow engines re-crawl changed pages promptly; never fails the deploy.
       - name: Notify IndexNow of changed pages
         continue-on-error: true

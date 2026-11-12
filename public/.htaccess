@@ -1,3 +1,5 @@
+# Legacy FTPS host only (Cloudflare Pages ignores this file and reads _redirects and _headers instead).
+# Keep the redirects and headers here in step with public/_redirects and public/_headers.
 # Canonical URLs: one https, non-www address per page.
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -37,6 +39,7 @@ AddType application/manifest+json .webmanifest
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://techdrift.app; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
 </IfModule>
 
 # php -- BEGIN cPanel-generated handler, do not edit

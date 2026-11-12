@@ -1,2 +1,20 @@
-# Retire the legacy embedded demo in favor of its dedicated project host.
+# Cloudflare Pages redirects. The FTPS host gets the same set from .htaccess; keep the two in step.
+# The Homelab section became the Engineering Lab at /lab/.
+/homelab /lab/ 301
+/homelab/ /lab/ 301
+/homelab/* /lab/:splat 301
+/engineering-lab /lab/ 301
+/engineering-lab/ /lab/ 301
+/engineering-lab/* /lab/:splat 301
+
+# The AI and engineering leadership essay moved from AI Work to Ideas.
+/ai/ai-and-engineering-leadership /ideas/ai-and-engineering-leadership/ 301
+/ai/ai-and-engineering-leadership/ /ideas/ai-and-engineering-leadership/ 301
+
+# Retired duplicates of /contact/ and /experience/
+/contact.html /contact/ 301
+/experience.html /experience/ 301
+
+# The embedded Bug Manager demo moved to its dedicated project host.
+/ai/bug-manager/demo https://bug-manager.projects.davidwaynebaxter.com/ 301
 /ai/bug-manager/demo/ https://bug-manager.projects.davidwaynebaxter.com/ 301
