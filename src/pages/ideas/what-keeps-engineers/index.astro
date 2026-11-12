@@ -1,0 +1,138 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/projects.css';
+import '../../../styles/essay.css';
+---
+<Base
+  title="Six Promotions, One Departure | Ideas | David Wayne Baxter"
+  description="Over three and a half years and about 25 people, six engineers were promoted and one left. How I hire, pair and advocate for engineers so they grow on the team."
+  canonical="/ideas/what-keeps-engineers/"
+  ogType="article"
+  ogImage="/assets/og/og-retention.jpg"
+  ogImageAlt="Two mango stems growing side by side from one seed in a clay pot"
+  navCurrent="/ideas/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Ideas", "item": "https://davidwaynebaxter.com/ideas/" },
+          { "@type": "ListItem", "position": 3, "name": "What keeps engineers", "item": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "Six promotions, one departure: what keeps engineers on a team",
+        "description": "Over three and a half years and about 25 people, six engineers were promoted and one left. How I hire, pair and advocate for engineers so they grow on the team.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-retention.jpg",
+        "url": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/what-keeps-engineers/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-09-25",
+        "dateModified": "2026-09-25"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="article-head">
+        <Crumbs items={[{"label": "Ideas", "href": "/ideas/"}, {"label": "What keeps engineers"}]} />
+        <h1>Six promotions, one departure: what keeps engineers on a team</h1>
+        <p class="lede">Most engineers change jobs to get promoted. Here is how I hire, pair and advocate for people so they can grow without leaving.</p>
+        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-25">September 25, 2026</time> · 6 min read</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/ideas-retention-hero.webp" srcset="/assets/ideas-retention-hero-480.webp 480w, /assets/ideas-retention-hero-720.webp 720w, /assets/ideas-retention-hero.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="Two mango stems growing side by side from one seed in a clay pot" />
+      </figure>
+
+    <article class="essay">
+      <p>Over three and a half years, I managed about 25 people across three teams. I inherited one of those teams. I built the other two almost from scratch: one started with a single transfer, the other with two transfers and an acqui-hire. Both grew to eight engineers.</p>
+
+      <ol class="log">
+        <li><span class="k">3.5 years</span><span>Three teams: one inherited, two built from scratch.</span></li>
+        <li><span class="k">~25 people</span><span>Engineers and two managers.</span></li>
+        <li><span class="k">6 promotions</span><span>From SE2 to SE3 all the way up to Staff to Senior Staff, plus one Staff engineer who moved into engineering management.</span></li>
+        <li><span class="k">1 departure</span><span>An engineer who left to follow his passion.</span></li>
+      </ol>
+
+      <p>That didn’t happen by accident. Here’s what I did.</p>
+
+      <h2 id="interview">It starts with the interview.</h2>
+      <p>Many hiring managers treat technical ability as the main thing to hire for. That can get you the most technically capable team, but it tells you nothing about how well that team will work together.</p>
+      <p>By the time a candidate gets to me, a panel of engineers has already tested their technical skills. So I skip the pop quizzes and hypotheticals. My job is to learn who the person is and how they work with others.</p>
+      <p>I tell candidates up front: no quizzes, no hypotheticals, we’re just going to talk. That usually lowers their guard, and I get to meet the actual person instead of their interview personality. We talk about their past roles, how they work, their team dynamics, how they felt about their previous manager, and what it was like to be part of that team.</p>
+      <p>A casual conversation isn’t the same as hiring on gut feeling. I don’t know of any pop quiz that tells you more about someone’s character than how they talk about real situations from their last job.</p>
+
+      <h3>The hire the panel rated a level lower.</h3>
+      <p>We had a candidate, I’ll call him John, interviewing for an SE3 role. He was technically solid, but the engineering panel rated him at SE2. When I talked with him, though, it was obvious he was hungry for a chance to prove himself, and his personality would fit right in with the team.</p>
+      <p>We hired him as an SE2. He was a breakout almost immediately, performing beyond his level and making friends and mentors along the way. About 14 months later, he was promoted to SE3.</p>
+
+      <h3>The candidate I passed on.</h3>
+      <p>I asked another candidate about a disagreement with a previous manager. He paused, then described an argument over architecture. He told me he’d said to his manager that he was “just a figurehead” and that engineering decisions should be left to the engineers.</p>
+      <p>I partly agree with that. Engineers should have a real voice in engineering decisions. But the confrontational way he handled it, and the fact that he thought it was fine to repeat in an interview, told me enough. I passed.</p>
+
+      <h3>Choosing who stays after an acquisition.</h3>
+      <p>The same approach mattered when we acqui-hired a team. They had built a product good enough that we bought the company, so technical ability wasn’t really in question. What I needed to know was whether anyone was bitter about the acquisition, and whether they had the ambition and drive to succeed in a new environment. Those conversations decided who joined the team.</p>
+
+      <h2 id="structure">Every hire needs a mentor and a mentee.</h2>
+      <p>When I hire, the first question I ask myself is: who will this person mentor, and who will mentor them?</p>
+      <p>As their manager, I’m always part of their mentorship. But who handles the day-to-day? If no one on or near the team can mentor a new hire, I have two concerns: they’ll feel like they’re on an island, and they won’t have the right opportunities to learn.</p>
+      <p>The next question is whether they have room to grow. For junior engineers, if there’s nowhere to go, there’s very little to work toward. I hire for ambition as well as character, and it’s tragic to hire an ambitious junior engineer knowing they’ll never get to be more than that. For senior hires, growth looks different: the higher you go on the ladder, the less of the job is coding and the more it depends on the soft skills I’d expect from a manager.</p>
+
+      <blockquote class="pull"><p>In an industry where most people change jobs to get promoted, I’d rather keep the talent and offer the growth here.</p></blockquote>
+
+      <h2 id="pairing">Pairing people up.</h2>
+      <p>I pair engineers as mentor and mentee. Depending on the team, senior engineers may have more mentees than mentors. This matters most on remote teams. It builds camaraderie, gives senior engineers a real sense of leadership, and gives junior engineers a structured growth plan and someone to go to when they’re stuck.</p>
+      <p>It helps the mentor as much as the mentee. One of my SE3s regularly got caught up in his own head. Whenever a new idea came to him, he’d rethink his approach and rework what he’d already done. Once I paired him with a mentee, he had a somewhat forced chance to talk through his plans and explain them to another person. His task paralysis started to fade. He was later promoted to Staff engineer.</p>
+
+      <h2 id="visible">Making the work visible.</h2>
+      <p>Celebrating the team means making sure everyone’s work is seen, and that each person knows they’re valued in their role.</p>
+      <div class="habit">
+        <h3>Regular demos.</h3>
+        <p>Each person shows the team what they’ve been working on.</p>
+      </div>
+      <div class="habit">
+        <h3>Knowledge-sharing sessions.</h3>
+        <p>The team learns and grows from one another.</p>
+      </div>
+      <div class="habit">
+        <h3>One-on-one check-ins.</h3>
+        <p>We talk about how the mentorship is going and whether they feel they’re growing.</p>
+      </div>
+      <p>Visibility matters most at promotion time. I work with each person on a promotion document that lists their accomplishments and shows they’re already working at the next level. We go through how they’ve worked with coworkers and collect as much positive feedback as we can. Then I make the case in calibration.</p>
+      <p>Sometimes there’s no budget for promotions. When that happens, we keep adding to the document anyway, and I make it clear that as soon as budget and opportunity come back, we’ll be ready. My goal is to keep hope alive. If the promotion window stays closed too long, the company has bigger problems than losing one engineer.</p>
+
+      <h2 id="contrast">What happens when you skip this.</h2>
+      <p>At a previous organization, which I won’t name, I watched a hiring manager hire almost entirely for technical ability and seemingly ignore soft skills. His team ran mechanically. There was little to no camaraderie, and they often disagreed in public. Working with them from the outside was painful, partly because of their people skills, and partly because the turnover made it hard to know who to go to for what.</p>
+
+      <h2 id="departure">The one who left.</h2>
+      <p>The one engineer who left my team did so to pursue his passion for geospatial engineering. There wasn’t much I could offer to compete with that. We still keep in touch on LinkedIn and check in from time to time.</p>
+      <p>That’s the whole approach: hire people for who they are, give them someone to learn from and someone to teach, make their work visible, and fight for their growth.</p>
+
+      <blockquote class="pull"><p>Most of them will stay. The ones who leave will do it to chase something they love.</p></blockquote>
+
+      <div class="ask">
+        <p class="mono">Over to you</p>
+        <ul class="plain">
+          <li>What’s the one question you ask in every interview that isn’t about code?</li>
+          <li>Who on your team is ready for the next level, and does their promotion case already exist?</li>
+        </ul>
+        <div class="actions flush">
+          <a class="button" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">Continue the conversation on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </main>
+</Base>

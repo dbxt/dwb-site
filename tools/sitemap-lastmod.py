@@ -6,7 +6,7 @@ Runs in CI before every deploy (full git history is needed), so lastmod tracks r
 import datetime, pathlib, re, subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SITEMAP = ROOT / 'sitemap.xml'
+SITEMAP = ROOT / 'public' / 'sitemap.xml'
 HOST = 'https://davidwaynebaxter.com/'
 
 def git(*args):
@@ -17,10 +17,15 @@ today = datetime.date.today().isoformat()
 
 def lastmod(loc, current):
     rel = loc[len(HOST):]
-    page = rel + 'index.html' if rel == '' or rel.endswith('/') else rel
+    # Pages are Astro files under src/pages/ (/ai/ -> src/pages/ai/index.astro); anything else is a static file in public/.
+    if rel == '' or rel.endswith('/'): page = f'src/pages/{rel}index.astro'
+    else: page = f'public/{rel}'
     if not (ROOT / page).exists(): return current
     if page in dirty: return today
-    return git('log', '-1', '--format=%cs', '--', page).strip() or current
+    # Before the Astro migration each page was index.html; its history still counts. Commits marked [skip-lastmod]
+    # (the migration itself) changed how the page is built, not what it says, so they do not move the date.
+    legacy = page[len('src/pages/'):-len('.astro')] + '.html' if page.startswith('src/pages/') else page
+    return git('log', '-1', '--format=%cs', '--invert-grep', '--grep=\\[skip-lastmod\\]', '--', page, legacy).strip() or current
 
 def fix(block):
     loc = re.search(r'<loc>([^<]+)</loc>', block.group(0)).group(1)

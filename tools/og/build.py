@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Render the 1200x630 social-share cards in assets/og/ from tools/og/card.html.
+"""Render the 1200x630 social-share cards in public/assets/og/ from tools/og/card.html.
 
 Needs Chromium and Pillow. Re-run after changing a card, then commit the JPEGs:  python3 tools/og/build.py
-Screenshots are WebP in assets/, which Chromium reads but some social scrapers do not, hence the JPEG output.
+Screenshots are WebP in public/assets/, which Chromium reads but some social scrapers do not, hence the JPEG output.
 """
 import pathlib, shutil, subprocess, sys, tempfile, urllib.parse
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CARD = ROOT / 'tools' / 'og' / 'card.html'
-OUT = ROOT / 'assets' / 'og'
+OUT = ROOT / 'public' / 'assets' / 'og'
 CHROME = shutil.which('chromium') or shutil.which('chromium-browser') or shutil.which('google-chrome')
 
 CARDS = {

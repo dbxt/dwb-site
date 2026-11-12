@@ -1,0 +1,148 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/guides.css';
+import '../../../styles/tables.css';
+---
+<Base
+  title="Service Host Migration | David Wayne Baxter"
+  description="A public-safe case study from David Wayne Baxter’s engineering lab: migrating a self-hosted Docker platform to a dedicated service host with Git-backed configuration, monitoring, backups, and a restore drill."
+  canonical="/lab/service-host-migration/"
+  ogType="article"
+  ogDescription="Migrating a self-hosted Docker platform with Git-backed configuration, monitoring, backups, and a restore drill."
+  ogImage="/assets/og/og-engineering-lab.jpg"
+  ogImageAlt="Engineering Lab: Proxmox, OPNsense, Docker and Home Assistant"
+  navCurrent="/lab/"
+  navKind="page"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Engineering Lab", "item": "https://davidwaynebaxter.com/lab/" },
+          { "@type": "ListItem", "position": 3, "name": "Service Host Migration", "item": "https://davidwaynebaxter.com/lab/service-host-migration/" }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "Service Host Migration",
+        "description": "A public-safe case study from David Wayne Baxter’s engineering lab: migrating a self-hosted Docker platform to a dedicated service host with Git-backed configuration, monitoring, backups, and a restore drill.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-engineering-lab.jpg",
+        "url": "https://davidwaynebaxter.com/lab/service-host-migration/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/lab/service-host-migration/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-09-30",
+        "dateModified": "2026-09-30"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <Crumbs items={[{"label": "Engineering Lab", "href": "/lab/"}, {"label": "Service Host Migration"}]} />
+        <h1>Service Host Migration</h1>
+        <p class="lede">A self-hosted platform migration from a constrained Docker VM to a dedicated service host, with Git-backed configuration, monitoring, backups, rollback posture, and a restore drill.</p>
+        <div class="note">
+          <p><b>About this page.</b> This is a public version of the migration story. It leaves out hostnames, addresses, credential paths, and private service URLs on purpose.</p>
+        </div>
+        <nav class="jump" aria-label="On this page">
+          <ul>
+            <li><a href="#why">Why move it</a></li>
+            <li><a href="#target">Target state</a></li>
+            <li><a href="#cutover">Cutover discipline</a></li>
+            <li><a href="#recovery">Recovery proof</a></li>
+            <li><a href="#lessons">Lessons</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <section class="row first" id="why" aria-labelledby="why-h">
+        <div class="label">Why move it</div>
+        <div class="body">
+          <h2 id="why-h">The old host was doing too many jobs.</h2>
+          <p>The original Docker host started as a simple place for personal services, dashboards, and automation. Over time it became the default landing zone for organizer tools, monitoring, analytics, media helpers, and AI-adjacent experiments. That worked, but it concentrated too much operational responsibility on a small virtual machine.</p>
+          <p>The goal of the migration was not just to move containers. It was to make the platform easier to rebuild: configuration in Git, clear stack ownership, fewer stale manual checkouts, explicit persistent state, and backup coverage that had been tested instead of merely hoped for.</p>
+        </div>
+      </section>
+
+      <section class="row" id="target" aria-labelledby="target-h">
+        <div class="label">Target state</div>
+        <div class="body wide">
+          <h2 id="target-h">A dedicated service host, organized by stack.</h2>
+          <p>The current lab uses Docker Compose stacks grouped by function, with Komodo as the deployment control plane and Git as the durable source of truth. The service host now carries the application platform: dashboards, monitoring, organizer tools, document management, password vault, analytics, media services, photos, AI tools, and supporting databases and caches.</p>
+          <div class="scroll"><table class="grid"><thead><tr><th>Area</th><th>Role in the platform</th></tr></thead><tbody><tr><th scope="row">Infrastructure</th><td>Homepage, uptime monitoring, update visibility, speed tests, and small custom widgets for operational context.</td></tr><tr><th scope="row">Organizer</th><td>Bookmarks, tasks, calendar and contacts, document management, password vault, and supporting search/database services.</td></tr><tr><th scope="row">AI tools</th><td>Model routing, workflow automation, agent memory services, and web UI tooling for local experiments.</td></tr><tr><th scope="row">Media and photos</th><td>Watch list, music, media server, photo library, and the state needed to keep them portable.</td></tr><tr><th scope="row">Backups</th><td>Backrest and Restic plans covering application state, database data, configuration, and selected host-local recovery material.</td></tr></tbody></table></div>
+          <p class="mono">The public version intentionally describes categories, not internal addresses. The useful engineering detail is the operating model: Git-backed stacks, explicit state roots, monitored services, and verified recovery.</p>
+        </div>
+      </section>
+
+      <section class="row" id="cutover" aria-labelledby="cutover-h">
+        <div class="label">Cutover discipline</div>
+        <div class="body">
+          <h2 id="cutover-h">Move deliberately, leave a rollback path.</h2>
+          <p>The migration was handled as a series of scoped moves rather than a single dramatic cutover. Staged services were verified at the application layer, routing changed only after destination checks passed, and source containers or data were stopped rather than deleted. That left a rollback path while the destination proved itself.</p>
+          <ul class="plain">
+            <li><b>Control plane first.</b> Live Compose labels and run directories were inspected before treating any file as authoritative.</li>
+            <li><b>Canonical Git next.</b> Stack definitions were reconciled into a repository and pushed only after validation.</li>
+            <li><b>State made explicit.</b> Persistent application data was moved out of ad hoc working directories into clearer app-state roots.</li>
+            <li><b>Stale copies archived.</b> Old manual stack checkouts were archived rather than deleted during the cutover window.</li>
+            <li><b>Health checks before closure.</b> Endpoints, container health, dashboard widgets, and monitoring routes were checked after each meaningful move.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="row" id="recovery" aria-labelledby="recovery-h">
+        <div class="label">Recovery proof</div>
+        <div class="body wide">
+          <h2 id="recovery-h">Backups are only real after a restore drill.</h2>
+          <p>After the service host became the center of gravity, backup coverage was updated to include the new layout. A fresh Backrest/Restic snapshot was triggered and verified to include the new application-state paths.</p>
+          <p>The closure test was a Vaultwarden restore drill into isolated temporary storage. The drill restored the password-vault state only, verified the required database and key files, ran SQLite integrity checks, and compared representative table counts between production and restored copies without printing private vault contents.</p>
+          <div class="spec-wrap">
+            <dl class="spec">
+              <div><dt>Restore target</dt><dd>Isolated temporary storage, not the production service path</dd></div>
+              <div><dt>Files checked</dt><dd>SQLite database plus public/private RSA key files</dd></div>
+              <div><dt>Integrity check</dt><dd>Production and restored databases both returned <code>ok</code></dd></div>
+              <div><dt>Data comparison</dt><dd>Representative table counts matched exactly</dd></div>
+              <div><dt>Cleanup</dt><dd>Temporary restore data and one-time credential files were removed afterward</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" id="lessons" aria-labelledby="lessons-h">
+        <div class="label">Lessons</div>
+        <div class="body">
+          <h2 id="lessons-h">The migration was less about Docker than discipline.</h2>
+          <ol class="steps">
+            <li><b>Running is not the same as recoverable.</b> A service can be healthy while its Compose file, secrets, or data paths are not yet documented enough to rebuild.</li>
+            <li><b>Live labels beat assumptions.</b> Docker labels and mounted paths showed which files and directories were actually in use, including stale or nested checkouts that looked plausible but were not canonical.</li>
+            <li><b>Backups need application context.</b> Database-backed services need logical dumps or app-aware validation, not only raw file copies.</li>
+            <li><b>Rollback posture lowers drama.</b> Stop and archive before deleting. Keep source state until the destination has survived verification and backup cycles.</li>
+            <li><b>A restore drill changes the confidence level.</b> Seeing the restored database pass integrity checks and match production counts is qualitatively different from seeing a green backup job.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="related-h">
+        <div class="label">Related pages</div>
+        <div class="body">
+          <h2 id="related-h">The rest of the lab.</h2>
+          <ol class="log">
+            <li><span class="k"><a href="/lab/">Engineering Lab</a></span><span>The overview of the lab and its main systems.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/">Proxmox</a></span><span>The hypervisor and network base.</span></li>
+            <li><span class="k"><a href="/lab/proxmox/docker-host/">Docker Host</a></span><span>The original Docker VM page, kept as historical setup notes.</span></li>
+            <li><span class="k"><a href="/ai/homepage/">AI Homepage case study</a></span><span>Using AI assistance to configure a self-hosted dashboard.</span></li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

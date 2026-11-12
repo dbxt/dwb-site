@@ -1,0 +1,163 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/results.css';
+---
+<Base
+  title="Content Delivery Service | Experience | David Wayne Baxter"
+  description="Case study: how an eight-engineer team replaced a GraphQL service with a REST service about a thousand times faster, migrating one endpoint at a time."
+  canonical="/experience/content-delivery-service/"
+  ogImage="/assets/og/og-content-delivery.jpg"
+  ogImageAlt="From 30–60 seconds to 30–60 milliseconds: replacing the service that carries a sportsbook’s client data"
+  navCurrent="/experience/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Experience",
+            "item": "https://davidwaynebaxter.com/experience/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Content delivery service",
+            "item": "https://davidwaynebaxter.com/experience/content-delivery-service/"
+          }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "Content delivery: from 30–60 seconds to 30–60 milliseconds",
+        "description": "Case study: how an eight-engineer team replaced a GraphQL service with a REST service about a thousand times faster, migrating one endpoint at a time.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-content-delivery.jpg",
+        "url": "https://davidwaynebaxter.com/experience/content-delivery-service/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/experience/content-delivery-service/",
+        "author": {
+          "@type": "Person",
+          "name": "David Wayne Baxter",
+          "url": "https://davidwaynebaxter.com/"
+        },
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <Crumbs items={[{"label": "Experience", "href": "/experience/"}, {"label": "Content delivery service"}]} />
+        <h1>Content delivery: from 30–60 seconds to 30–60 milliseconds.</h1>
+        <p class="lede">At Fanatics Betting and Gaming, an eight-engineer team I led replaced the service that carries most of the sportsbook’s client data traffic. The old GraphQL service had regular outages and took 30 to 60 seconds to respond. The new REST-based service responds in 30 to 60 milliseconds, roughly a thousand times faster.</p>
+      </div>
+
+      <div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Role</dt><dd>Senior Engineering Manager, Fanatics Betting and Gaming (March 2023 – September 2026)</dd></div>
+          <div><dt>Team</dt><dd>Eight distributed-systems engineers: one senior staff, two staff, and five engineers, working in step with the mobile client team</dd></div>
+          <div><dt>The service</dt><dd>The layer between the sportsbook’s data services and its clients, which carries most client data traffic</dd></div>
+          <div><dt>Before</dt><dd>A GraphQL service with regular outages and latency of 30 to 60 seconds</dd></div>
+          <div><dt>After</dt><dd>A REST-based service that runs at 30 to 60 milliseconds</dd></div>
+          <div><dt>Design</dt><dd>REST with heavy caching and preloading, deployed as several copies of the same service, one for each section of the mobile app</dd></div>
+          <div><dt>Result</dt><dd>No production incident in more than six months, and no issues on Super Bowl traffic</dd></div>
+          <div><dt>Technology</dt><dd>Java, Kotlin, PostgreSQL, AWS, Datadog, Terraform, and FireHydrant, across the role</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" aria-labelledby="problem">
+        <div class="label">The problem</div>
+        <div class="body">
+          <h2 id="problem">Most client traffic ran through a slow, unreliable service.</h2>
+          <p>The content delivery service sits between the sportsbook’s data services and its clients, so most client data traffic passes through it. The GraphQL service that filled that role had regular outages and latency of 30 to 60 seconds. It offered clients too much data, it connected directly to the upstream services with no caching and no failsafe, and its overall performance had been neglected.</p>
+          <p>The content management system that feeds it was also slow and error-prone, and it had little validation.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="approach">
+        <div class="label">The approach</div>
+        <div class="body">
+          <h2 id="approach">Replace it one endpoint at a time.</h2>
+          <p>The replacement was a REST-based service. REST was the easiest protocol for the mobile engineers to consume, and its structured, predefined data and queries let the service rely heavily on caching and preload data in anticipation of load. The GraphQL service had no caching.</p>
+          <p>The service was also deployed as several copies of the same code, so that each section of the mobile app talks to its own dedicated service. That spreads the load, and it keeps any problem to a single page or function of the app.</p>
+          <p>The team moved the service over one endpoint at a time, in step with the mobile client team, who updated the app as each endpoint moved, so there was never a single high-risk cutover. It is the working principle from my home page applied to a migration: reliability and release confidence are engineering products in their own right.</p>
+          <p>About 30 endpoints moved over roughly nine months, and upgrades and feature enhancements were part of that effort. Every endpoint was behind a feature flag, so any of them could be rolled back with a toggle.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="organization">
+        <div class="label">The organization</div>
+        <div class="body">
+          <h2 id="organization">Eight distributed-systems engineers, each with a defined part.</h2>
+          <p>All eight engineers were distributed-systems engineers. One senior staff engineer proposed most of the design and the proofs of concept. Two staff engineers implemented and refined the designs and structures. Five engineers specialized in segments of the service, and typically partnered with upstream services and teams.</p>
+          <p>I led the team and worked with the mobile client team, whose app updates had to land in step with each endpoint. I also built the monitoring and quality systems around the service and the content management system that feeds it, and I met regularly with product and program partners to align on priorities and report progress.</p>
+          <p>Across my time at Fanatics, there were six promotions on my team, including one person who moved into engineering management, and only one person left the company by choice.</p>
+          <p>The mobile client team and the distributed-systems team had a close and friendly working relationship.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="reliability">
+        <div class="label">Reliability</div>
+        <div class="body">
+          <h2 id="reliability">Every endpoint gets standard monitoring.</h2>
+          <p>I built more than 200 monitors programmatically with Terraform. A templating framework gives every new endpoint and service a standard set covering latency, error rate, memory, CPU, and SLOs with minimal configuration. Alerts go to Slack, and P1 incidents page automatically through FireHydrant. Because coverage comes from the template, every new endpoint starts with the same monitors.</p>
+          <p>The content management system that feeds the service was replaced as well. It was built with guardrails and validation from the first day, so the content that editors add is accurate and usable by the client.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="result">
+        <div class="label">The result</div>
+        <div class="body">
+          <h2 id="result">Faster, and steadier.</h2>
+          <div class="result">
+            <div class="figure">1,000×</div>
+            <p>faster responses: latency fell from 30–60 seconds to 30–60 milliseconds.</p>
+          </div>
+          <div class="result">
+            <div class="figure">6+ months</div>
+            <p>without a production incident on the new service.</p>
+          </div>
+          <div class="result">
+            <div class="figure">Super Bowl</div>
+            <p>traffic, one of the year’s highest-traffic days, handled without issues.</p>
+          </div>
+          <div class="result">
+            <div class="figure">200+</div>
+            <p>Terraform-generated monitors covering latency, errors, memory, CPU, and SLOs.</p>
+          </div>
+          <p>Looking back, I would push back harder on including major enhancements and new features in the migration. In some cases a feature reached production sooner, but the extra change added risk and made rollbacks more complicated.</p>
+          <!-- TODO(case-study): what this changed about how the organization works. -->
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="related">
+        <div class="label">Related</div>
+        <div class="body">
+          <h2 id="related">More from the same role.</h2>
+          <ol class="log">
+            <li><span class="k"><a href="/experience/">Experience</a></span><span>The full role at Fanatics Betting and Gaming, and the roles before it.</span></li>
+            <li><span class="k"><a href="/ai/bug-manager/">Bug Manager</a></span><span>The agentic bug-management workflow I built at the same company.</span></li>
+            <li><span class="k"><a href="/ai/em-dashboard/">Sprint Ledger</a></span><span>The engineering-management dashboard behind the team-outcome numbers.</span></li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/projects.css';
+---
+<Base
+  title="Ideas | David Wayne Baxter"
+  description="Essays on leading engineering teams and on how AI changes the work, by David Wayne Baxter."
+  canonical="/ideas/"
+  ogImage="/assets/og/og-ideas.jpg"
+  ogImageAlt="Carved wooden chess pieces on a board"
+  navCurrent="/ideas/"
+  navKind="page"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Ideas",
+            "item": "https://davidwaynebaxter.com/ideas/"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "url": "https://davidwaynebaxter.com/ideas/",
+        "name": "Ideas | David Wayne Baxter"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <p class="mono">Ideas</p>
+        <h1>Writing on engineering leadership and AI.</h1>
+        <p class="lede">Essays on leading engineering teams and on how AI changes the work.</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/ideas-banner.webp" srcset="/assets/ideas-banner-480.webp 480w, /assets/ideas-banner-720.webp 720w, /assets/ideas-banner.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="Carved wooden chess pieces on a board" />
+      </figure>
+
+      <section class="row first" aria-labelledby="essays-h">
+        <div class="label">Essays</div>
+        <div class="body wide">
+          <h2 id="essays-h">Latest writing.</h2>
+
+          <article class="project">
+            <div>
+              <p class="mono meta"><time datetime="2026-09-25">September 25, 2026</time> · Essay · 6 min read</p>
+              <h3><a href="/ideas/what-keeps-engineers/">Six promotions, one departure: what keeps engineers on a team</a></h3>
+              <p>Across three teams and about 25 people, six engineers were promoted and one left. How I hire for character in a casual interview, pair every engineer with a mentor and a mentee, and make the case for their promotions.</p>
+              <p class="mono meta">Engineering management · Hiring · Mentorship</p>
+              <div class="actions">
+                <a class="textlink" href="/ideas/what-keeps-engineers/">Read the essay&nbsp;→</a>
+              </div>
+            </div>
+            <figure class="project-shot">
+              <a href="/ideas/what-keeps-engineers/" aria-label="Read the essay on what keeps engineers on a team"><img src="/assets/ideas-retention-card.webp" srcset="/assets/ideas-retention-card-480.webp 480w, /assets/ideas-retention-card-720.webp 720w, /assets/ideas-retention-card.webp 910w" sizes="(min-width: 62rem) 21rem, 100vw" width="910" height="683" loading="lazy" alt="Two mango stems growing side by side from one seed in a clay pot" /></a>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div>
+              <p class="mono meta"><time datetime="2026-09-24">September 24, 2026</time> · Essay · 6 min read</p>
+              <h3><a href="/ideas/ai-trust-bottleneck/">AI didn’t make us faster. Trust is why.</a></h3>
+              <p>AI reached every stage of how we built software, and feature output barely moved. It sped up coding without speeding up the system around it. The real limit is the AI trust bottleneck, and here is how a team measures its way through it.</p>
+              <p class="mono meta">AI · Engineering management · Delivery</p>
+              <div class="actions">
+                <a class="textlink" href="/ideas/ai-trust-bottleneck/">Read the essay&nbsp;→</a>
+              </div>
+            </div>
+            <figure class="project-shot">
+              <a href="/ideas/ai-trust-bottleneck/" aria-label="Read the essay on AI and trust"><img src="/assets/ideas-ai-trust-card.webp" srcset="/assets/ideas-ai-trust-card-480.webp 480w, /assets/ideas-ai-trust-card-720.webp 720w, /assets/ideas-ai-trust-card.webp 910w" sizes="(min-width: 62rem) 21rem, 100vw" width="910" height="683" loading="lazy" alt="Three hourglasses with yellow, red and green sand running side by side" /></a>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div>
+              <p class="mono meta"><time datetime="2026-09-21">September 21, 2026</time> · Essay · 4 min read</p>
+              <h3><a href="/ideas/ai-and-engineering-leadership/">AI doesn’t replace engineering management. It changes what managers manage.</a></h3>
+              <p>I have built four AI systems, and in every one the hard part was not the model. It was the management. Six habits from managing people that carry over to managing agents.</p>
+              <p class="mono meta">AI · Engineering management · Agents</p>
+              <div class="actions">
+                <a class="textlink" href="/ideas/ai-and-engineering-leadership/">Read the essay&nbsp;→</a>
+              </div>
+            </div>
+            <figure class="project-shot">
+              <a href="/ideas/ai-and-engineering-leadership/" aria-label="Read the essay on AI and engineering management"><img src="/assets/ideas-ai-leadership-card.webp" srcset="/assets/ideas-ai-leadership-card-480.webp 480w, /assets/ideas-ai-leadership-card-720.webp 720w, /assets/ideas-ai-leadership-card.webp 910w" sizes="(min-width: 62rem) 21rem, 100vw" width="910" height="683" loading="lazy" alt="Close-up of a dark circuit board with a large chip and labeled components" /></a>
+            </figure>
+          </article>
+
+          <article class="project">
+            <div>
+              <h3><a href="/ideas/innovation-sprint/">The quarterly innovation sprint: what you&rsquo;re leaving on the table</a></h3>
+              <p>Most companies treat innovation sprints as a reward. The best ones treat them as a system. Here&rsquo;s what the best version looks like, why guardrails kill it, and why the ROI shows up two quarters later.</p>
+              <p class="mono meta">Engineering management · Culture · Retention</p>
+              <div class="actions">
+                <a class="textlink" href="/ideas/innovation-sprint/">Read the essay&nbsp;→</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- To add an essay: copy the article.project block above and change the date, link, title, summary, tags and image, then add the new page to sitemap.xml. -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

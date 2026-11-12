@@ -1,0 +1,16 @@
+/* Numbered result rows (home page and the content-delivery case study). */
+.result {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  column-gap: 1.5rem;
+  align-items: baseline;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+.result:first-of-type { border-top: 0; padding-top: 0; }
+.result .figure { font: 400 2.4rem/1 var(--serif); letter-spacing: -0.02em; color: var(--accent); white-space: nowrap; }
+.result p { margin: 0; max-width: 34em; }
+@media (max-width: 52rem) {
+  .result { grid-template-columns: minmax(0, 1fr); row-gap: 0.35rem; }
+  .result .figure { font-size: 2.3rem; }
+}

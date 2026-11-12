@@ -1,0 +1,139 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/projects.css';
+import '../../../styles/essay.css';
+---
+<Base
+  title="The Kindness Claus | Fun | David Wayne Baxter"
+  description="A white beard, a panicked phone call and a next-day Amazon delivery turned into five years as Santa in a neighborhood light show."
+  canonical="/fun/the-kindness-claus/"
+  ogType="article"
+  ogImage="/assets/og/og-kindness-claus.jpg"
+  ogImageAlt="Santa seated in a teal armchair in front of a stone fireplace with stockings and garland"
+  navCurrent="/fun/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Fun", "item": "https://davidwaynebaxter.com/fun/" },
+          { "@type": "ListItem", "position": 3, "name": "The Kindness Claus", "item": "https://davidwaynebaxter.com/fun/the-kindness-claus/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "The Kindness Claus",
+        "description": "A white beard, a panicked phone call and a next-day Amazon delivery turned into five years as Santa in a neighborhood light show.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-kindness-claus.jpg",
+        "url": "https://davidwaynebaxter.com/fun/the-kindness-claus/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/fun/the-kindness-claus/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="article-head">
+        <Crumbs items={[{"label": "Fun", "href": "/fun/"}, {"label": "The Kindness Claus"}]} />
+        <h1>The Kindness Claus</h1>
+        <p class="lede">How a white beard, a panicked phone call, and a next-day Amazon delivery turned into five years of dancing with a million lights.</p>
+        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-21">September 21, 2026</time> · 4 min read</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/fun-banner.webp" srcset="/assets/fun-banner-480.webp 480w, /assets/fun-banner-720.webp 720w, /assets/fun-banner.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="The light show at night: a candy-striped circus tent, a lit elephant, glowing candy canes and Christmas trees, and a marquee sign" />
+      </figure>
+
+    <article class="essay">
+      <p>Thanks to genetics, my beard turned almost completely white in my early 30s. I did not ask for it, and I had no idea yet that it was a qualification.</p>
+
+      <h2 id="call">The call that started it.</h2>
+      <p>When my son was in preschool, the school’s regular Santa was unable to visit because of a prolonged illness. The school administrator called me in a panic. By any chance, did I have a Santa suit? Or would I be willing to buy one, so the kids could still get a visit?</p>
+      <p>Not wanting the children to be left without, I did what any calm and resourceful adult would do. I opened Amazon Prime, found the best suit I could, and paid for next-day delivery.</p>
+      <p>The suit arrived. More than 120 preschoolers were waiting, and they were not all the same audience. My son was in the middle age group. The younger kids were both terrified and confused. The older kids were skeptical, but they did not want to take any chances that I was not the real Santa.</p>
+      <p>My son and many of his friends recognized me, but they had been coached to play along. Thankfully, they all sat on my lap and posed for pictures without a single dramatic outing. The reactions ran from overwhelming excitement to tearful dread, and we made Christmas a success.</p>
+
+
+      <h2 id="lights">Then came the lights.</h2>
+      <p>A few years later, I was asked to play Santa again. This time it was for a neighborhood light show. I was skeptical, right up until I spoke with the owners.</p>
+      <p>They have more than a million lights, synchronized to an entire program. Over the years they have added a circus theme, with aerial acrobats, firebreathers, dancers, and a bevy of neighborhood children, from toy soldiers to elves. This is not a yard display. It is a production.</p>
+
+      <dl class="spec">
+        <div><dt>The lights</dt><dd>More than a million, synchronized to an entire program</dd></div>
+        <div><dt>The cast</dt><dd>Aerial acrobats, firebreathers, dancers, and neighborhood kids as toy soldiers and elves</dd></div>
+        <div><dt>My role</dt><dd>Santa</dd></div>
+        <div><dt>Schedule</dt><dd>Two shows a night, on Friday and Saturday, for the two weeks before Christmas</dd></div>
+        <div><dt>The crowd</dt><dd>100 to 200 people on a busy night</dd></div>
+        <div><dt>Seasons</dt><dd>Five and counting</dd></div>
+        <div><dt>Press</dt><dd>Featured by CBS LA’s <i>Look at This!</i> · <a class="textlink" href="https://www.youtube.com/watch?v=2_Bo4iK51cA" target="_blank" rel="noopener">Watch the segment&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+        <div><dt>Instagram</dt><dd><a class="textlink" href="https://www.instagram.com/thekindnessclaus/" target="_blank" rel="me noopener">@thekindnessclaus&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      </dl>
+
+      <figure>
+        <img src="/assets/fun-kindness-claus-cast.webp" srcset="/assets/fun-kindness-claus-cast-480.webp 480w, /assets/fun-kindness-claus-cast-720.webp 720w, /assets/fun-kindness-claus-cast.webp 1000w" sizes="(min-width: 46rem) 42rem, 100vw" width="1000" height="751" loading="lazy" alt="Santa smiling for a selfie with a boy dressed as a toy soldier in front of lit Christmas trees" />
+        <figcaption>Santa with one of the toy soldiers.</figcaption>
+      </figure>
+
+      <h2 id="first-night">The first night.</h2>
+      <p>The first year I joined the show, I was not sure how I would be received. The show went as well as I thought it could. Afterward, we stepped outside the light show to greet the audience and show our appreciation for their support.</p>
+      <p>A young girl, about four or five years old, ran straight up to me and gave me the biggest hug she could.</p>
+
+      <blockquote class="pull"><p>“I’ve waited my WHOLE LIFE to meet you. Thank you for being here.”</p></blockquote>
+
+      <p>She did not let go for a solid minute. It was one of the most genuine acts I was unprepared for, and I would be lying if I said I did not get a little misty-eyed.</p>
+      <p>From that moment on, the show and the kids have meant the world to me.</p>
+
+      <figure>
+        <img src="/assets/fun-kindness-claus-kneel.webp" srcset="/assets/fun-kindness-claus-kneel-480.webp 480w, /assets/fun-kindness-claus-kneel-720.webp 720w, /assets/fun-kindness-claus-kneel.webp 1000w" sizes="(min-width: 46rem) 42rem, 100vw" width="1000" height="880" loading="lazy" alt="Santa crouching on a sidewalk at night to talk with two small children, wearing a string of colored lights" />
+        <figcaption>Santa, crouching down to talk with the kids.</figcaption>
+      </figure>
+
+      <h2 id="grinch">From waving to a fight scene.</h2>
+      <p>My part began as the classic: stand there and wave. Then Santa evolved. There are now full dance numbers, and there is a fight scene with the Grinch. Here is how it goes.</p>
+      <p>One of the aerialists makes a quick costume change into a Grinch outfit and performs the first half of “You’re a Mean One, Mr. Grinch” on the aerial silks. Then she comes down and meets me on a raised stage. The Grinch steals packages from one of the children, and I swoop in to defend the presents and protect the kids.</p>
+      <p>A few well-staged fight moves later, I secure the presents, the Grinch runs away defeated, and I save Christmas for the kids. Cheers ensue.</p>
+      <p>If you had told me in that preschool that Santa would one day be in a fight scene, I would have asked whether the suit came with insurance.</p>
+      <p>I spend my working life leading engineering teams, so I have real respect for a production like this. Getting that many lights, performers, and children to hit the right beat at the right time is a coordination problem, and this crew solves it with a smile.</p>
+
+      <figure>
+        <img src="/assets/fun-kindness-claus-performers.webp" srcset="/assets/fun-kindness-claus-performers-480.webp 480w, /assets/fun-kindness-claus-performers-720.webp 720w, /assets/fun-kindness-claus-performers.webp 1000w" sizes="(min-width: 46rem) 42rem, 100vw" width="1000" height="870" loading="lazy" alt="Santa standing between two performers in sparkling gold and red costumes, each holding a lit hoop, under a marquee sign" />
+        <figcaption>Santa with two of the performers.</figcaption>
+      </figure>
+
+      <h2 id="suit">The suit and the beard.</h2>
+      <figure>
+        <img src="/assets/fun-kindness-claus-suit.webp" srcset="/assets/fun-kindness-claus-suit-480.webp 480w, /assets/fun-kindness-claus-suit-720.webp 720w, /assets/fun-kindness-claus-suit.webp 1000w" sizes="(min-width: 46rem) 42rem, 100vw" width="1000" height="667" loading="lazy" alt="Santa seated in a teal armchair in front of a stone fireplace with stockings and garland" />
+        <figcaption>Santa, in full uniform.</figcaption>
+      </figure>
+      <p>Over the years the suit has seen some wear. I am now on my third, and I will gladly keep upgrading it so it stays pristine and the kids get the best version of Santa possible.</p>
+      <p>The beard runs on a schedule. In January I shave it down to something short and manageable. I keep it shorter and trimmed until July, when I start growing it out for the holidays. Summer in Southern California with a virtual sweater on my face can be a bit challenging, but it is worth it in the end.</p>
+
+      <h2 id="why">Why I keep coming back.</h2>
+      <p>I have been part of this <a class="textlink" href="https://www.youtube.com/watch?v=2_Bo4iK51cA" target="_blank" rel="noopener">news-featured<span class="sr-only"> (opens in a new tab)</span></a> performance for five years, and I look forward to it more every year. You can follow along each season on Instagram at <a class="textlink" href="https://www.instagram.com/thekindnessclaus/" target="_blank" rel="me noopener">@thekindnessclaus<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+      <p>It began with not wanting a room full of preschoolers to go without a Santa. Everything since has been the same job, with better lighting.</p>
+
+      <figure class="portrait">
+        <img src="/assets/fun-kindness-claus-glow.webp" srcset="/assets/fun-kindness-claus-glow-480.webp 480w, /assets/fun-kindness-claus-glow.webp 721w" sizes="(min-width: 46rem) 20rem, 100vw" width="721" height="960" loading="lazy" alt="Santa in the dark beside a lit Christmas tree, with a red glow at his nose" />
+        <figcaption>Santa at the light show.</figcaption>
+      </figure>
+
+      <div class="actions flush">
+        <a class="textlink" href="/fun/">&larr;&nbsp;More from Fun</a>
+      </div>
+    </article>
+
+    </div>
+  </main>
+</Base>

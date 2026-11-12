@@ -1,0 +1,30 @@
+---
+interface Props {
+  /** The Connect page adds itself to the footer links. */
+  connect?: boolean;
+}
+const { connect = false } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 David Wayne Baxter · Los Angeles, California</span>
+    <span><a href="/">Home</a> · <a href="/experience/">Experience</a> · <a href="/ai/">AI Work</a> · <a href="/lab/">Engineering Lab</a> · <a href="/ideas/">Ideas</a> · <a href="/fun/">Fun</a> · <a href="/contact/">Contact</a> · {connect && <Fragment><a href="/connect/" aria-current="page">Connect</a> · </Fragment>}<a href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+
+<style>
+.site-footer { border-top: 1px solid var(--rule); margin-top: 2rem; }
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.75rem 3rem;
+  font: 400 0.8125rem/1.6 var(--mono);
+  color: var(--muted);
+}
+.site-footer a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.site-footer a:hover { border-bottom-color: var(--accent); }
+@media print {
+  .site-footer { display: none; }
+}</style>

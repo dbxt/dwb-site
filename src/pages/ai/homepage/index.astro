@@ -1,0 +1,188 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/casestudy.css';
+---
+<Base
+  title="Homepage Dashboard | AI Work | David Wayne Baxter"
+  description="Case study of a private lab dashboard configured with AI: live cards for every service, synced bookmarks, and a job that refreshes it every 15 minutes."
+  canonical="/ai/homepage/"
+  ogImage="/assets/og/og-homepage.jpg"
+  ogImageAlt="A private lab dashboard configured with AI"
+  navCurrent="/ai/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Work",
+            "item": "https://davidwaynebaxter.com/ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Homepage Dashboard",
+            "item": "https://davidwaynebaxter.com/ai/homepage/"
+          }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "Homepage Dashboard",
+        "description": "Case study of a private lab dashboard configured with AI: live cards for every service, synced bookmarks, and a job that refreshes it every 15 minutes.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-homepage.jpg",
+        "url": "https://davidwaynebaxter.com/ai/homepage/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/homepage/",
+        "author": {
+          "@type": "Person",
+          "name": "David Wayne Baxter",
+          "url": "https://davidwaynebaxter.com/"
+        },
+        "datePublished": "2026-09-19",
+        "dateModified": "2026-09-21"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <Crumbs items={[{"label": "AI Work", "href": "/ai/"}, {"label": "Homepage Dashboard"}]} />
+        <h1>Homepage: a private dashboard configured with AI.</h1>
+        <p class="lede">Homepage is the front door to my lab: one page that shows the live state of every service I run and holds my bookmarks. I used AI heavily to configure its rich cards, my bookmarks are managed in Karakeep and synced to the bottom of the page, and a scheduled job keeps everything current every 15 minutes.</p>
+        <div class="actions">
+          <a class="textlink" href="#cards">See the cards&nbsp;↓</a>
+          <a class="textlink" href="/lab/">The lab behind it&nbsp;→</a>
+        </div>
+        <div class="note">
+          <p><b>About the screenshots.</b> The dashboard is only reachable over my VPN and is not exposed to the internet, so this page uses screenshots. I removed several groups and cards and blanked network details before capturing them, so what you see is a subset of the real page.</p>
+        </div>
+      </div>
+
+      <figure class="figure board">
+        <img src="/assets/ai-homepage-cards.webp" srcset="/assets/ai-homepage-cards-480.webp 480w, /assets/ai-homepage-cards-720.webp 720w, /assets/ai-homepage-cards-1080.webp 1080w, /assets/ai-homepage-cards.webp 1260w" sizes="(min-width: 72rem) 65rem, 100vw" width="1260" height="664" loading="lazy" alt="The Homepage dashboard in its dark theme. A host-stats bar sits above three groups of cards. Infrastructure has cards for Proxmox (VMs, CPU, memory), Portainer (containers running, stopped, total), OPNsense (CPU load, memory, WAN upload and download), and host metrics. Organizer has Karakeep (bookmarks, favorites, archived, lists) and Vikunja (tasks). Monitoring has Uptime Kuma, Speedtest, and DNS filtering (queries, cache hit, misses, timeouts)." />
+        <figcaption>The dashboard: a host-stats bar, then groups of cards that show live numbers from the services behind them.</figcaption>
+      </figure>
+
+      <div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Project</dt><dd>Homepage, a private dashboard for my lab</dd></div>
+          <div><dt>Built on</dt><dd>The open-source Homepage project, using rich cards that show live service data</dd></div>
+          <div><dt>Configured with</dt><dd>AI, heavily</dd></div>
+          <div><dt>Bookmarks</dt><dd>Managed in Karakeep and synced to the bottom of the page</dd></div>
+          <div><dt>Kept current by</dt><dd>A cron job that runs every 15 minutes</dd></div>
+          <div><dt>Access</dt><dd>VPN only, not reachable from the internet</dd></div>
+          <div><dt>Shown here as</dt><dd>Edited screenshots</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" aria-labelledby="idea-h">
+        <div class="label">The idea</div>
+        <div class="body">
+          <h2 id="idea-h">One page instead of a dozen tabs.</h2>
+          <!-- TODO(ai): replace or extend with your own motivation, in your voice: what you used before, and what you wanted from a start page. -->
+          <p>A lab like mine is spread across many web interfaces: a hypervisor, a container manager, a firewall, monitoring, and more. I wanted a single page that shows at a glance how everything is doing and takes me to any of it in one click, with my bookmarks in the same place.</p>
+        </div>
+      </section>
+
+      <section class="row" id="cards" aria-labelledby="cards-h">
+        <div class="label">Rich cards</div>
+        <div class="body wide">
+          <h2 id="cards-h">Cards that show state, not just links.</h2>
+          <p>Each service has a card that pulls live numbers from the service itself, so the page reads like a control panel. The cards are grouped by purpose:</p>
+          <ul class="plain">
+            <li><b>Infrastructure.</b> The hypervisor (VMs, CPU, memory), the container manager (running, stopped, and total containers), the firewall (CPU load, memory, and WAN traffic), and host metrics.</li>
+            <li><b>Organizer.</b> The bookmark manager (bookmarks, favorites, archived items, lists) and the task manager (projects and tasks due or overdue).</li>
+            <li><b>Monitoring.</b> Service uptime, internet speed history, and DNS filtering statistics from the firewall’s resolver: queries, cache hit rate, misses, and timeouts.</li>
+            <li><b>AI.</b> Tiles for the AI tools I use, plus a card for the gateway that routes requests to models, showing its health and how many models it serves.</li>
+            <li><b>Maintenance.</b> How many containers are being watched for new image versions and how many have updates waiting, and whether the host has package or security updates.</li>
+          </ul>
+          <figure class="figure"><img src="/assets/ai-homepage-ai.webp" width="1260" height="412" loading="lazy" alt="Two more groups of cards. AI has tiles for four AI tools and a LiteLLM gateway card showing status, default model, model count, and database connection. Maintenance has Docker Updates (containers monitored and updates available) and Host Updates (package updates, security updates, status)." /><figcaption>The AI and Maintenance groups.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="row" id="bookmarks" aria-labelledby="bm-h">
+        <div class="label">Bookmarks</div>
+        <div class="body wide">
+          <h2 id="bm-h">Managed in one place, mirrored on the page.</h2>
+          <p>Karakeep, the bookmark manager, is the single place where I add and organize bookmarks. They are synced to the bottom of the dashboard in groups, so anything I have saved is one click from the start page, and I never edit a bookmark list by hand on the dashboard itself.</p>
+          <figure class="figure"><img src="/assets/ai-homepage-bookmarks.webp" width="1260" height="170" loading="lazy" alt="The bottom of the dashboard, showing bookmark groups named Profile and Projects, each with short tiles for GitHub, LinkedIn, and this website." /><figcaption>Bookmark groups at the bottom of the page. Only two groups are shown here; the rest are private.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="row" id="fresh" aria-labelledby="fresh-h">
+        <div class="label">Kept current</div>
+        <div class="body">
+          <h2 id="fresh-h">A schedule does the upkeep.</h2>
+          <p>A cron job runs every 15 minutes to keep the dashboard up to date, including the synced bookmarks, so a new bookmark or a change to a card appears without anyone touching the page.</p>
+          <!-- TODO(ai): say exactly what the cron job does (for example regenerates the bookmark configuration from Karakeep and reloads the dashboard) and where it runs, without hostnames or credentials. -->
+        </div>
+      </section>
+
+      <section class="row" id="decisions" aria-labelledby="dec-h">
+        <div class="label">Design decisions</div>
+        <div class="body">
+          <h2 id="dec-h">Five choices behind it.</h2>
+          <div class="principle">
+            <h3>One front door.</h3>
+            <p>Every service and every bookmark is reachable from one page, so nothing has to be remembered or hunted for.</p>
+          </div>
+          <div class="principle">
+            <h3>State at a glance.</h3>
+            <p>A card that shows live numbers tells me something is wrong before I open the service, and a card that is only a link does not.</p>
+          </div>
+          <div class="principle">
+            <h3>One source of truth for bookmarks.</h3>
+            <p>Bookmarks live in Karakeep and the page mirrors them. There is one list to maintain, and it cannot drift out of step with a second copy.</p>
+          </div>
+          <div class="principle">
+            <h3>Automation over upkeep.</h3>
+            <p>A schedule refreshes the page every 15 minutes, so keeping it accurate takes no effort and no memory.</p>
+          </div>
+          <div class="principle">
+            <h3>Private by design.</h3>
+            <p>The dashboard sits behind the VPN, so a page that knows about every service in the lab is never visible to the outside world.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" id="with-ai" aria-labelledby="with-ai-h">
+        <div class="label">Working with AI</div>
+        <div class="body">
+          <h2 id="with-ai-h">AI wrote the configuration.</h2>
+          <p>I used AI heavily to configure the dashboard and build its rich cards. Homepage is set up through plain-text configuration files, which suits AI well: I describe what a card should show, the AI produces the configuration, and the page updates.</p>
+          <!-- TODO(ai): describe your method in your own words: which AI tool you used, how you described the cards you wanted, how you checked and refined the results, anything it got wrong at first, and whether AI also wrote the sync and the cron job. -->
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="see">
+        <div class="label">More</div>
+        <div class="body">
+          <h2 id="see" class="tight">See the rest of the lab.</h2>
+          <div class="actions">
+            <a class="button" href="/lab/">Explore the Engineering Lab&nbsp;→</a>
+            <a class="textlink" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">Discuss it on LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

@@ -31,19 +31,27 @@ jobs:
           python3 tools/sitemap-lastmod.py
           python3 tools/latest.py
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Build the site
+        run: |
+          npm ci
+          npm run build
+
       - name: Assemble the public Pages artifact
         env:
           OUTPUT_DIR: ${{ runner.temp }}/dwb-site
         run: |
           rm -rf "$OUTPUT_DIR"
           mkdir -p "$OUTPUT_DIR"
+          # dist/ is the Astro build output; .htaccess is for the legacy FTPS host only.
           rsync -a --delete \
             --exclude '.git' \
-            --exclude '.github/' \
-            --exclude 'tools/' \
-            --exclude 'node_modules/' \
             --exclude '.htaccess' \
-            ./ "$OUTPUT_DIR/"
+            dist/ "$OUTPUT_DIR/"
           test -f "$OUTPUT_DIR/index.html"
           test -f "$OUTPUT_DIR/404.html"
           test -f "$OUTPUT_DIR/robots.txt"

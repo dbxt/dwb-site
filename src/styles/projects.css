@@ -1,0 +1,30 @@
+/* Project entries and banners on the AI Work, Ideas and Fun index pages. */
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 2.25rem;
+  border-top: 1px solid var(--rule);
+}
+.project:first-of-type { border-top: 0; padding-top: 0; }
+.project .meta { margin: 0 0 0.6rem; }
+.project h3 { margin: 0 0 0.75rem; font: 500 1.7rem/1.2 var(--serif); }
+.project h3 a { text-decoration: none; }
+.project h3 a:hover { color: var(--accent); }
+.project p { max-width: 38rem; }
+.project .actions { margin-top: 1.25rem; }
+.project-shot { margin: 0; }
+.project-shot a { color: inherit; }
+.project-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--rule);
+}
+@media (min-width: 62rem) {
+  .project { grid-template-columns: minmax(0, 1fr) 21rem; gap: 3rem; align-items: start; }
+}
+.banner { margin: 0 0 1rem; }
+.banner img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; border: 1px solid var(--rule); }

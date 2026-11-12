@@ -8,28 +8,33 @@ Runs in CI before every deploy (full git history is needed for the tie-break). A
 import datetime, html, json, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-HOME = ROOT / 'index.html'
+PAGES = ROOT / 'src' / 'pages'
+HOME = PAGES / 'index.astro'
 SECTIONS = {'ideas': 'Ideas', 'ai': 'AI Work', 'lab': 'Engineering Lab', 'fun': 'Fun'}
 COUNT = 3
 START, END = '<!-- latest:start -->', '<!-- latest:end -->'
 
 def first_commit(path):
-    out = subprocess.run(['git', 'log', '--follow', '--diff-filter=A', '--format=%at', '--', str(path)],
-                         cwd=ROOT, capture_output=True, text=True).stdout.split()
-    return int(out[-1]) if out else 2**31  # not committed yet: treat as newest
+    # Pages were plain index.html files before the Astro migration; their original commit date still decides ties.
+    legacy = path.parent.relative_to(PAGES) / 'index.html'
+    for candidate in (legacy, path.relative_to(ROOT)):
+        out = subprocess.run(['git', 'log', '--diff-filter=A', '--format=%at', '--', str(candidate)],
+                             cwd=ROOT, capture_output=True, text=True).stdout.split()
+        if out: return int(out[-1])
+    return 2**31  # not committed yet: treat as newest
 
 def pages():
     for folder, section in SECTIONS.items():
-        for path in sorted((ROOT / folder).rglob('index.html')):
+        for path in sorted((PAGES / folder).rglob('index.astro')):
             m = re.search(r'<script type="application/ld\+json">(.*?)</script>', path.read_text(), re.S)
             if not m:
                 continue
             data = json.loads(m.group(1))
             for node in data.get('@graph', [data]):
                 if node.get('@type') in ('Article', 'TechArticle') and node.get('datePublished') and node.get('headline'):
-                    url = '/' + str(path.parent.relative_to(ROOT)) + '/'
+                    url = '/' + str(path.parent.relative_to(PAGES)) + '/'
                     yield dict(date=node['datePublished'], title=node['headline'], url=url, section=section,
-                               added=first_commit(path.relative_to(ROOT)))
+                               added=first_commit(path))
                     break
 
 def main():

@@ -1,0 +1,194 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/casestudy.css';
+import '../../../styles/guides.css';
+---
+<Base
+  title="TechDrift | AI Work | David Wayne Baxter"
+  description="TechDrift and its sister products GamingDrift and SportsDrift: evidence-first products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline."
+  canonical="/ai/signaldrift/"
+  ogType="article"
+  ogDescription="Three evidence-first signal products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline."
+  ogImageAlt="TechDrift, GamingDrift, and SportsDrift signal boards"
+  navCurrent="/ai/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "AI Work", "item": "https://davidwaynebaxter.com/ai/" },
+          { "@type": "ListItem", "position": 3, "name": "TechDrift", "item": "https://davidwaynebaxter.com/ai/signaldrift/" }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "TechDrift",
+        "description": "TechDrift and its sister products GamingDrift and SportsDrift are evidence-first signal products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-default.jpg",
+        "url": "https://davidwaynebaxter.com/ai/signaldrift/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/signaldrift/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-10-16",
+        "dateModified": "2026-10-26"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <Crumbs items={[{"label": "AI Work", "href": "/ai/"}, {"label": "TechDrift"}]} />
+        <h1>TechDrift: evidence-first products that can be shared, trusted, and operated.</h1>
+        <p class="lede">TechDrift runs on a shared engine that also powers <a class="textlink" href="https://gamingdrift.app/" target="_blank" rel="noopener">GamingDrift</a> and <a class="textlink" href="https://sportsdrift.app/" target="_blank" rel="noopener">SportsDrift</a>. Each product collects coverage from a curated catalog, groups related stories, and promotes a topic only when it holds across independent sources over time.</p>
+        <p class="lede muted">The web products are live. Native Android and iOS apps are in development and coming soon.</p>
+        <div class="actions">
+          <a class="textlink" href="#evidence">Evidence and scoring&nbsp;↓</a>
+          <a class="textlink" href="#sharing">Sharing and acquisition&nbsp;↓</a>
+          <a class="textlink" href="#reliability">Reliability&nbsp;↓</a>
+          <a class="textlink" href="#admin">Operations&nbsp;↓</a>
+        </div>
+        <div class="note">
+          <p><b>About this page.</b> This is a public-safe account of a private repository I built and operate solo. It describes real architecture, numbers, and feature names from the codebase. It leaves out hostnames, credentials, internal infrastructure addresses, and anything else that would expose the operating environment, the way my other engineering write-ups do.</p>
+        </div>
+      </div>
+
+      <!-- Current public captures from the live TechDrift, GamingDrift, and SportsDrift apps. -->
+      <div class="note">
+        <p><b>About the screenshots.</b> The public product captures below are current views from the live deployed apps. The operator view contains no customer data.</p>
+      </div>
+
+      <div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Project</dt><dd>TechDrift, with a shared evidence-first trend-discovery engine</dd></div>
+          <div><dt>Live brands</dt><dd>TechDrift (23 sources), GamingDrift (25 sources), SportsDrift (60 sources)</dd></div>
+          <div><dt>Clients</dt><dd>Web app per brand. Native Android and iOS apps are in development.</dd></div>
+          <div><dt>Recent product work</dt><dd>Inspectable public signal pages, private-by-default accounts, brand-scoped administration, lifecycle email, and onboarding hardening</dd></div>
+          <div><dt>AI usage</dt><dd>Laya, a self-hosted LLM service used only for bounded, advisory tasks. It never gates deterministic feed delivery.</dd></div>
+          <div><dt>Tests</dt><dd>922 automated tests: 914 passing, 8 intentionally skipped, 0 failing</dd></div>
+          <div><dt>Release model</dt><dd>Every change is verified in <code>dev</code> before approved promotion to <code>main</code>, with brand-isolated deploy workflows</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" id="evidence" aria-labelledby="evidence-h">
+        <div class="label">Evidence and scoring</div>
+        <div class="body wide">
+          <h2 id="evidence-h">Evidence first, scoring second.</h2>
+          <p>Scheduled workers pull from each brand's configured catalog, normalize the items, and record every collection run. The system groups related coverage into topics and scores persistence across independent sources instead of raw popularity. One loud story from one publisher does not become a signal just because it is loud.</p>
+          <p>Coverage is bounded by publication time and comparison windows, so backdated or republished RSS items cannot inflate a topic. The public product shows the evidence trail behind a signal rather than asking readers to trust a black-box score.</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/techdrift-signals-current.png" alt="Current TechDrift public signal page, showing a technology brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <figcaption>Current TechDrift public signal page: a short change brief with evidence, source counts, and direct links to supporting coverage.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="sharing" aria-labelledby="sharing-h">
+        <div class="label">Sharing and acquisition</div>
+        <div class="body wide">
+          <h2 id="sharing-h">A shareable product without giving the product away.</h2>
+          <p>Each published signal has a lightweight public teaser route designed for a link, mobile share sheet, or pasted URL. It shows the signal, status, story count, and a small set of source-labelled headlines. The next action is clear: add the signal to your own board. For a signed-in reader that goes straight to the matching topic. For everyone else it preserves the topic through signup.</p>
+          <p>Daily briefs also have a token-gated online view that expires after 48 hours. Public profiles have an explicit, private-by-default sharing model, and a native share button with clipboard fallback. These surfaces make the product legible and shareable while keeping full reading, personalization, and account data inside the product.</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/gamingdrift-signals-current.png" alt="Current GamingDrift public signal page, showing a gaming brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <figcaption>Current GamingDrift public signal page: the same evidence model expressed through a brand-specific customer experience.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="brands" aria-labelledby="brands-h">
+        <div class="label">One platform, three products</div>
+        <div class="body wide">
+          <h2 id="brands-h">Shared engineering, separate customer products.</h2>
+          <p>TechDrift, GamingDrift, and SportsDrift run from one codebase, selected by an explicit brand configuration. It owns product identity, source catalog, topic lexicon, scoring thresholds, public copy, cookie namespace, domains, legal contact, branding, and email presentation.</p>
+          <ul class="plain">
+            <li><b>TechDrift.</b> Technology coverage from 23 configured sources.</li>
+            <li><b>GamingDrift.</b> Gaming coverage from 25 configured sources.</li>
+            <li><b>SportsDrift.</b> Multi-sport coverage from 60 configured sources.</li>
+          </ul>
+          <p>Isolation is deliberate. Each brand has its own database, role, storage, customer-facing domain, and browser state. Shared code reduces repeated engineering work, but one brand's identity, account state, or source catalog does not bleed into another.</p>
+          <div class="brand-captures" aria-label="Current public TechDrift family brand pages">
+            <figure><img src="/assets/img/signaldrift/techdrift-signals-current.png" alt="Current TechDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>TechDrift</figcaption></figure>
+            <figure><img src="/assets/img/signaldrift/gamingdrift-signals-current.png" alt="Current GamingDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>GamingDrift</figcaption></figure>
+            <figure><img src="/assets/img/signaldrift/sportsdrift-signals-current.png" alt="Current SportsDrift public signal page" loading="lazy" width="1440" height="1080" /><figcaption>SportsDrift</figcaption></figure>
+          </div>
+          <p class="muted">Three customer products, one shared platform, and independent source catalogs.</p>
+        </div>
+      </section>
+
+      <section class="row" id="laya" aria-labelledby="laya-h">
+        <div class="label">AI usage</div>
+        <div class="body wide">
+          <h2 id="laya-h">Laya advises. It does not decide what readers see.</h2>
+          <p>Laya is a self-hosted LLM service used for bounded advisory work, including topic-pair clustering, saved-keyword normalization, and capped per-user analysis. Deterministic collection and feed delivery do not depend on it. If the model is unavailable, readers still get the evidence-backed product.</p>
+          <p>Its calls are capped, time-bounded, typed, and logged with a prompt version, status, and attempt count. That keeps model behavior inspectable and prevents it from quietly becoming an unbounded dependency in the collection path.</p>
+        </div>
+      </section>
+
+      <section class="row" id="reliability" aria-labelledby="reliability-h">
+        <div class="label">Reliability and onboarding</div>
+        <div class="body wide">
+          <h2 id="reliability-h">A slow board should not become a broken product.</h2>
+          <p>The shared board is persisted as a durable, brand-scoped snapshot after successful collection. If an expensive trends query hits its database timeout, the app serves the latest known-good board instead of returning an error. If there is no board yet, it returns an honest preparing state while refresh work happens in the background.</p>
+          <p>Recent onboarding work keeps that same principle at the front door. A new account gets a usable starter board without waiting for full personalization or synchronization, then lands on the board after setup rather than being stranded in profile management. Article and collection paths also deduplicate by canonical identity, preventing repeated source items from turning into repeated cards.</p>
+        </div>
+      </section>
+
+      <section class="row" id="admin" aria-labelledby="admin-h">
+        <div class="label">Administration</div>
+        <div class="body wide">
+          <h2 id="admin-h">An operator surface, not just a product.</h2>
+          <p>A separate admin service manages source health, collection jobs, topic clustering, user access, invitations, feedback, digest runs, operational settings, and application errors. The Today view is built around decisions: source exceptions, activation milestones, recent delivery results, feedback needing review, and the newest bounded error records.</p>
+          <p>Lifecycle email is part of that operating model. Verification, password recovery, account changes, plan changes, invitations, digests, and administrator notices now use brand-aware presentation with the product logo and a safe return path into the app. Admin notices include an account identifier when an operator needs to act, without leaking it into public surfaces.</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/admin-today.png" alt="TechDrift admin 'Today' control surface: decision queue, source health, digest delivery, onboarding funnel" loading="lazy" />
+            <figcaption>The admin "Today" view: decision queue, source health, digest delivery, and onboarding funnel at a glance.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="discipline" aria-labelledby="discipline-h">
+        <div class="label">Engineering discipline</div>
+        <div class="body wide">
+          <h2 id="discipline-h">Small team, production habits.</h2>
+          <p>The product now has 922 automated tests, with 914 passing and 8 intentionally skipped integration checks. The suite covers account isolation, public pages and sharing, email rendering, onboarding, source collection, deduplication, durable board snapshots, operational controls, and the three brand configurations. Database migrations are versioned and every rollout is verified in development before an approved production promotion.</p>
+          <p>The important rule is practical: a successful deploy command is not enough. A change is not done until the relevant customer route, public surface, and protected boundary have been read back on the deployed brand.</p>
+          <figure class="figure">
+            <img src="/assets/img/signaldrift/sportsdrift-signals-current.png" alt="Current SportsDrift public signal page, showing a sports brief with status, coverage, source counts, and linked evidence" loading="lazy" width="1440" height="1080" />
+            <figcaption>Current SportsDrift public signal page: evidence-first, no login required, with a plain-language explanation of the trend and the coverage behind it.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="row" id="next" aria-labelledby="next-h">
+        <div class="label">What's next</div>
+        <div class="body">
+          <h2 id="next-h">The next product surface.</h2>
+          <p>The immediate roadmap is native Android and iOS clients that stay aligned with the web product. The platform work continues underneath them: richer source selection, careful handling for private or paid feeds, more operator-facing diagnostics, and retention controls for long-running operational data. The product remains web-first today, with the mobile experience being built to match it rather than become a second, divergent product.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="see">
+        <div class="label">More</div>
+        <div class="body">
+          <h2 id="see" class="tight">See the products or the rest of the lab.</h2>
+          <div class="actions">
+            <a class="button" href="https://techdrift.app/?utm_source=davidwaynebaxter&amp;utm_medium=portfolio&amp;utm_campaign=signaldrift_case_study&amp;utm_content=techdrift_case_study" target="_blank" rel="noopener">Open TechDrift<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="https://gamingdrift.app/?utm_source=davidwaynebaxter&amp;utm_medium=portfolio&amp;utm_campaign=signaldrift_case_study&amp;utm_content=gamingdrift_case_study" target="_blank" rel="noopener">Open GamingDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="https://sportsdrift.app/?utm_source=davidwaynebaxter&amp;utm_medium=portfolio&amp;utm_campaign=signaldrift_case_study&amp;utm_content=sportsdrift_case_study" target="_blank" rel="noopener">Open SportsDrift&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

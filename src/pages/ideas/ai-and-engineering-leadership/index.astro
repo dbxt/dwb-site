@@ -1,0 +1,132 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/projects.css';
+import '../../../styles/essay.css';
+---
+<Base
+  title="AI and Engineering Leadership | Ideas | David Wayne Baxter"
+  description="AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems."
+  canonical="/ideas/ai-and-engineering-leadership/"
+  ogType="article"
+  ogImage="/assets/og/og-ai-leadership.jpg"
+  ogImageAlt="Close-up of a dark circuit board with a large chip and labeled components"
+  navCurrent="/ideas/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Ideas", "item": "https://davidwaynebaxter.com/ideas/" },
+          { "@type": "ListItem", "position": 3, "name": "AI and engineering leadership", "item": "https://davidwaynebaxter.com/ideas/ai-and-engineering-leadership/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "AI doesn’t replace engineering management. It changes what managers manage.",
+        "description": "AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-ai-leadership.jpg",
+        "url": "https://davidwaynebaxter.com/ideas/ai-and-engineering-leadership/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ideas/ai-and-engineering-leadership/",
+        "author": { "@type": "Person", "name": "David Wayne Baxter", "url": "https://davidwaynebaxter.com/" },
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="article-head">
+        <Crumbs items={[{"label": "Ideas", "href": "/ideas/"}, {"label": "AI and engineering leadership"}]} />
+        <h1>AI doesn’t replace engineering management. It changes what managers manage.</h1>
+        <p class="lede">I have built four AI systems. In every one, the hard part was not the model. It was the management.</p>
+        <p class="byline">By David Wayne Baxter · <time datetime="2026-09-21">September 21, 2026</time> · 4 min read</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/ideas-ai-leadership-hero.webp" srcset="/assets/ideas-ai-leadership-hero-480.webp 480w, /assets/ideas-ai-leadership-hero-720.webp 720w, /assets/ideas-ai-leadership-hero.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="Close-up of a dark circuit board with a large chip and labeled components" />
+      </figure>
+
+    <article class="essay">
+      <p>The popular question is whether AI will replace engineering managers. I think it is the wrong question, and the answer shows up quickly once you try to run agents as a working system instead of a chat window.</p>
+      <p>I have built four such systems: a print-on-demand shop run by nine agents, a workflow that scans repositories and opens pull requests for bugs, a dashboard that scores a team’s health, and a private dashboard for my lab. On the surface they have little in common. Underneath, I kept doing the same work, and it looked far more like managing a team than like writing prompts.</p>
+
+      <h2 id="idea">Agents as a team, not a tool.</h2>
+      <p>In each project, agents hold a role, take defined inputs, and produce defined outputs inside a workflow, much like the roles on an engineering team. Treat AI as a tool and you ask what it can do. Treat it as a team member and you ask a different set of questions. What job does it hold? What will it receive? What must it return? Who checks the result?</p>
+      <p>Those are management questions, and engineering managers already know how to ask them.</p>
+
+      <blockquote class="pull"><p>Managing a system of agents draws on the same habits as managing people.</p></blockquote>
+
+      <h2 id="habits">Six habits that carried over.</h2>
+
+      <div class="habit">
+        <h3>Write the role down.</h3>
+        <p>Every agent in the print-on-demand shop has a written role, a defined input, and a defined output. An agent with a vague job behaves like a person with a vague job: it does something plausible that is not quite what you needed. The written role is what makes the hand-offs reliable, because each agent knows what it will receive and what it must return. <a class="textlink" href="/ai/drop-shipping-automation/">Drop Shipping Automation&nbsp;→</a></p>
+      </div>
+      <div class="habit">
+        <h3>Set the standard once.</h3>
+        <p>One agent in the shop sets the brand standard that every stage is measured against. In Bug Manager, a custom set of skills describes what a problem looks like, so every repository is judged the same way. A team without a shared standard argues about taste. Agents without one simply drift. <a class="textlink" href="/ai/bug-manager/">Bug Manager&nbsp;→</a></p>
+      </div>
+      <div class="habit">
+        <h3>Keep a person at the decision points.</h3>
+        <p>In the shop, the owner’s part is deliberate and small: raise a request, approve what lands in the review queue, and adjust the standard. In Bug Manager, the agent attempts a fix and opens a pull request, and an engineer reviews the proposed change from the ranked list. The agents do the work, and people keep the decisions.</p>
+      </div>
+      <div class="habit">
+        <h3>Make the state visible.</h3>
+        <p>Every product in the shop is a record with a current state and a version number. Each hand-off writes an event to a ledger, and work that is waiting sits in named queues that Mission Control shows. At the June 2026 snapshot the ledger held 2,886 events. Sprint Ledger does the same for a team, putting capacity, pace, and open pull requests on one board. <a class="textlink" href="/ai/em-dashboard/">Sprint Ledger&nbsp;→</a></p>
+      </div>
+      <div class="habit">
+        <h3>Plan for repair.</h3>
+        <p>A revision in the shop creates a new version and leaves the history intact, and one agent, Scanner, exists to rebuild the workflow’s records from the files on disk when they need repair. A system that runs without someone watching needs a way back.</p>
+      </div>
+      <div class="habit">
+        <h3>Decide who can see what.</h3>
+        <p>The version of Sprint Ledger I used at Fanatics held evaluations of staff, so it was visible only to me and senior leadership. Once agents read the data a manager holds, who can see the output becomes a management decision too.</p>
+      </div>
+      <!-- TODO(ai-thesis): add one real moment where an agent or a boundary went wrong and what you changed (no names or confidential detail). -->
+
+      <figure>
+        <img src="/assets/ideas-ai-leadership-plans.webp" srcset="/assets/ideas-ai-leadership-plans-480.webp 480w, /assets/ideas-ai-leadership-plans-720.webp 720w, /assets/ideas-ai-leadership-plans.webp 960w" sizes="(min-width: 46rem) 42rem, 100vw" width="960" height="640" loading="lazy" alt="Hands on a laptop keyboard beside architectural plans" />
+      </figure>
+
+      <h2 id="changes">The manager’s job moves into the system.</h2>
+      <p>If agents do defined jobs, the work that is left for a manager is the work these projects kept returning to: defining roles and standards, choosing where human judgment stays, keeping the system visible, and deciding what a person should look at next.</p>
+      <p><a class="textlink" href="/ai/em-dashboard/">Sprint Ledger</a> reflects the last of these. A status with no next step is only a color, so each status comes with a written reason and a suggested opening for the next one on one. The same habit applies to a dashboard for people and to a workflow of agents.</p>
+
+      <blockquote class="pull"><p>AI does not remove the need for engineering management. It adds agents to the things a manager manages, alongside people and conventional automation.</p></blockquote>
+
+      <h2 id="conversation">Where I expect the argument.</h2>
+      <p>The habit I expect the most pushback on is the third. Some will say that a person at every decision point slows the system down. Others will say those people are the only reason it is safe to run. In my projects, a person keeps the decisions, and I am curious where others have decided to take them out, and what happened when they did.</p>
+
+      <div class="ask">
+        <p class="mono">Over to you</p>
+        <ul class="plain">
+          <li>Where does your team draw the line between what an agent decides and what a person decides?</li>
+          <li>What have you written down for an agent that you never wrote down for a human?</li>
+        </ul>
+        <div class="actions flush">
+          <a class="button" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">Continue the conversation on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+
+      <h2 id="projects">The projects behind this essay.</h2>
+      <ol class="log">
+        <li><span class="k"><a href="/ai/drop-shipping-automation/">Drop Shipping Automation</a></span><span>Written roles, a standard, a review queue, a ledger, and a repair agent.</span></li>
+        <li><span class="k"><a href="/ai/bug-manager/">Bug Manager</a></span><span>One standard across repositories, and a person reviewing each proposed fix.</span></li>
+        <li><span class="k"><a href="/ai/em-dashboard/">Sprint Ledger</a></span><span>Team state made visible, a status that always leads to a next step, and a visibility boundary.</span></li>
+        <li><span class="k"><a href="/ai/homepage/">Homepage Dashboard</a></span><span>A private dashboard of live cards for every service, refreshed every 15 minutes.</span></li>
+      </ol>
+    </article>
+
+    </div>
+  </main>
+</Base>

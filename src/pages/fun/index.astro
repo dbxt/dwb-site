@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/projects.css';
+---
+<Base
+  title="Fun | David Wayne Baxter"
+  description="Stories from outside the engineering org, by David Wayne Baxter."
+  canonical="/fun/"
+  ogImage="/assets/og/og-fun.jpg"
+  ogImageAlt="Santa seated in a teal armchair in front of a stone fireplace with stockings and garland"
+  navCurrent="/fun/"
+  navKind="page"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Fun",
+            "item": "https://davidwaynebaxter.com/fun/"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "url": "https://davidwaynebaxter.com/fun/",
+        "name": "Fun | David Wayne Baxter"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <p class="mono">Fun</p>
+        <h1>Things I do for fun.</h1>
+        <p class="lede">Stories from outside the engineering org.</p>
+      </div>
+
+      <figure class="banner">
+        <img src="/assets/fun-banner.webp" srcset="/assets/fun-banner-480.webp 480w, /assets/fun-banner-720.webp 720w, /assets/fun-banner.webp 1024w" sizes="(min-width: 72rem) 1000px, 100vw" width="1024" height="512" fetchpriority="high" alt="The light show at night: a candy-striped circus tent, a lit elephant, glowing candy canes and Christmas trees, and a marquee sign" />
+      </figure>
+
+      <section class="row first" aria-labelledby="stories-h">
+        <div class="label">Stories</div>
+        <div class="body wide">
+          <h2 id="stories-h">Latest stories.</h2>
+
+          <article class="project">
+            <div>
+              <p class="mono meta"><time datetime="2026-09-21">September 21, 2026</time> · Story · 4 min read</p>
+              <h3><a href="/fun/the-kindness-claus/">The Kindness Claus</a></h3>
+              <p>A white beard, a panicked phone call, and a next-day Amazon delivery turned into five years as Santa in a neighborhood light show with more than a million lights, a circus cast, and a fight scene with the Grinch.</p>
+              <p class="mono meta">Santa · Light show · Grinch</p>
+              <div class="actions">
+                <a class="textlink" href="/fun/the-kindness-claus/">Read the story&nbsp;→</a>
+              </div>
+            </div>
+            <figure class="project-shot">
+              <a href="/fun/the-kindness-claus/" aria-label="Read The Kindness Claus"><img src="/assets/fun-card.webp" srcset="/assets/fun-card-480.webp 480w, /assets/fun-card-720.webp 720w, /assets/fun-card.webp 910w" sizes="(min-width: 62rem) 21rem, 100vw" width="910" height="683" loading="lazy" alt="Santa seated in a teal armchair in front of a stone fireplace with stockings and garland" /></a>
+            </figure>
+          </article>
+
+          <!-- To add a story: copy the article.project block above and change the date, link, title, summary, tags and image, then add the new page to sitemap.xml. -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

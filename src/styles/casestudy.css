@@ -1,0 +1,22 @@
+/* Case-study figures: light/dark screenshots, split layout, brand captures. */
+.figure.board { padding-bottom: 3rem; }
+.shot-dark { display: none; }
+:root[data-theme="dark"] .shot-light { display: none; }
+:root[data-theme="dark"] .shot-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .shot-light { display: none; }
+  :root:not([data-theme]) .shot-dark { display: block; }
+}
+.split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+.split .figure { max-width: 22rem; }
+@media (min-width: 62rem) {
+  .split { grid-template-columns: minmax(0, 1fr) 21rem; gap: 3rem; align-items: start; }
+}
+.figure a.zoom, .figure a.zoom:hover { color: inherit; }
+.brand-captures { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin: 1.75rem 0; }
+.brand-captures figure { margin: 0; }
+.brand-captures img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); }
+.brand-captures figcaption { margin-top: 0.65rem; font: 400 0.8125rem/1.6 var(--mono); color: var(--muted); }
+@media (min-width: 62rem) {
+  .brand-captures { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

@@ -1,0 +1,98 @@
+---
+import Analytics from '../components/Analytics.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/sections.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Site-relative canonical path, e.g. "/ai/". Omit (with social={false}) for pages such as the 404. */
+  canonical?: string;
+  robots?: string;
+  /** Share-card metadata. Defaults follow the page title and description. */
+  ogType?: 'website' | 'article';
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  social?: boolean;
+  /** Primary-nav highlight (see SiteHeader). */
+  navCurrent?: string;
+  navKind?: 'page' | 'true';
+  /** The Connect page lists itself in the footer. */
+  footerConnect?: boolean;
+}
+
+const SITE = 'https://davidwaynebaxter.com';
+const {
+  title,
+  description,
+  canonical,
+  robots = 'index,follow,max-image-preview:large',
+  ogType = 'website',
+  ogTitle = title,
+  ogDescription = description,
+  twitterDescription = ogDescription,
+  ogImage = '/assets/og/og-default.jpg',
+  ogImageAlt = 'David Wayne Baxter, Senior Engineering Manager',
+  social = true,
+  navCurrent,
+  navKind,
+  footerConnect = false,
+} = Astro.props;
+const url = canonical ? SITE + canonical : undefined;
+const image = SITE + ogImage;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={robots} />
+  {url && <link rel="canonical" href={url} />}
+  {social && (
+    <Fragment>
+      <meta property="og:type" content={ogType} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
+      <meta property="og:url" content={url} />
+      <meta property="og:site_name" content="David Wayne Baxter" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:image" content={image} />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={ogImageAlt} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:description" content={twitterDescription} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:creator" content="@davidwaynebax" />
+      <meta name="twitter:image:alt" content={ogImageAlt} />
+    </Fragment>
+  )}
+  <link rel="icon" href="/assets/dwb-favicon-64.png?v=20261112" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#ffffff" />
+  <script is:inline>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t);d.className+=" js"})()</script>
+  <link rel="preload" href="/assets/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <script is:inline src="/assets/theme.js?v=20260921c" defer></script>
+  <slot name="head" />
+  <Analytics />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <SiteHeader current={navCurrent} kind={navKind} />
+  <slot />
+  <SiteFooter connect={footerConnect} />
+</body>
+</html>

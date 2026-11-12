@@ -1,0 +1,200 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Crumbs from '../../../components/Crumbs.astro';
+import '../../../styles/casestudy.css';
+import '../../../styles/workflow.css';
+---
+<Base
+  title="Agentic Bug Management | AI Work | David Wayne Baxter"
+  description="Case study: Claude agents scan a dozen repositories, rank what they find, log Jira tickets, and give a team one ranked list to burn down."
+  canonical="/ai/bug-manager/"
+  ogImage="/assets/og/og-bug-manager.jpg"
+  ogImageAlt="Agentic bug management: a ranked list a team can burn down"
+  navCurrent="/ai/"
+  navKind="true"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://davidwaynebaxter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Work",
+            "item": "https://davidwaynebaxter.com/ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Agentic Bug Management",
+            "item": "https://davidwaynebaxter.com/ai/bug-manager/"
+          }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "headline": "Agentic Bug Management",
+        "description": "Case study: Claude agents scan a dozen repositories, rank what they find, log Jira tickets, and give a team one ranked list to burn down.",
+        "image": "https://davidwaynebaxter.com/assets/og/og-bug-manager.jpg",
+        "url": "https://davidwaynebaxter.com/ai/bug-manager/",
+        "mainEntityOfPage": "https://davidwaynebaxter.com/ai/bug-manager/",
+        "author": {
+          "@type": "Person",
+          "name": "David Wayne Baxter",
+          "url": "https://davidwaynebaxter.com/"
+        },
+        "datePublished": "2026-09-19",
+        "dateModified": "2026-09-21"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <Crumbs items={[{"label": "AI Work", "href": "/ai/"}, {"label": "Bug Manager"}]} />
+        <h1>Agentic bug management: a ranked list a team can burn down.</h1>
+        <p class="lede">AI agents scanned more than a dozen repositories, from backend services to front-end clients, for data-consistency problems, failure risks, security issues, and code smells. They logged what they found as prioritized Jira tickets, attempted a fix for each issue and opened a pull request for review, and gave the team a shared, ranked dashboard that linked every bug to its pull request.</p>
+        <div class="actions">
+          <a class="button" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener">Open the live demo&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+          <a class="textlink" href="#how">See how it works&nbsp;↓</a>
+        </div>
+        <div class="note">
+          <p><b>About this project.</b> I built the working system at Fanatics, where Claude agents, guided by a custom set of code-evaluation skills, scanned real repositories. Its findings and code are confidential, so the live demo is a simulation: fictional repositories and made-up findings that replay the same workflow. The ranking rule in the demo is illustrative.</p>
+        </div>
+      </div>
+
+      <figure class="figure board">
+        <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-light.webp" srcset="/assets/bug-manager-find-light-480.webp 480w, /assets/bug-manager-find-light-720.webp 720w, /assets/bug-manager-find-light-1080.webp 1080w, /assets/bug-manager-find-light.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-find-dark.webp" srcset="/assets/bug-manager-find-dark-480.webp 480w, /assets/bug-manager-find-dark-720.webp 720w, /assets/bug-manager-find-dark-1080.webp 1080w, /assets/bug-manager-find-dark.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a scan: a status bar with the six pipeline stages, summary cards for 156 findings, 118 open pull requests, risk remaining, and a sprint control, a repository list, and a table of findings ranked by risk starting with the fatal ones." /></a>
+        <figcaption>The app after a scan: 156 simulated findings across twelve fictional repositories, ranked by risk, with the agent’s pull requests alongside.</figcaption>
+      </figure>
+
+      <div class="spec-wrap">
+        <dl class="spec">
+          <div><dt>Project</dt><dd>Agentic bug management: agents that scan repositories, rank what they find, and file the tickets</dd></div>
+          <div><dt>Built with</dt><dd>Claude agents guided by a custom set of code-evaluation skills, with Jira and a shared dashboard</dd></div>
+          <div><dt>Scope</dt><dd>More than a dozen repositories, from backend services to front-end clients</dd></div>
+          <div><dt>Fixes</dt><dd>The agent attempts a fix and opens a pull request; the ranked list links each bug to it for review</dd></div>
+          <div><dt>First pass</dt><dd>More than 150 bugs logged, from fatal to trivial</dd></div>
+          <div><dt>What it found</dt><dd>Mostly data-consistency issues and potential null-pointer failures that could have reached clients</dd></div>
+          <div><dt>Cadence</dt><dd>One sprint each quarter to burn the list down</dd></div>
+          <div><dt>Live demo</dt><dd><a href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener">bug-manager.projects.davidwaynebaxter.com<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+          <div><dt>Data</dt><dd>Simulated: fictional repositories, no code scanned</dd></div>
+        </dl>
+      </div>
+
+      <section class="row first" aria-labelledby="problem-h">
+        <div class="label">The problem</div>
+        <div class="body">
+          <h2 id="problem-h">Defects that reach clients, and no shared list.</h2>
+          <!-- TODO(ai): replace or extend with your own motivation, in your voice: what prompted this, and how bugs were tracked before. -->
+          <p>Defects that can reach clients, such as inconsistent data and code paths that fail on a missing value, are easy to miss in review and easy to defer when nobody owns a list of them. A team with many repositories needs one ranked view of what could hurt clients, a place for the work to live, and time set aside to do it.</p>
+        </div>
+      </section>
+
+      <section class="row" id="how" aria-labelledby="how-h">
+        <div class="label">How it works</div>
+        <div class="body wide">
+          <h2 id="how-h">From a scan to a sprint.</h2>
+          <ol class="flow six">
+            <li><b>Scan</b><span>Agents read every repository</span></li>
+            <li><b>Classify</b><span>Consistency, failure, security, or smell</span></li>
+            <li><b>Rank</b><span>Fatal down to trivial</span></li>
+            <li><b>Log to Jira</b><span>One ticket per finding</span></li>
+            <li><b>Fix and open a PR</b><span>The agent attempts the fix</span></li>
+            <li><b>Review and burn down</b><span>One sprint a quarter</span></li>
+          </ol>
+          <p>The agents evaluate the code using a custom set of skills that describe what a problem looks like, so every repository is judged by the same standard. Each finding becomes a Jira ticket, and a shared dashboard ranks them, so the team always knows what to work on first.</p>
+          <p>Finding a bug is only half the work, so the agent also attempted the fix and posted a pull request. The bug list linked to that pull request, which made it easy for an engineer to review a proposed change straight from the list.</p>
+          <!-- TODO(ai): add anything you are comfortable sharing about the method: how scans were triggered, how findings were de-duplicated and triaged, how the ranking was set, how false positives were handled, what happened when the agent could not produce a fix, and how often engineers accepted the pull requests. Keep the proprietary skill details out. -->
+        </div>
+      </section>
+
+      <section class="row" id="results" aria-labelledby="results-h">
+        <div class="label">What it found</div>
+        <div class="body">
+          <h2 id="results-h">More than 150 bugs on the first pass.</h2>
+          <p>The first pass logged more than 150 bugs, ranging from fatal to trivial. Most were data-consistency issues and code that could fail on a missing value, which are the kinds of defect that can reach a client. The team then spent one sprint each quarter burning the list down, which brought the repositories into production shape and kept them there. Because each bug linked to the agent’s pull request, reviewing a proposed fix was one click away.</p>
+        </div>
+      </section>
+
+      <section class="row" id="demo" aria-labelledby="demo-h">
+        <div class="label">The demo</div>
+        <div class="body wide">
+          <h2 id="demo-h">Try the workflow yourself.</h2>
+          <p>The live demo is a standalone app that scans twelve fictional repositories and produces 156 simulated findings in the same mix the real scans surfaced most. It then shows the agent opening a simulated pull request for each fix it can make. You can filter by severity, category, repository, and status, open a finding to see the code, the reasoning, the pull request, and the ticket that would be logged, and then run a review-and-burn-down sprint.</p>
+          <figure class="figure">
+            <a class="shot-light" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-light.webp" srcset="/assets/bug-manager-burn-light-480.webp 480w, /assets/bug-manager-burn-light-720.webp 720w, /assets/bug-manager-burn-light-1080.webp 1080w, /assets/bug-manager-burn-light.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <a class="shot-dark" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener" aria-label="Open the live demo (opens in a new tab)"><img src="/assets/bug-manager-burn-dark.webp" srcset="/assets/bug-manager-burn-dark-480.webp 480w, /assets/bug-manager-burn-dark-720.webp 720w, /assets/bug-manager-burn-dark-1080.webp 1080w, /assets/bug-manager-burn-dark.webp 1440w" sizes="(min-width: 72rem) 65rem, 100vw" width="1440" height="900" loading="lazy" alt="The Bug Manager app after a ten-day sprint, on its Burn-down tab: a line chart of total risk remaining, which falls faster when findings are closed in ranked order than in no particular order, with stats showing 45 findings closed and 57% of the risk removed." /></a>
+            <figcaption>The burn-down tab after a sprint: at the default capacity of 45 findings, fixing in ranked order removes about 57% of the total risk, compared with about 29% for the same number closed in no particular order.</figcaption>
+          </figure>
+          <div class="actions">
+            <a class="button" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener">Open the live demo&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" id="decisions" aria-labelledby="dec-h">
+        <div class="label">Design decisions</div>
+        <div class="body">
+          <h2 id="dec-h">Five choices that made it useful.</h2>
+          <div class="principle">
+            <h3>One ranked list, not a pile.</h3>
+            <p>More than 150 findings is a report nobody acts on. Ranking turns it into a queue, so a team can start at the top and know that the most important work is being done first.</p>
+          </div>
+          <div class="principle">
+            <h3>Every finding arrives with a proposed fix.</h3>
+            <p>The agent attempted the fix and opened a pull request, and the list linked to it. An engineer’s job became reviewing a proposed change, not diagnosing the problem and writing the fix from nothing.</p>
+          </div>
+          <div class="principle">
+            <h3>Tickets go where the team already works.</h3>
+            <p>Findings are logged in Jira, so they enter the normal planning flow instead of sitting in a separate document that has to be remembered.</p>
+          </div>
+          <div class="principle">
+            <h3>Time is set aside to do the work.</h3>
+            <p>A list only shrinks if someone has capacity for it. Giving the burn-down one sprint each quarter made the work a planned commitment, not something squeezed in between features.</p>
+          </div>
+          <div class="principle">
+            <h3>Standards are written down as skills.</h3>
+            <p>A custom set of evaluation skills captures what counts as a problem, so the agents apply the same judgment to every repository, and the standard can be improved in one place.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" id="with-ai" aria-labelledby="with-ai-h">
+        <div class="label">Working with AI</div>
+        <div class="body">
+          <h2 id="with-ai-h">Agents that find, describe, and propose. Engineers who review.</h2>
+          <p>Claude agents did the scanning and evaluating, guided by the skills that encode how to judge code. They wrote each finding up clearly, logged it, attempted a fix, and posted a pull request that the list linked to. The engineers on the team reviewed those pull requests and decided what shipped.</p>
+          <!-- TODO(ai): describe your part in your own words: how you designed the skills, how you checked the agents' output, what went wrong at first and what you changed, and what you learned about using agents on real code. -->
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="see">
+        <div class="label">Try it</div>
+        <div class="body">
+          <h2 id="see" class="tight">See the ranked list for yourself.</h2>
+          <div class="actions">
+            <a class="button" href="https://bug-manager.projects.davidwaynebaxter.com/" target="_blank" rel="noopener">Open the live demo&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="https://www.linkedin.com/in/davidwbaxter/" rel="me noopener" target="_blank">Discuss it on LinkedIn&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="textlink" href="/ai/">All AI work&nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Base>

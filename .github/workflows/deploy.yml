@@ -13,6 +13,17 @@ jobs:
         run: python3 tools/sitemap-lastmod.py
       - name: Refresh the home page's Latest list
         run: python3 tools/latest.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Build the site
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/.htaccess
       # Only files this action uploaded earlier are ever deleted (tracked in .ftp-deploy-sync-state.json),
       # so other folders on the server, such as subdomain document roots, are left alone.
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -21,13 +32,12 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          local-dir: ./
+          local-dir: ./dist/
           server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
-            tools/**
       # A courtesy ping so Bing and other IndexNow engines re-crawl changed pages promptly; never fails the deploy.
       - name: Notify IndexNow of changed pages
         continue-on-error: true

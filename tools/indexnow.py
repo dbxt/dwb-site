@@ -6,7 +6,7 @@
   python3 tools/indexnow.py --dry-run ...                  print the URLs instead of sending them
 
 Only URLs listed in sitemap.xml are ever submitted. The key is public by design: IndexNow verifies it by fetching
-https://<host>/<key>.txt, so the key file lives in the site root and is committed.
+https://<host>/<key>.txt, so the key file lives in public/ (served from the site root) and is committed.
 Google does not support IndexNow; it relies on the sitemap and Search Console.
 """
 import argparse, json, pathlib, re, subprocess, sys, urllib.request
@@ -17,23 +17,25 @@ ENDPOINT = 'https://api.indexnow.org/IndexNow'
 MAX_CHANGED = 20  # a bigger change (a redesign, a shared template edit) is simply resubmitted in full
 
 def sitemap_urls():
-    return re.findall(r'<loc>([^<]+)</loc>', (ROOT / 'sitemap.xml').read_text())
+    return re.findall(r'<loc>([^<]+)</loc>', (ROOT / 'public' / 'sitemap.xml').read_text())
+
+SHARED = ('src/layouts/', 'src/components/', 'src/styles/')  # edits here change every page
 
 def page_url(path):
-    if path == 'index.html': return f'https://{HOST}/'
-    if path.endswith('/index.html'): return f'https://{HOST}/{path[:-len("index.html")]}'
+    if path == 'src/pages/index.astro': return f'https://{HOST}/'
+    if path.startswith('src/pages/') and path.endswith('/index.astro'): return f'https://{HOST}/{path[len("src/pages/"):-len("index.astro")]}'
     return None
 
 def changed_urls(before, after):
     if not before or set(before) == {'0'}: return sitemap_urls()
     names = subprocess.run(['git', 'diff', '--name-only', before, after], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()
-    if 'sitemap.xml' in names or len(names) > MAX_CHANGED: return sitemap_urls()
+    if 'public/sitemap.xml' in names or len(names) > MAX_CHANGED or any(n.startswith(SHARED) for n in names): return sitemap_urls()
     known = set(sitemap_urls())
     return sorted({u for u in map(page_url, names) if u in known})
 
 def key():
-    keys = [p.stem for p in ROOT.glob('*.txt') if re.fullmatch(r'[0-9a-f]{32}', p.stem)]
-    if len(keys) != 1: sys.exit(f'expected exactly one IndexNow key file in the site root, found {len(keys)}')
+    keys = [p.stem for p in (ROOT / 'public').glob('*.txt') if re.fullmatch(r'[0-9a-f]{32}', p.stem)]
+    if len(keys) != 1: sys.exit(f'expected exactly one IndexNow key file in public/, found {len(keys)}')
     return keys[0]
 
 def main():

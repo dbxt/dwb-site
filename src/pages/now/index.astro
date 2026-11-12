@@ -1,0 +1,89 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base
+  title="Now | David Wayne Baxter"
+  description="What David Wayne Baxter is doing right now: job search, active projects, and current focus areas. Updated October 2026."
+  canonical="/now/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://davidwaynebaxter.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Now", "item": "https://davidwaynebaxter.com/now/" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "url": "https://davidwaynebaxter.com/now/",
+        "name": "Now | David Wayne Baxter",
+        "description": "What David Wayne Baxter is doing right now.",
+        "dateModified": "2026-10-03"
+      }
+    ]
+  }
+  </script>
+  </Fragment>
+<main id="main">
+    <div class="wrap">
+
+      <div class="page-head">
+        <p class="mono">Now</p>
+        <h1>What I&rsquo;m doing right now.</h1>
+        <p class="lede">A snapshot of where my focus is. Updated October 2026, from Los Angeles.</p>
+      </div>
+
+      <section class="row first" aria-labelledby="work-now">
+        <div class="label">Work</div>
+        <div class="body">
+          <h2 id="work-now">Looking for the next role.</h2>
+          <p>I left Fanatics Betting and Gaming in September 2026 after three and a half years leading platform engineering teams. I am actively searching for Senior Engineering Manager and Director of Engineering roles, at organizations where I can do the same kind of work: building the systems, process, and people that make an engineering organization reliable and fast.</p>
+          <p>If you are hiring or know someone who is, <a class="textlink" href="/contact/">reach out</a>.</p>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="building-now">
+        <div class="label">Building</div>
+        <div class="body">
+          <h2 id="building-now">Active projects.</h2>
+          <div class="principle">
+            <h3>AI-augmented engineering workflows</h3>
+            <p>Extending the work I started at Fanatics: agents that do defined jobs inside an engineering organization. Currently focused on agentic software development, autonomous operations, and what it looks like to design a team for human + AI collaboration.</p>
+          </div>
+          <div class="principle">
+            <h3>Self-hosted infrastructure</h3>
+            <p>Running a home lab on Proxmox: networking, containers, observability, Home Assistant, and a deliberate move away from cloud-managed services toward infrastructure I own and understand. <a class="textlink" href="/lab/">See the lab&nbsp;→</a></p>
+          </div>
+          <div class="principle">
+            <h3>This site</h3>
+            <p>Writing more, building out the Ideas section, and treating davidwaynebaxter.com as a live artifact of how I think, not just a résumé placeholder.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="row" aria-labelledby="reading-now">
+        <div class="label">Exploring</div>
+        <div class="body">
+          <h2 id="reading-now">Current focus areas.</h2>
+          <ul class="plain">
+            <li>Organizational design for human + AI teams</li>
+            <li>Agentic software development</li>
+            <li>Developer experience and engineering operating systems</li>
+            <li>Self-hosted and private infrastructure</li>
+            <li>AI-assisted engineering management</li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="mono muted" style="margin-top: 3rem; font-size: 0.85rem;">
+        This is a <a class="textlink" href="https://nownownow.com/about" rel="noopener" target="_blank">/now page</a>. Updated October 2026.
+      </p>
+
+    </div>
+  </main>
+</Base>
