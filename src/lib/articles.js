@@ -59,7 +59,7 @@ export const articles = {
   "/ideas/ai-and-engineering-leadership/": {
     "type": "Article",
     "headline": "AI doesn’t replace engineering management. It changes what managers manage.",
-    "description": "AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems.",
+    "description": "AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems alongside SignalDrift.",
     "image": "/assets/og/og-ai-leadership.jpg",
     "published": "2026-09-21",
     "modified": "2026-09-21"
