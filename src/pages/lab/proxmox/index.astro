@@ -57,7 +57,6 @@ const schema = [
           <div><dt>License</dt><dd>No subscription; the no-subscription repository is used</dd></div>
         </dl>
       </div>
-      <!-- TODO(lab): add the mini PC's make and model to the spec sheet above. -->
 
       <section class="row first" id="resources" aria-labelledby="res-h">
         <div class="label">Resources</div>
@@ -176,7 +175,6 @@ const schema = [
         <div class="label">Next steps</div>
         <div class="body">
           <h2 id="imp-h">Where the setup could be stronger.</h2>
-          <!-- TODO(lab): confirm or edit this list so it matches what you actually plan to do. These items come from reading the current configuration. -->
           <ul class="plain">
             <li><b>Scheduled backups.</b> No backup job exists yet, and everything sits on one SSD, so a failed disk would lose every guest. A scheduled backup to a second disk or another machine is the first improvement.</li>
             <li><b>Memory headroom.</b> The guests are allocated 14 of about 15.4 GiB. The Docker host’s containers use about 1.6 GiB of its 8 GiB, so trimming that guest is the easiest way to make room for another one.</li>

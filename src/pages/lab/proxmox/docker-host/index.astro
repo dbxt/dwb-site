@@ -64,7 +64,6 @@ const schema = [
           <h2 id="what-h">Nineteen containers, grouped by purpose.</h2>
           <p>Everything on this host is deployed and managed through Portainer. Services are grouped into numbered Docker Compose stacks by function, so related containers start, update, and stop together, and the numbering leaves room for new groups. Docker uses the overlay2 storage driver, and 17 volumes hold the persistent data.</p>
           <div class="scroll"><table class="grid"><thead><tr><th class="">Stack</th><th class="">What it contains</th><th class="num">Running</th></tr></thead><tbody><tr><th scope="row"><code>2000-infrastructure</code></th><td class="">A dashboard (<a href="/ai/homepage/">Homepage</a>), uptime monitoring (Uptime Kuma), and internet speed tracking (Speedtest Tracker)</td><td class="num">3</td></tr><tr><th scope="row"><code>3000-organizer</code></th><td class="">Bookmarks with full-text search (Karakeep, Meilisearch, and a headless browser for page capture), tasks (Vikunja), calendar and contacts (Radicale), a PostgreSQL database, and a few other personal services</td><td class="num">8</td></tr><tr><th scope="row"><code>4000-entertainment</code></th><td class="">Defined for media services, with nothing running at the moment</td><td class="num">0</td></tr><tr><th scope="row">Helper containers</th><td class="">Small containers that feed live widgets to the dashboard: host metrics (Glances), image update checks (What’s Up Docker), and status feeds from other systems in the lab. They run outside a stack.</td><td class="num">7</td></tr><tr><th scope="row"><code>opt</code></th><td class="">Portainer itself</td><td class="num">1</td></tr></tbody><tfoot><tr><th scope="row">Total</th><td class=""></td><td class="num">19</td></tr></tfoot></table></div>
-          <!-- TODO(lab): add anything you want to say about how the stack files are backed up, where the volumes live, or which of these services are reachable from the internet, described without hostnames or addresses. -->
         </div>
       </section>
 
@@ -149,7 +148,6 @@ volumes:
 <pre><code>$ docker compose up -d
 $ curl http://192.168.10.20:8080</code></pre>
           <p>The same address and port are what you enter as the upstream in the Caddy handler (OPNsense Guide 4), which puts the service behind a trusted HTTPS hostname. <code>restart: unless-stopped</code> brings the container back after a reboot.</p>
-          <!-- TODO(lab): describe how you organise your real stacks (folders, Compose files, environment files, backups of volumes) without listing internal service names or addresses. -->
         </div>
       </section>
 
@@ -164,7 +162,6 @@ $ curl http://192.168.10.20:8080</code></pre>
             <li>Restart the VM, then confirm the guest sees it with <code>lsusb</code>.</li>
             <li>To give a container access, pass the device node through in Compose with a <code>devices:</code> entry.</li>
           </ol>
-          <!-- TODO(lab): say what the device is and which container uses it (for example a radio or storage adapter), without publishing the device's identifiers. -->
         </div>
       </section>
 

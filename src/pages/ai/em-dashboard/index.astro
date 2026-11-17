@@ -58,7 +58,6 @@ const schema = [
         <div class="label">The problem</div>
         <div class="body">
           <h2 id="problem">One read on a large team, before the sprint slips.</h2>
-          <!-- TODO(ai): replace or extend with your own motivation, in your voice: what made you build this, and what you were doing before (spreadsheets, board views, memory?). -->
           <p>Leading eight to twenty direct reports means the early signs of trouble are scattered across a sprint board, a pull-request queue, and a leave calendar. A manager needs a fast, consistent answer to three questions: who is carrying more or less than they can, who is falling behind, and whose work is stalling in review.</p>
           <p>The answer also has to lead somewhere. A status with no next step is only a color, so the dashboard pairs each one with a written reason and a suggested opening for the one on one.</p>
         </div>
@@ -131,7 +130,6 @@ const schema = [
         <div class="body">
           <h2 id="with-ai">How I used AI to build it.</h2>
           <p>Sprint Ledger was built with Claude as a coding partner, and the commit history records it as a co-author.</p>
-          <!-- TODO(ai): describe your working method in your own words. Useful details: what you specified up front (rules, thresholds, tone), decisions you made or reversed (the private talking points are one), how you reviewed and tested Claude's output, and roughly how long it took. -->
           <p>In this public version, the scoring and the coaching prompts are deterministic rules, not model output, so every status can be explained and tested, and the model’s role was in building the tool. The internal version at Fanatics went further: it ran on an hourly schedule, with Claude agents evaluating the live data and proposing one-on-one topics from what they found.</p>
         </div>
       </section>
@@ -140,7 +138,6 @@ const schema = [
         <div class="label">Where it could go</div>
         <div class="body">
           <h2 id="next">From simulation to real signals.</h2>
-          <!-- TODO(ai): confirm or edit these next steps so they match what you actually plan to do. -->
           <p>The roster already stores each person’s GitHub and Jira handles, which is the natural place to connect real pull-request and ticket data in place of the simulation. With real data in place, a language model could summarize trends across sprints, for example turning a run of Amber weeks into a short written brief for a manager to review.</p>
           <p>I would keep the same boundary: rules decide the status, and any model-written summary is a draft for a person to check.</p>
         </div>

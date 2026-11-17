@@ -60,7 +60,6 @@ const schema = [
         <div class="label">The problem</div>
         <div class="body">
           <h2 id="problem-h">Defects that reach clients, and no shared list.</h2>
-          <!-- TODO(ai): replace or extend with your own motivation, in your voice: what prompted this, and how bugs were tracked before. -->
           <p>Defects that can reach clients, such as inconsistent data and code paths that fail on a missing value, are easy to miss in review and easy to defer when nobody owns a list of them. A team with many repositories needs one ranked view of what could hurt clients, a place for the work to live, and time set aside to do it.</p>
         </div>
       </section>
@@ -79,7 +78,6 @@ const schema = [
           </ol>
           <p>The agents evaluate the code using a custom set of skills that describe what a problem looks like, so every repository is judged by the same standard. Each finding becomes a Jira ticket, and a shared dashboard ranks them, so the team always knows what to work on first.</p>
           <p>Finding a bug is only half the work, so the agent also attempted the fix and posted a pull request. The bug list linked to that pull request, which made it easy for an engineer to review a proposed change straight from the list.</p>
-          <!-- TODO(ai): add anything you are comfortable sharing about the method: how scans were triggered, how findings were de-duplicated and triaged, how the ranking was set, how false positives were handled, what happened when the agent could not produce a fix, and how often engineers accepted the pull requests. Keep the proprietary skill details out. -->
         </div>
       </section>
 
@@ -139,7 +137,6 @@ const schema = [
         <div class="body">
           <h2 id="with-ai-h">Agents that find, describe, and propose. Engineers who review.</h2>
           <p>Claude agents did the scanning and evaluating, guided by the skills that encode how to judge code. They wrote each finding up clearly, logged it, attempted a fix, and posted a pull request that the list linked to. The engineers on the team reviewed those pull requests and decided what shipped.</p>
-          <!-- TODO(ai): describe your part in your own words: how you designed the skills, how you checked the agents' output, what went wrong at first and what you changed, and what you learned about using agents on real code. -->
         </div>
       </section>
 
