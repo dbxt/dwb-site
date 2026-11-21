@@ -38,7 +38,7 @@ export const articles = {
     "description": "TechDrift and its sister products GamingDrift and SportsDrift are evidence-first signal products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline.",
     "image": "/assets/og/og-default.jpg",
     "published": "2026-10-16",
-    "modified": "2026-10-26"
+    "modified": "2026-11-20"
   },
   "/experience/content-delivery-service/": {
     "type": "TechArticle",
@@ -59,7 +59,7 @@ export const articles = {
   "/ideas/ai-and-engineering-leadership/": {
     "type": "Article",
     "headline": "AI doesn’t replace engineering management. It changes what managers manage.",
-    "description": "AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems.",
+    "description": "AI doesn’t replace engineering management. It changes what managers manage. Six habits from building four AI systems alongside TechDrift.",
     "image": "/assets/og/og-ai-leadership.jpg",
     "published": "2026-09-21",
     "modified": "2026-09-21"
