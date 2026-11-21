@@ -38,7 +38,7 @@ export const articles = {
     "description": "TechDrift and its sister products GamingDrift and SportsDrift are evidence-first signal products with inspectable public signals, private-by-default accounts, brand-isolated operations, and production release discipline.",
     "image": "/assets/og/og-default.jpg",
     "published": "2026-10-16",
-    "modified": "2026-10-26"
+    "modified": "2026-11-20"
   },
   "/experience/content-delivery-service/": {
     "type": "TechArticle",
