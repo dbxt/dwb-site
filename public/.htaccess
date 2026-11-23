@@ -19,6 +19,10 @@
   # The AI and engineering leadership essay moved from AI Work to Ideas.
   RewriteRule ^ai/ai-and-engineering-leadership/?$ /ideas/ai-and-engineering-leadership/ [R=301,L]
 
+  # The TechDrift case study moved from /ai/signaldrift/ to /ai/techdrift/ (public naming).
+  RewriteRule ^ai/signaldrift(?:/.*)?$ /ai/techdrift/ [R=301,L]
+  RewriteRule ^assets/img/signaldrift/(.+)$ /assets/img/techdrift/$1 [R=301,L]
+
   # The embedded Bug Manager demo moved to its dedicated project host.
   RewriteRule ^ai/bug-manager/demo/?$ https://bug-manager.projects.davidwaynebaxter.com/ [R=301,L]
 </IfModule>

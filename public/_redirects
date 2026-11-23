@@ -18,3 +18,9 @@
 # The embedded Bug Manager demo moved to its dedicated project host.
 /ai/bug-manager/demo https://bug-manager.projects.davidwaynebaxter.com/ 301
 /ai/bug-manager/demo/ https://bug-manager.projects.davidwaynebaxter.com/ 301
+
+# The TechDrift case study moved from /ai/signaldrift/ to /ai/techdrift/ (public naming).
+/ai/signaldrift /ai/techdrift/ 301
+/ai/signaldrift/ /ai/techdrift/ 301
+/ai/signaldrift/* /ai/techdrift/ 301
+/assets/img/signaldrift/* /assets/img/techdrift/:splat 301
