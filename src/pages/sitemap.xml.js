@@ -4,7 +4,7 @@ import { pages, SITE } from '../lib/pages.js';
 // changefreq / priority per URL (kept from the old hand-written sitemap).
 const META = {
   '/': ['weekly', '1.0'], '/experience/': ['monthly', '0.8'], '/ai/': ['monthly', '0.8'],
-  '/ai/signaldrift/': ['monthly', '0.7'], '/ai/homepage/': ['monthly', '0.7'], '/ai/bug-manager/': ['monthly', '0.7'],
+  '/ai/techdrift/': ['monthly', '0.7'], '/ai/homepage/': ['monthly', '0.7'], '/ai/bug-manager/': ['monthly', '0.7'],
   '/ai/drop-shipping-automation/': ['monthly', '0.7'], '/ai/em-dashboard/': ['monthly', '0.7'],
   '/now/': ['monthly', '0.6'], '/contact/': ['monthly', '0.6'], '/connect/': ['monthly', '0.6'],
   '/lab/': ['monthly', '0.6'], '/lab/service-host-migration/': ['monthly', '0.5'], '/lab/proxmox/': ['monthly', '0.5'],

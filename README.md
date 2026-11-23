@@ -13,7 +13,7 @@ src/lib/                articles.js (article metadata), schema.js (JSON-LD helpe
                         the sitemap and the home page Latest list)
 src/scripts/theme.js    Theme and mobile-menu toggle (bundled by Astro)
 src/components/         SiteHeader, SiteFooter, Crumbs (scoped styles live inside each), Analytics
-src/pages/              One folder per URL: src/pages/ai/signaldrift/index.astro -> /ai/signaldrift/
+src/pages/              One folder per URL: src/pages/ai/techdrift/index.astro -> /ai/techdrift/
 src/styles/             tokens.css, base.css, sections.css load on every page; the rest load only where used
 functions/              Cloudflare Pages middleware (www -> apex redirect)
 tools/                  check-dist.py (post-build checks), IndexNow, Lighthouse budgets, share-card renderer
